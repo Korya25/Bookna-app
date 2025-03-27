@@ -6,4 +6,5 @@ abstract class BooksRepo {
   Future<Either<Failure, List<Book>>> getBooks();
   Future<Either<Failure, List<Book>>> getAllPopularBooks(int page);
   Future<Either<Failure, List<Book>>> getAllTopRatedBooks(int page);
+  Future<Either<Failure, List<Book>>> getBooksByCategoryPath(String category);
 }
