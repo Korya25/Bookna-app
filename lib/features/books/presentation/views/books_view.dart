@@ -1,21 +1,15 @@
+import 'package:bookna_app/features/books/presentation/widget/popular_books_section.dart';
+import 'package:bookna_app/features/books/presentation/widget/slider_section.dart';
+import 'package:bookna_app/features/books/presentation/widget/top_rated_books_section.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
-import 'package:bookna_app/core/presentation/widget/custom_slider.dart';
-import 'package:bookna_app/core/presentation/widget/section_header.dart';
-import 'package:bookna_app/core/presentation/widget/section_list_view.dart';
-import 'package:bookna_app/core/presentation/widget/section_list_view_card.dart';
-import 'package:bookna_app/core/presentation/widget/slider_card.dart';
-import 'package:bookna_app/core/resources/app_routes.dart';
-import 'package:bookna_app/core/resources/app_strings.dart';
-import 'package:bookna_app/core/resources/app_values.dart';
+import 'package:bookna_app/core/presentation/widget/loading_widget.dart';
 import 'package:bookna_app/features/books/presentation/controller/books_cubit/books_cubit.dart';
 import 'package:bookna_app/features/books/presentation/controller/books_cubit/books_state.dart';
 import 'package:bookna_app/features/books/presentation/controller/popular_books_cubit/popular_books_cubit.dart';
 import 'package:bookna_app/features/books/presentation/controller/popular_books_cubit/popular_books_state.dart';
 import 'package:bookna_app/features/books/presentation/controller/top_rated_cubit/top_rated_cubit.dart';
 import 'package:bookna_app/features/books/presentation/controller/top_rated_cubit/top_rated_state.dart';
-import 'package:bookna_app/core/presentation/widget/loading_widget.dart'; // استيراد الودجت الجديدة
 
 class BooksView extends StatelessWidget {
   const BooksView({super.key});
@@ -74,7 +68,7 @@ class BooksWidget extends StatelessWidget {
                 if (sliderState is SliderBooksLoading ||
                     popularState is PopularBooksLoading ||
                     topRatedState is TopRatedBooksLoading) {
-                  return const LoadingWidget(); // استخدام الودجت المخصصة
+                  return const LoadingWidget();
                 }
 
                 // إذا لم يتم تحميل أي بيانات، إرجاع شاشة فارغة
@@ -84,79 +78,13 @@ class BooksWidget extends StatelessWidget {
                   return const SizedBox.shrink();
                 }
 
-                // عرض الأقسام إذا تم تحميل البيانات
+                // عرض الأقسام
                 return CustomScrollView(
                   physics: const BouncingScrollPhysics(),
                   slivers: [
-                    // Slider Section
-                    if (sliderState is SliderBooksLoaded)
-                      SliverToBoxAdapter(
-                        child: CustomSlider(
-                          itemBuilder: (
-                            BuildContext context,
-                            int itemIndex,
-                            _,
-                          ) {
-                            return SliderCard(
-                              itemIndex: itemIndex,
-                              isBook: true,
-                              book: sliderState.books[itemIndex],
-                            );
-                          },
-                        ),
-                      )
-                    else
-                      const SliverToBoxAdapter(child: SizedBox.shrink()),
-
-                    // Popular Books Section
-                    SliverToBoxAdapter(
-                      child: SectionHeader(
-                        title: AppStrings.popularBooks,
-                        onSeeAllTap: () {
-                          context.goNamed(AppRoutes.popularBooksRoute);
-                        },
-                      ),
-                    ),
-                    if (popularState is PopularBooksLoaded)
-                      SliverToBoxAdapter(
-                        child: SectionListView(
-                          height: AppSize.s240,
-                          itemCount: popularState.books.length,
-                          itemBuilder: (context, index) {
-                            return SectionListViewCard(
-                              isBook: true,
-                              book: popularState.books[index],
-                            );
-                          },
-                        ),
-                      )
-                    else
-                      const SliverToBoxAdapter(child: SizedBox.shrink()),
-
-                    // Top Rated Books Section
-                    SliverToBoxAdapter(
-                      child: SectionHeader(
-                        title: AppStrings.topRatedBooks,
-                        onSeeAllTap: () {
-                          context.goNamed(AppRoutes.topRatedBooksRoute);
-                        },
-                      ),
-                    ),
-                    if (topRatedState is TopRatedBooksLoaded)
-                      SliverToBoxAdapter(
-                        child: SectionListView(
-                          height: AppSize.s240,
-                          itemCount: topRatedState.books.length,
-                          itemBuilder: (context, index) {
-                            return SectionListViewCard(
-                              isBook: true,
-                              book: topRatedState.books[index],
-                            );
-                          },
-                        ),
-                      )
-                    else
-                      const SliverToBoxAdapter(child: SizedBox.shrink()),
+                    const SliderSection(),
+                    const PopularBooksSection(),
+                    const TopRatedBooksSection(),
                   ],
                 );
               },
