@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 
 class SimilarSection extends StatelessWidget {
   const SimilarSection({super.key, required this.isBook, required this.books});
+
   final bool isBook;
   final List<Book> books;
 

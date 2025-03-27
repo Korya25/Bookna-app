@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:bookna_app/core/presentation/widget/author_section.dart';
 import 'package:bookna_app/core/presentation/widget/details_card.dart';
 import 'package:bookna_app/core/presentation/widget/over_view_section.dart';
@@ -9,12 +11,13 @@ import 'package:bookna_app/features/books/domain/usecase/get_books_by_category_p
 import 'package:bookna_app/features/books/presentation/controller/similar_cubit/similar_cubit.dart';
 import 'package:bookna_app/features/books/presentation/controller/similar_cubit/similar_state.dart';
 import 'package:bookna_app/features/books/presentation/widget/books_card_details.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:bookna_app/core/presentation/widget/loading_widget.dart'; // استيراد الودجت الجديدة
 
 class BookDetailsView extends StatelessWidget {
-  const BookDetailsView({super.key, required this.book});
   final Book book;
+
+  const BookDetailsView({super.key, required this.book});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(body: BookDetailsWidget(book: book));
@@ -22,8 +25,10 @@ class BookDetailsView extends StatelessWidget {
 }
 
 class BookDetailsWidget extends StatelessWidget {
-  const BookDetailsWidget({super.key, required this.book});
   final Book book;
+
+  const BookDetailsWidget({super.key, required this.book});
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -31,38 +36,34 @@ class BookDetailsWidget extends StatelessWidget {
           (context) => SimilarCubit(
             GetBooksByCategoryPathUseCase(getIt.get<BooksRepoImpl>()),
           )..getBooksBycategory(book.categories?.first ?? 'fiction'),
-      child: CustomScrollView(
-        physics: const BouncingScrollPhysics(),
-        slivers: [
-          SliverToBoxAdapter(
-            child: DetailsCard(
-              book: book,
-              detailsWidget: BooksCardDetails(book: book),
-            ),
-          ),
-          SliverToBoxAdapter(
-            child: OverviewSection(overview: book.description),
-          ),
-          SliverToBoxAdapter(child: AuthorSection(book: book)),
-          BlocBuilder<SimilarCubit, SimilarState>(
-            builder: (context, state) {
-              if (state is SimilarBooksLoading) {
-                return SliverToBoxAdapter(
-                  child: Center(child: CircularProgressIndicator()),
-                );
-              } else if (state is SimilarBooksLoaded) {
-                return SliverToBoxAdapter(
+      child: BlocBuilder<SimilarCubit, SimilarState>(
+        builder: (context, state) {
+          if (state is SimilarBooksLoading) {
+            return const LoadingWidget(); // استخدام الودجت المخصصة
+          }
+
+          return CustomScrollView(
+            physics: const BouncingScrollPhysics(),
+            slivers: [
+              SliverToBoxAdapter(
+                child: DetailsCard(
+                  book: book,
+                  detailsWidget: BooksCardDetails(book: book),
+                ),
+              ),
+              SliverToBoxAdapter(
+                child: OverviewSection(overview: book.description),
+              ),
+              SliverToBoxAdapter(child: AuthorSection(book: book)),
+              if (state is SimilarBooksLoaded)
+                SliverToBoxAdapter(
                   child: SimilarSection(isBook: true, books: state.books),
-                );
-              } else if (state is SimilarBooksError) {
-                return SliverToBoxAdapter(
-                  child: Text('Error loading similar books'),
-                );
-              }
-              return SliverToBoxAdapter(child: SizedBox.shrink());
-            },
-          ),
-        ],
+                )
+              else
+                const SliverToBoxAdapter(child: SizedBox.shrink()),
+            ],
+          );
+        },
       ),
     );
   }
