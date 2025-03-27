@@ -6,29 +6,10 @@ import 'package:bookna_app/core/resources/app_values.dart';
 import 'package:bookna_app/features/books/domain/entities/book.dart';
 import 'package:flutter/material.dart';
 
-class SimilarSection extends StatefulWidget {
-  const SimilarSection({super.key, required this.isBook});
+class SimilarSection extends StatelessWidget {
+  const SimilarSection({super.key, required this.isBook, required this.books});
   final bool isBook;
-
-  @override
-  State<SimilarSection> createState() => _SimilarSectionState();
-}
-
-class _SimilarSectionState extends State<SimilarSection> {
-  final Book books = Book(
-    bookId: '62',
-    title: 'Korya',
-    authors: [],
-    publishedDate: '115',
-    description: 'vfg',
-    pageCount: 25,
-    price: 0,
-    averageRating: 52,
-    ratingsCount: 2,
-    thumbnail: '',
-    categories: [],
-    previewLink: '',
-  );
+  final List<Book> books;
 
   @override
   Widget build(BuildContext context) {
@@ -38,10 +19,10 @@ class _SimilarSectionState extends State<SimilarSection> {
         const SectionTitle(title: AppStrings.similar),
         SectionListView(
           height: AppSize.s240,
-          itemCount: 30,
+          itemCount: books.length,
           itemBuilder:
               (context, index) =>
-                  SectionListViewCard(isBook: widget.isBook, book: books),
+                  SectionListViewCard(isBook: isBook, book: books[index]),
         ),
       ],
     );
