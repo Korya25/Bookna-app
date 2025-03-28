@@ -43,13 +43,12 @@ class ApiConstants {
 
   static String getPopularBooksPath(int page) {
     final startIndex = (page - 1) * itemsPerPage;
-    // تحسين: استخدام استعلام أكثر تحديدًا للشعبية، مثل الكتب ذات الحجم الكبير أو المبيعات (غير مباشر)
+
     return '$baseUrl/volumes?q=subject:fiction+intitle:bestseller&orderBy=relevance&startIndex=$startIndex&maxResults=$itemsPerPage&key=$apiKey';
   }
 
   static String getTopRatedBooksPath(int page) {
     final startIndex = (page - 1) * itemsPerPage;
-    // تحسين: محاكاة "أعلى تقييم" باستخدام كتب تحتوي على كلمات مثل "award" أو تصفية لاحقة في التطبيق
     return '$baseUrl/volumes?q=subject:fiction+intitle:award&orderBy=relevance&startIndex=$startIndex&maxResults=$itemsPerPage&key=$apiKey';
   }
 

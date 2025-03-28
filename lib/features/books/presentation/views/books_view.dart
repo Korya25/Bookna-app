@@ -56,6 +56,15 @@ class BooksView extends StatelessWidget {
 class BooksWidget extends StatelessWidget {
   const BooksWidget({super.key});
 
+  Future<void> _refreshData(BuildContext context) async {
+    // استدعاء جميع الطلبات لتحديث البيانات
+    await Future.wait([
+      context.read<SliderBooksCubit>().getSliderBooks(),
+      context.read<PopularBooksCubit>().getPopularBooks(1),
+      context.read<TopRatedBooksCubit>().getTopRatedBooks(1),
+    ]);
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<SliderBooksCubit, SliderBooksState>(
@@ -64,28 +73,29 @@ class BooksWidget extends StatelessWidget {
           builder: (context, popularState) {
             return BlocBuilder<TopRatedBooksCubit, TopRatedBooksState>(
               builder: (context, topRatedState) {
-                // التحقق مما إذا كان أي قسم في حالة تحميل
                 if (sliderState is SliderBooksLoading ||
                     popularState is PopularBooksLoading ||
                     topRatedState is TopRatedBooksLoading) {
                   return const LoadingWidget();
                 }
-
-                // إذا لم يتم تحميل أي بيانات، إرجاع شاشة فارغة
                 if (sliderState is! SliderBooksLoaded &&
                     popularState is! PopularBooksLoaded &&
                     topRatedState is! TopRatedBooksLoaded) {
                   return const SizedBox.shrink();
                 }
-
-                // عرض الأقسام
-                return CustomScrollView(
-                  physics: const BouncingScrollPhysics(),
-                  slivers: [
-                    const SliderSection(),
-                    const PopularBooksSection(),
-                    const TopRatedBooksSection(),
-                  ],
+                return RefreshIndicator(
+                  color: Colors.red,
+                  backgroundColor: Colors.white,
+                  strokeWidth: 3,
+                  onRefresh: () => _refreshData(context),
+                  child: CustomScrollView(
+                    physics: const BouncingScrollPhysics(),
+                    slivers: [
+                      const SliderSection(),
+                      const PopularBooksSection(),
+                      const TopRatedBooksSection(),
+                    ],
+                  ),
                 );
               },
             );

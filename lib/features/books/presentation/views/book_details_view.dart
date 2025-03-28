@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:bookna_app/features/books/presentation/widget/author_section_widget.dart';
 import 'package:bookna_app/features/books/presentation/widget/book_details_section.dart';
 import 'package:bookna_app/features/books/presentation/widget/overview_section_widget.dart';
@@ -28,6 +29,14 @@ class BookDetailsWidget extends StatelessWidget {
 
   const BookDetailsWidget({super.key, required this.book});
 
+  Future<void> _refreshData(BuildContext context) async {
+    await Future.wait([
+      context.read<SimilarCubit>().getBooksBycategory(
+        book.categories?.first ?? 'fiction',
+      ),
+    ]);
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -40,15 +49,20 @@ class BookDetailsWidget extends StatelessWidget {
           if (state is SimilarBooksLoading) {
             return const LoadingWidget();
           }
-
-          return CustomScrollView(
-            physics: const BouncingScrollPhysics(),
-            slivers: [
-              BookDetailsSection(book: book),
-              OverviewSectionWidget(overview: book.description),
-              AuthorSectionWidget(book: book),
-              SimilarBooksSection(state: state),
-            ],
+          return RefreshIndicator(
+            color: Colors.red,
+            backgroundColor: Colors.white,
+            strokeWidth: 3,
+            onRefresh: () => _refreshData(context),
+            child: CustomScrollView(
+              physics: const BouncingScrollPhysics(),
+              slivers: [
+                BookDetailsSection(book: book),
+                OverviewSectionWidget(overview: book.description),
+                AuthorSectionWidget(book: book),
+                SimilarBooksSection(state: state),
+              ],
+            ),
           );
         },
       ),
