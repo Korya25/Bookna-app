@@ -13,22 +13,28 @@ class BooksCardDetails extends StatelessWidget {
     if (book.publishedDate != null &&
         book.categories != null &&
         book.pageCount != null) {
-      return Row(
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          if (book.publishedDate != null) ...[
-            Text(formatDate(book.publishedDate), style: textTheme.bodyLarge),
-            const CircleDot(),
-          ],
-          if (book.categories != null) ...[
-            Text(
-              book.categories?.first.toString() ?? '',
-              style: textTheme.bodyLarge,
-            ),
-            const CircleDot(),
-          ] else ...[
-            if (book.pageCount != null) ...[const CircleDot()],
-          ],
-          Text("${book.pageCount} Page", style: textTheme.bodyLarge),
+          Row(
+            children: [
+              if (book.publishedDate != null) ...[
+                Text(
+                  formatDate(book.publishedDate),
+                  style: textTheme.bodyLarge,
+                ),
+                const CircleDot(),
+              ],
+              if (book.categories != null) ...[
+                Text(
+                  book.categories?.first.toString() ?? '',
+                  style: textTheme.bodyLarge,
+                ),
+              ],
+            ],
+          ),
+          if (book.pageCount != null)
+            Text("${book.pageCount} Page", style: textTheme.bodyLarge),
         ],
       );
     } else {
