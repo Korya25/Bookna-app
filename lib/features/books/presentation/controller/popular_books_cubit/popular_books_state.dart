@@ -6,6 +6,11 @@ class PopularBooksInitial extends PopularBooksState {}
 
 class PopularBooksLoading extends PopularBooksState {}
 
+class PopularBooksLoadingMore extends PopularBooksState {
+  final List<Book> books;
+  PopularBooksLoadingMore(this.books);
+}
+
 class PopularBooksLoaded extends PopularBooksState {
   final List<Book> books;
   PopularBooksLoaded(this.books);

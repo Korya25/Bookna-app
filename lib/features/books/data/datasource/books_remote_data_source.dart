@@ -70,8 +70,10 @@ class BooksRemoteDataSourceImpl extends BooksRemoteDataSource {
 
 List<Book> getBooksList(Map<String, dynamic> data) {
   List<Book> books = [];
-  for (var bookMap in data['items']) {
-    books.add(BookModel.fromJson(bookMap));
+  // Safely handle null 'items' field
+  final items = data['items'] as List<dynamic>? ?? [];
+  for (var bookMap in items) {
+    books.add(BookModel.fromJson(bookMap as Map<String, dynamic>));
   }
   return books;
 }

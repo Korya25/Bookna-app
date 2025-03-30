@@ -19,6 +19,7 @@ class VerticalListView extends StatefulWidget {
 
 class _VerticalListViewState extends State<VerticalListView> {
   final _scrollController = ScrollController();
+  bool _isFetching = false;
 
   @override
   void initState() {
@@ -49,10 +50,16 @@ class _VerticalListViewState extends State<VerticalListView> {
   }
 
   void _onScroll() {
-    if (_scrollController.position.atEdge) {
-      if (_scrollController.position.pixels != 0) {
-        widget.addEvent();
-      }
+    final currentPosition = _scrollController.position.pixels;
+    final maxExtent = _scrollController.position.maxScrollExtent;
+    final threshold = maxExtent * 0.65;
+
+    if (currentPosition >= threshold && !_isFetching) {
+      _isFetching = true;
+      widget.addEvent();
+      Future.delayed(const Duration(milliseconds: 300), () {
+        if (mounted) _isFetching = false;
+      });
     }
   }
 }

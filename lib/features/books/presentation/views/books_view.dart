@@ -57,11 +57,10 @@ class BooksWidget extends StatelessWidget {
   const BooksWidget({super.key});
 
   Future<void> _refreshData(BuildContext context) async {
-    // استدعاء جميع الطلبات لتحديث البيانات
     await Future.wait([
       context.read<SliderBooksCubit>().getSliderBooks(),
-      context.read<PopularBooksCubit>().getPopularBooks(1),
-      context.read<TopRatedBooksCubit>().getTopRatedBooks(1),
+      context.read<PopularBooksCubit>().getPopularBooksLimited(),
+      context.read<TopRatedBooksCubit>().getTopRatedBooksLimited(),
     ]);
   }
 

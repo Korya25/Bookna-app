@@ -41,13 +41,12 @@ class ApiConstants {
   static const String getNewestBooksPath =
       '$baseUrl/volumes?q=subject:fiction&orderBy=newest&startIndex=0&maxResults=$itemsPerPage&key=$apiKey';
 
-  static String getPopularBooksPath(int page) {
+  static String getPopularBooksPath([int page = 1]) {
     final startIndex = (page - 1) * itemsPerPage;
-
     return '$baseUrl/volumes?q=subject:fiction+intitle:bestseller&orderBy=relevance&startIndex=$startIndex&maxResults=$itemsPerPage&key=$apiKey';
   }
 
-  static String getTopRatedBooksPath(int page) {
+  static String getTopRatedBooksPath([int page = 1]) {
     final startIndex = (page - 1) * itemsPerPage;
     return '$baseUrl/volumes?q=subject:fiction+intitle:award&orderBy=relevance&startIndex=$startIndex&maxResults=$itemsPerPage&key=$apiKey';
   }

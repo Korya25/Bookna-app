@@ -6,6 +6,11 @@ class TopRatedBooksInitial extends TopRatedBooksState {}
 
 class TopRatedBooksLoading extends TopRatedBooksState {}
 
+class TopRatedBooksLoadingMore extends TopRatedBooksState {
+  final List<Book> books;
+  TopRatedBooksLoadingMore(this.books);
+}
+
 class TopRatedBooksLoaded extends TopRatedBooksState {
   final List<Book> books;
   TopRatedBooksLoaded(this.books);

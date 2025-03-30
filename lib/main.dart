@@ -14,7 +14,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
   setupServicesLocator();
-
   runApp(const BooknaApp());
 }
 
@@ -35,13 +34,13 @@ class BooknaApp extends StatelessWidget {
           create:
               (context) => PopularBooksCubit(
                 GetAllPopularBooksUseCase(getIt.get<BooksRepoImpl>()),
-              )..getPopularBooks(1),
+              )..getPopularBooksLimited(),
         ),
         BlocProvider(
           create:
               (context) => TopRatedBooksCubit(
                 GetAllTopRatedBooksUseCase(getIt.get<BooksRepoImpl>()),
-              )..getTopRatedBooks(1),
+              )..getTopRatedBooksLimited(),
         ),
       ],
       child: MaterialApp.router(

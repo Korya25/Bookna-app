@@ -28,7 +28,7 @@ class PopularBooksSection extends StatelessWidget {
             if (state is PopularBooksLoaded)
               SectionListView(
                 height: AppSize.s240,
-                itemCount: state.books.length,
+                itemCount: state.books.length, // Will now be 40
                 itemBuilder: (context, index) {
                   return SectionListViewCard(
                     isBook: true,

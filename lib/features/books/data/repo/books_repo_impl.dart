@@ -10,13 +10,14 @@ class BooksRepoImpl extends BooksRepo {
   final BooksRemoteDataSource booksRemoteDataSource;
 
   BooksRepoImpl({required this.booksRemoteDataSource});
+
   @override
   Future<Either<Failure, List<Book>>> getBooks() async {
     try {
       final result = await booksRemoteDataSource.getMovies();
       return Right(result);
     } on ServerException catch (failure) {
-      return left(ServerFailure(failure.errorMessageModel.code.toString()));
+      return Left(ServerFailure(failure.errorMessageModel.code.toString()));
     } on DioException catch (failure) {
       return Left(ServerFailure(failure.message));
     }
@@ -28,7 +29,7 @@ class BooksRepoImpl extends BooksRepo {
       final result = await booksRemoteDataSource.getAllPopularMovies(page);
       return Right(result);
     } on ServerException catch (failure) {
-      return left(ServerFailure(failure.errorMessageModel.code.toString()));
+      return Left(ServerFailure(failure.errorMessageModel.code.toString()));
     } on DioException catch (failure) {
       return Left(ServerFailure(failure.message));
     }
@@ -40,7 +41,7 @@ class BooksRepoImpl extends BooksRepo {
       final result = await booksRemoteDataSource.getAllTopRatedMovies(page);
       return Right(result);
     } on ServerException catch (failure) {
-      return left(ServerFailure(failure.errorMessageModel.code.toString()));
+      return Left(ServerFailure(failure.errorMessageModel.code.toString()));
     } on DioException catch (failure) {
       return Left(ServerFailure(failure.message));
     }
@@ -54,7 +55,7 @@ class BooksRepoImpl extends BooksRepo {
       final result = await booksRemoteDataSource.getBooksBycategory(category);
       return Right(result);
     } on ServerException catch (failure) {
-      return left(ServerFailure(failure.errorMessageModel.code.toString()));
+      return Left(ServerFailure(failure.errorMessageModel.code.toString()));
     } on DioException catch (failure) {
       return Left(ServerFailure(failure.message));
     }
