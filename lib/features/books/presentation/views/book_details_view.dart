@@ -1,3 +1,4 @@
+import 'package:bookna_app/core/presentation/views/error_page.dart';
 import 'package:bookna_app/features/books/presentation/widget/author_section_widget.dart';
 import 'package:bookna_app/features/books/presentation/widget/book_details_section.dart';
 import 'package:bookna_app/features/books/presentation/widget/overview_section_widget.dart';
@@ -40,8 +41,16 @@ class BookDetailsWidget extends StatelessWidget {
           if (state is SimilarBooksLoading) {
             return const LoadingWidget();
           } else if (state is SimilarBooksError) {
-            return Center(child: Text(state.message));
+            return ErrorPage(
+              message: state.message,
+              onRetry: () {
+                context.read<SimilarCubit>().getBooksBycategory(
+                  book.categories?.first ?? 'fiction',
+                );
+              },
+            );
           }
+
           return CustomScrollView(
             physics: const BouncingScrollPhysics(
               parent: AlwaysScrollableScrollPhysics(),

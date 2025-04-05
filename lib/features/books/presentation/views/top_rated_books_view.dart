@@ -1,3 +1,4 @@
+import 'package:bookna_app/core/presentation/views/error_page.dart';
 import 'package:bookna_app/core/presentation/widget/custom_app_bar.dart';
 import 'package:bookna_app/core/presentation/widget/loading_widget.dart';
 import 'package:bookna_app/core/presentation/widget/nice_loading_widget.dart';
@@ -73,8 +74,16 @@ class _TopRatedBooksWidgetState extends State<TopRatedBooksWidget> {
             ],
           );
         } else if (state is TopRatedBooksError) {
-          return Center(child: Text(state.message));
+          return ErrorPage(
+            message: state.message,
+            onRetry: () {
+              context.read<TopRatedBooksCubit>().getTopRatedBooks(
+                isInitialFetch: true,
+              );
+            },
+          );
         }
+
         return const SizedBox.shrink();
       },
     );

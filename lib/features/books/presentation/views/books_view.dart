@@ -1,11 +1,10 @@
-// ignore_for_file: invalid_use_of_visible_for_testing_member
-
-import 'package:bookna_app/features/books/presentation/widget/popular_books_section.dart';
-import 'package:bookna_app/features/books/presentation/widget/slider_section.dart';
-import 'package:bookna_app/features/books/presentation/widget/top_rated_books_section.dart';
+import 'package:bookna_app/core/presentation/views/error_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:bookna_app/core/presentation/widget/loading_widget.dart';
+import 'package:bookna_app/features/books/presentation/widget/slider_section.dart';
+import 'package:bookna_app/features/books/presentation/widget/popular_books_section.dart';
+import 'package:bookna_app/features/books/presentation/widget/top_rated_books_section.dart';
 import 'package:bookna_app/features/books/presentation/controller/books_cubit/books_cubit.dart';
 import 'package:bookna_app/features/books/presentation/controller/books_cubit/books_state.dart';
 import 'package:bookna_app/features/books/presentation/controller/popular_books_cubit/popular_books_cubit.dart';
@@ -18,51 +17,12 @@ class BooksView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: MultiBlocListener(
-        listeners: [
-          BlocListener<SliderBooksCubit, SliderBooksState>(
-            listener: (context, state) {
-              if (state is SliderBooksError) {
-                ScaffoldMessenger.of(
-                  context,
-                ).showSnackBar(SnackBar(content: Text(state.message)));
-              }
-            },
-          ),
-          BlocListener<PopularBooksCubit, PopularBooksState>(
-            listener: (context, state) {
-              if (state is PopularBooksError) {
-                ScaffoldMessenger.of(
-                  context,
-                ).showSnackBar(SnackBar(content: Text(state.message)));
-              }
-            },
-          ),
-          BlocListener<TopRatedBooksCubit, TopRatedBooksState>(
-            listener: (context, state) {
-              if (state is TopRatedBooksError) {
-                ScaffoldMessenger.of(
-                  context,
-                ).showSnackBar(SnackBar(content: Text(state.message)));
-              }
-            },
-          ),
-        ],
-        child: const BooksWidget(),
-      ),
-    );
+    return const Scaffold(body: BooksContent());
   }
 }
 
-class BooksWidget extends StatelessWidget {
-  const BooksWidget({super.key});
-
-  void emitLoadingStates(BuildContext context) {
-    context.read<SliderBooksCubit>();
-    context.read<PopularBooksCubit>();
-    context.read<TopRatedBooksCubit>();
-  }
+class BooksContent extends StatelessWidget {
+  const BooksContent({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -72,40 +32,92 @@ class BooksWidget extends StatelessWidget {
           builder: (context, popularState) {
             return BlocBuilder<TopRatedBooksCubit, TopRatedBooksState>(
               builder: (context, topRatedState) {
-                if (sliderState is SliderBooksLoading ||
-                    popularState is PopularBooksLoading ||
-                    topRatedState is TopRatedBooksLoading) {
-                  return const LoadingWidget();
-                }
-                if (sliderState is SliderBooksError ||
-                    popularState is PopularBooksError ||
-                    topRatedState is TopRatedBooksError) {
-                  return Center(
-                    child: Text(
-                      "Error: ${(sliderState as SliderBooksError?)?.message ?? (popularState as PopularBooksError?)?.message ?? (topRatedState as TopRatedBooksError?)?.message}",
-                    ),
-                  );
-                }
-                if (sliderState is SliderBooksLoaded &&
-                    popularState is PopularBooksLoaded &&
-                    topRatedState is TopRatedBooksLoaded) {
-                  return CustomScrollView(
-                    physics: const BouncingScrollPhysics(
-                      parent: AlwaysScrollableScrollPhysics(),
-                    ),
-                    slivers: [
-                      const SliderSection(),
-                      const PopularBooksSection(),
-                      const TopRatedBooksSection(),
-                    ],
-                  );
-                }
-                return const SizedBox.shrink();
+                return _buildBody(
+                  context,
+                  sliderState,
+                  popularState,
+                  topRatedState,
+                );
               },
             );
           },
         );
       },
     );
+  }
+
+  Widget _buildBody(
+    BuildContext context,
+    SliderBooksState sliderState,
+    PopularBooksState popularState,
+    TopRatedBooksState topRatedState,
+  ) {
+    if (_isAnyLoading(sliderState, popularState, topRatedState)) {
+      return const LoadingWidget();
+    }
+
+    if (_isAnyError(sliderState, popularState, topRatedState)) {
+      final errorMessage = _getFirstErrorMessage(
+        sliderState,
+        popularState,
+        topRatedState,
+      );
+      return ErrorPage(
+        message: errorMessage,
+        onRetry: () {
+          context.read<SliderBooksCubit>().getSliderBooks();
+          context.read<PopularBooksCubit>().getPopularBooksLimited();
+          context.read<TopRatedBooksCubit>().getTopRatedBooksLimited();
+        },
+      );
+    }
+
+    if (sliderState is SliderBooksLoaded &&
+        popularState is PopularBooksLoaded &&
+        topRatedState is TopRatedBooksLoaded) {
+      return CustomScrollView(
+        physics: const BouncingScrollPhysics(
+          parent: AlwaysScrollableScrollPhysics(),
+        ),
+        slivers: const [
+          SliderSection(),
+          PopularBooksSection(),
+          TopRatedBooksSection(),
+        ],
+      );
+    }
+
+    return const SizedBox.shrink();
+  }
+
+  bool _isAnyLoading(
+    SliderBooksState sliderState,
+    PopularBooksState popularState,
+    TopRatedBooksState topRatedState,
+  ) {
+    return sliderState is SliderBooksLoading ||
+        popularState is PopularBooksLoading ||
+        topRatedState is TopRatedBooksLoading;
+  }
+
+  bool _isAnyError(
+    SliderBooksState sliderState,
+    PopularBooksState popularState,
+    TopRatedBooksState topRatedState,
+  ) {
+    return sliderState is SliderBooksError ||
+        popularState is PopularBooksError ||
+        topRatedState is TopRatedBooksError;
+  }
+
+  String _getFirstErrorMessage(
+    SliderBooksState sliderState,
+    PopularBooksState popularState,
+    TopRatedBooksState topRatedState,
+  ) {
+    if (sliderState is SliderBooksError) return sliderState.message;
+    if (popularState is PopularBooksError) return popularState.message;
+    if (topRatedState is TopRatedBooksError) return topRatedState.message;
+    return 'Unknown error';
   }
 }
