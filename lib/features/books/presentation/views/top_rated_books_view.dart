@@ -41,12 +41,6 @@ class _TopRatedBooksWidgetState extends State<TopRatedBooksWidget> {
     }
   }
 
-  Future<void> _refreshData() async {
-    await context.read<TopRatedBooksCubit>().getTopRatedBooks(
-      isInitialFetch: true,
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<TopRatedBooksCubit, TopRatedBooksState>(
@@ -60,32 +54,23 @@ class _TopRatedBooksWidgetState extends State<TopRatedBooksWidget> {
                   ? state.books
                   : (state as TopRatedBooksLoadingMore).books;
 
-          return RefreshIndicator(
-            color: Colors.red,
-            backgroundColor: Colors.white,
-            strokeWidth: 3,
-            onRefresh: _refreshData,
-            child: Stack(
-              children: [
-                VerticalListView(
-                  itemCount: books.length,
-                  itemBuilder: (context, index) {
-                    return VerticalListViewCard(
-                      isBook: true,
-                      book: books[index],
-                    );
-                  },
-                  addEvent: _fetchMoreBooks,
+          return Stack(
+            children: [
+              VerticalListView(
+                itemCount: books.length,
+                itemBuilder: (context, index) {
+                  return VerticalListViewCard(isBook: true, book: books[index]);
+                },
+                addEvent: _fetchMoreBooks,
+              ),
+              if (state is TopRatedBooksLoadingMore)
+                const Positioned(
+                  bottom: 16.0,
+                  left: 0,
+                  right: 0,
+                  child: NiceLoadingWidget(),
                 ),
-                if (state is TopRatedBooksLoadingMore)
-                  const Positioned(
-                    bottom: 16.0,
-                    left: 0,
-                    right: 0,
-                    child: NiceLoadingWidget(),
-                  ),
-              ],
-            ),
+            ],
           );
         } else if (state is TopRatedBooksError) {
           return Center(child: Text(state.message));

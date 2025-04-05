@@ -58,19 +58,10 @@ class BooksView extends StatelessWidget {
 class BooksWidget extends StatelessWidget {
   const BooksWidget({super.key});
 
-  Future<void> _refreshData(BuildContext context) async {
-    emitLoadingStates(context); // إصدار حالات التحميل أولاً
-    await Future.wait([
-      context.read<SliderBooksCubit>().getSliderBooks(),
-      context.read<PopularBooksCubit>().getPopularBooksLimited(),
-      context.read<TopRatedBooksCubit>().getTopRatedBooksLimited(),
-    ]);
-  }
-
   void emitLoadingStates(BuildContext context) {
-    context.read<SliderBooksCubit>().emit(SliderBooksLoading());
-    context.read<PopularBooksCubit>().emit(PopularBooksLoading());
-    context.read<TopRatedBooksCubit>().emit(TopRatedBooksLoading());
+    context.read<SliderBooksCubit>();
+    context.read<PopularBooksCubit>();
+    context.read<TopRatedBooksCubit>();
   }
 
   @override
@@ -98,21 +89,15 @@ class BooksWidget extends StatelessWidget {
                 if (sliderState is SliderBooksLoaded &&
                     popularState is PopularBooksLoaded &&
                     topRatedState is TopRatedBooksLoaded) {
-                  return RefreshIndicator(
-                    color: Colors.red,
-                    backgroundColor: Colors.white,
-                    strokeWidth: 3,
-                    onRefresh: () => _refreshData(context),
-                    child: CustomScrollView(
-                      physics: const BouncingScrollPhysics(
-                        parent: AlwaysScrollableScrollPhysics(),
-                      ),
-                      slivers: [
-                        const SliderSection(),
-                        const PopularBooksSection(),
-                        const TopRatedBooksSection(),
-                      ],
+                  return CustomScrollView(
+                    physics: const BouncingScrollPhysics(
+                      parent: AlwaysScrollableScrollPhysics(),
                     ),
+                    slivers: [
+                      const SliderSection(),
+                      const PopularBooksSection(),
+                      const TopRatedBooksSection(),
+                    ],
                   );
                 }
                 return const SizedBox.shrink();

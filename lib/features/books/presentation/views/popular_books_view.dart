@@ -41,12 +41,6 @@ class _PopularBooksWidgetState extends State<PopularBooksWidget> {
     }
   }
 
-  Future<void> _refreshData() async {
-    await context.read<PopularBooksCubit>().getPopularBooks(
-      isInitialFetch: true,
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<PopularBooksCubit, PopularBooksState>(
@@ -60,32 +54,23 @@ class _PopularBooksWidgetState extends State<PopularBooksWidget> {
                   ? state.books
                   : (state as PopularBooksLoadingMore).books;
 
-          return RefreshIndicator(
-            color: Colors.red,
-            backgroundColor: Colors.white,
-            strokeWidth: 3,
-            onRefresh: _refreshData,
-            child: Stack(
-              children: [
-                VerticalListView(
-                  itemCount: books.length,
-                  itemBuilder: (context, index) {
-                    return VerticalListViewCard(
-                      isBook: true,
-                      book: books[index],
-                    );
-                  },
-                  addEvent: _fetchMoreBooks,
+          return Stack(
+            children: [
+              VerticalListView(
+                itemCount: books.length,
+                itemBuilder: (context, index) {
+                  return VerticalListViewCard(isBook: true, book: books[index]);
+                },
+                addEvent: _fetchMoreBooks,
+              ),
+              if (state is PopularBooksLoadingMore)
+                const Positioned(
+                  bottom: 16.0,
+                  left: 0,
+                  right: 0,
+                  child: NiceLoadingWidget(),
                 ),
-                if (state is PopularBooksLoadingMore)
-                  const Positioned(
-                    bottom: 16.0,
-                    left: 0,
-                    right: 0,
-                    child: NiceLoadingWidget(),
-                  ),
-              ],
-            ),
+            ],
           );
         } else if (state is PopularBooksError) {
           return Center(child: Text(state.message));
