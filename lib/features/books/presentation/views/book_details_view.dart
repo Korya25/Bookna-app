@@ -30,11 +30,9 @@ class BookDetailsWidget extends StatelessWidget {
   const BookDetailsWidget({super.key, required this.book});
 
   Future<void> _refreshData(BuildContext context) async {
-    await Future.wait([
-      context.read<SimilarCubit>().getBooksBycategory(
-        book.categories?.first ?? 'fiction',
-      ),
-    ]);
+    await context.read<SimilarCubit>().getBooksBycategory(
+      book.categories?.first ?? 'fiction',
+    );
   }
 
   @override
@@ -48,6 +46,8 @@ class BookDetailsWidget extends StatelessWidget {
         builder: (context, state) {
           if (state is SimilarBooksLoading) {
             return const LoadingWidget();
+          } else if (state is SimilarBooksError) {
+            return Center(child: Text(state.message));
           }
           return RefreshIndicator(
             color: Colors.red,
@@ -55,7 +55,9 @@ class BookDetailsWidget extends StatelessWidget {
             strokeWidth: 3,
             onRefresh: () => _refreshData(context),
             child: CustomScrollView(
-              physics: const BouncingScrollPhysics(),
+              physics: const BouncingScrollPhysics(
+                parent: AlwaysScrollableScrollPhysics(),
+              ),
               slivers: [
                 BookDetailsSection(book: book),
                 OverviewSectionWidget(overview: book.description),

@@ -1,3 +1,5 @@
+// ignore_for_file: invalid_use_of_visible_for_testing_member
+
 import 'package:bookna_app/features/books/presentation/widget/popular_books_section.dart';
 import 'package:bookna_app/features/books/presentation/widget/slider_section.dart';
 import 'package:bookna_app/features/books/presentation/widget/top_rated_books_section.dart';
@@ -57,11 +59,18 @@ class BooksWidget extends StatelessWidget {
   const BooksWidget({super.key});
 
   Future<void> _refreshData(BuildContext context) async {
+    emitLoadingStates(context); // إصدار حالات التحميل أولاً
     await Future.wait([
       context.read<SliderBooksCubit>().getSliderBooks(),
       context.read<PopularBooksCubit>().getPopularBooksLimited(),
       context.read<TopRatedBooksCubit>().getTopRatedBooksLimited(),
     ]);
+  }
+
+  void emitLoadingStates(BuildContext context) {
+    context.read<SliderBooksCubit>().emit(SliderBooksLoading());
+    context.read<PopularBooksCubit>().emit(PopularBooksLoading());
+    context.read<TopRatedBooksCubit>().emit(TopRatedBooksLoading());
   }
 
   @override
@@ -77,25 +86,36 @@ class BooksWidget extends StatelessWidget {
                     topRatedState is TopRatedBooksLoading) {
                   return const LoadingWidget();
                 }
-                if (sliderState is! SliderBooksLoaded &&
-                    popularState is! PopularBooksLoaded &&
-                    topRatedState is! TopRatedBooksLoaded) {
-                  return const SizedBox.shrink();
+                if (sliderState is SliderBooksError ||
+                    popularState is PopularBooksError ||
+                    topRatedState is TopRatedBooksError) {
+                  return Center(
+                    child: Text(
+                      "Error: ${(sliderState as SliderBooksError?)?.message ?? (popularState as PopularBooksError?)?.message ?? (topRatedState as TopRatedBooksError?)?.message}",
+                    ),
+                  );
                 }
-                return RefreshIndicator(
-                  color: Colors.red,
-                  backgroundColor: Colors.white,
-                  strokeWidth: 3,
-                  onRefresh: () => _refreshData(context),
-                  child: CustomScrollView(
-                    physics: const BouncingScrollPhysics(),
-                    slivers: [
-                      const SliderSection(),
-                      const PopularBooksSection(),
-                      const TopRatedBooksSection(),
-                    ],
-                  ),
-                );
+                if (sliderState is SliderBooksLoaded &&
+                    popularState is PopularBooksLoaded &&
+                    topRatedState is TopRatedBooksLoaded) {
+                  return RefreshIndicator(
+                    color: Colors.red,
+                    backgroundColor: Colors.white,
+                    strokeWidth: 3,
+                    onRefresh: () => _refreshData(context),
+                    child: CustomScrollView(
+                      physics: const BouncingScrollPhysics(
+                        parent: AlwaysScrollableScrollPhysics(),
+                      ),
+                      slivers: [
+                        const SliderSection(),
+                        const PopularBooksSection(),
+                        const TopRatedBooksSection(),
+                      ],
+                    ),
+                  );
+                }
+                return const SizedBox.shrink();
               },
             );
           },

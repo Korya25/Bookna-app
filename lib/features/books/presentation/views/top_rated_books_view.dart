@@ -25,14 +25,13 @@ class TopRatedBooksWidget extends StatefulWidget {
   const TopRatedBooksWidget({super.key});
 
   @override
-  State<TopRatedBooksWidget> createState() => _PopularBooksWidgetState();
+  State<TopRatedBooksWidget> createState() => _TopRatedBooksWidgetState();
 }
 
-class _PopularBooksWidgetState extends State<TopRatedBooksWidget> {
+class _TopRatedBooksWidgetState extends State<TopRatedBooksWidget> {
   @override
   void initState() {
     super.initState();
-    // Fetch initial data
     context.read<TopRatedBooksCubit>().getTopRatedBooks(isInitialFetch: true);
   }
 
@@ -42,12 +41,18 @@ class _PopularBooksWidgetState extends State<TopRatedBooksWidget> {
     }
   }
 
+  Future<void> _refreshData() async {
+    await context.read<TopRatedBooksCubit>().getTopRatedBooks(
+      isInitialFetch: true,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<TopRatedBooksCubit, TopRatedBooksState>(
       builder: (context, state) {
         if (state is TopRatedBooksLoading) {
-          return const LoadingWidget(); // Custom initial loading
+          return const LoadingWidget();
         } else if (state is TopRatedBooksLoaded ||
             state is TopRatedBooksLoadingMore) {
           final books =
@@ -55,27 +60,37 @@ class _PopularBooksWidgetState extends State<TopRatedBooksWidget> {
                   ? state.books
                   : (state as TopRatedBooksLoadingMore).books;
 
-          return Stack(
-            children: [
-              VerticalListView(
-                itemCount: books.length,
-                itemBuilder: (context, index) {
-                  return VerticalListViewCard(isBook: true, book: books[index]);
-                },
-                addEvent: _fetchMoreBooks,
-              ),
-              if (state is TopRatedBooksLoadingMore)
-                const Positioned(
-                  bottom: 16.0,
-                  left: 0,
-                  right: 0,
-                  child: NiceLoadingWidget(),
+          return RefreshIndicator(
+            color: Colors.red,
+            backgroundColor: Colors.white,
+            strokeWidth: 3,
+            onRefresh: _refreshData,
+            child: Stack(
+              children: [
+                VerticalListView(
+                  itemCount: books.length,
+                  itemBuilder: (context, index) {
+                    return VerticalListViewCard(
+                      isBook: true,
+                      book: books[index],
+                    );
+                  },
+                  addEvent: _fetchMoreBooks,
                 ),
-            ],
+                if (state is TopRatedBooksLoadingMore)
+                  const Positioned(
+                    bottom: 16.0,
+                    left: 0,
+                    right: 0,
+                    child: NiceLoadingWidget(),
+                  ),
+              ],
+            ),
           );
-        } else {
-          return const Center(child: Text('Error'));
+        } else if (state is TopRatedBooksError) {
+          return Center(child: Text(state.message));
         }
+        return const SizedBox.shrink();
       },
     );
   }
