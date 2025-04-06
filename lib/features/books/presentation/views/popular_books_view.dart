@@ -1,5 +1,5 @@
 import 'package:bookna_app/core/presentation/widget/custom_app_bar.dart';
-import 'package:bookna_app/core/presentation/widget/loading_widget.dart'; // Your custom LoadingWidget
+import 'package:bookna_app/core/presentation/widget/loading_widget.dart';
 import 'package:bookna_app/core/presentation/widget/nice_loading_widget.dart';
 import 'package:bookna_app/core/presentation/widget/vertical_list_view.dart';
 import 'package:bookna_app/core/presentation/widget/vertical_list_view_card.dart';
@@ -16,25 +16,19 @@ class PopularBooksView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CustomAppBar(title: AppStrings.popularBooks),
-      body: const PopularBooksWidget(),
+      body: const _PopularBooksContent(),
     );
   }
 }
 
-class PopularBooksWidget extends StatefulWidget {
-  const PopularBooksWidget({super.key});
+class _PopularBooksContent extends StatefulWidget {
+  const _PopularBooksContent();
 
   @override
-  State<PopularBooksWidget> createState() => _PopularBooksWidgetState();
+  State<_PopularBooksContent> createState() => _PopularBooksContentState();
 }
 
-class _PopularBooksWidgetState extends State<PopularBooksWidget> {
-  @override
-  void initState() {
-    super.initState();
-    context.read<PopularBooksCubit>().getPopularBooks(isInitialFetch: true);
-  }
-
+class _PopularBooksContentState extends State<_PopularBooksContent> {
   void _fetchMoreBooks() {
     if (context.read<PopularBooksCubit>().hasMoreData) {
       context.read<PopularBooksCubit>().getPopularBooks();
@@ -47,35 +41,40 @@ class _PopularBooksWidgetState extends State<PopularBooksWidget> {
       builder: (context, state) {
         if (state is PopularBooksLoading) {
           return const LoadingWidget();
-        } else if (state is PopularBooksLoaded ||
-            state is PopularBooksLoadingMore) {
-          final books =
-              (state is PopularBooksLoaded)
-                  ? state.books
-                  : (state as PopularBooksLoadingMore).books;
-
-          return Stack(
-            children: [
-              VerticalListView(
-                itemCount: books.length,
-                itemBuilder: (context, index) {
-                  return VerticalListViewCard(isBook: true, book: books[index]);
-                },
-                addEvent: _fetchMoreBooks,
-              ),
-              if (state is PopularBooksLoadingMore)
-                const Positioned(
-                  bottom: 16.0,
-                  left: 0,
-                  right: 0,
-                  child: NiceLoadingWidget(),
-                ),
-            ],
-          );
-        } else if (state is PopularBooksError) {
-          return Center(child: Text(state.message));
         }
-        return const SizedBox.shrink();
+
+        if (state is PopularBooksError) {
+          return Center(
+            child: Text(
+              state.message,
+              style: Theme.of(context).textTheme.bodyLarge,
+            ),
+          );
+        }
+
+        final books =
+            state is PopularBooksLoaded
+                ? state.books
+                : (state as PopularBooksLoadingMore).books;
+
+        return Stack(
+          children: [
+            VerticalListView(
+              itemCount: books.length,
+              itemBuilder:
+                  (context, index) =>
+                      VerticalListViewCard(isBook: true, book: books[index]),
+              addEvent: _fetchMoreBooks,
+            ),
+            if (state is PopularBooksLoadingMore)
+              const Positioned(
+                bottom: 16.0,
+                left: 0,
+                right: 0,
+                child: NiceLoadingWidget(),
+              ),
+          ],
+        );
       },
     );
   }

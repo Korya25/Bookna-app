@@ -1,4 +1,3 @@
-import 'package:bookna_app/core/presentation/views/error_page.dart';
 import 'package:bookna_app/core/presentation/widget/custom_app_bar.dart';
 import 'package:bookna_app/core/presentation/widget/loading_widget.dart';
 import 'package:bookna_app/core/presentation/widget/nice_loading_widget.dart';
@@ -17,25 +16,19 @@ class TopRatedBooksView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CustomAppBar(title: AppStrings.topRatedBooks),
-      body: TopRatedBooksWidget(),
+      body: const _TopRatedBooksContent(),
     );
   }
 }
 
-class TopRatedBooksWidget extends StatefulWidget {
-  const TopRatedBooksWidget({super.key});
+class _TopRatedBooksContent extends StatefulWidget {
+  const _TopRatedBooksContent();
 
   @override
-  State<TopRatedBooksWidget> createState() => _TopRatedBooksWidgetState();
+  State<_TopRatedBooksContent> createState() => _TopRatedBooksContentState();
 }
 
-class _TopRatedBooksWidgetState extends State<TopRatedBooksWidget> {
-  @override
-  void initState() {
-    super.initState();
-    context.read<TopRatedBooksCubit>().getTopRatedBooks(isInitialFetch: true);
-  }
-
+class _TopRatedBooksContentState extends State<_TopRatedBooksContent> {
   void _fetchMoreBooks() {
     if (context.read<TopRatedBooksCubit>().hasMoreData) {
       context.read<TopRatedBooksCubit>().getTopRatedBooks();
@@ -48,43 +41,40 @@ class _TopRatedBooksWidgetState extends State<TopRatedBooksWidget> {
       builder: (context, state) {
         if (state is TopRatedBooksLoading) {
           return const LoadingWidget();
-        } else if (state is TopRatedBooksLoaded ||
-            state is TopRatedBooksLoadingMore) {
-          final books =
-              (state is TopRatedBooksLoaded)
-                  ? state.books
-                  : (state as TopRatedBooksLoadingMore).books;
+        }
 
-          return Stack(
-            children: [
-              VerticalListView(
-                itemCount: books.length,
-                itemBuilder: (context, index) {
-                  return VerticalListViewCard(isBook: true, book: books[index]);
-                },
-                addEvent: _fetchMoreBooks,
-              ),
-              if (state is TopRatedBooksLoadingMore)
-                const Positioned(
-                  bottom: 16.0,
-                  left: 0,
-                  right: 0,
-                  child: NiceLoadingWidget(),
-                ),
-            ],
-          );
-        } else if (state is TopRatedBooksError) {
-          return ErrorPage(
-            message: state.message,
-            onRetry: () {
-              context.read<TopRatedBooksCubit>().getTopRatedBooks(
-                isInitialFetch: true,
-              );
-            },
+        if (state is TopRatedBooksError) {
+          return Center(
+            child: Text(
+              state.message,
+              style: Theme.of(context).textTheme.bodyLarge,
+            ),
           );
         }
 
-        return const SizedBox.shrink();
+        final books =
+            state is TopRatedBooksLoaded
+                ? state.books
+                : (state as TopRatedBooksLoadingMore).books;
+
+        return Stack(
+          children: [
+            VerticalListView(
+              itemCount: books.length,
+              itemBuilder:
+                  (context, index) =>
+                      VerticalListViewCard(isBook: true, book: books[index]),
+              addEvent: _fetchMoreBooks,
+            ),
+            if (state is TopRatedBooksLoadingMore)
+              const Positioned(
+                bottom: 16.0,
+                left: 0,
+                right: 0,
+                child: NiceLoadingWidget(),
+              ),
+          ],
+        );
       },
     );
   }

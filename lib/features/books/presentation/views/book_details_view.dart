@@ -20,14 +20,26 @@ class BookDetailsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: BookDetailsWidget(book: book));
+    return Scaffold(
+      body: CustomScrollView(
+        physics: const BouncingScrollPhysics(
+          parent: AlwaysScrollableScrollPhysics(),
+        ),
+        slivers: [
+          BookDetailsSection(book: book),
+          OverviewSectionWidget(overview: book.description),
+          AuthorSectionWidget(book: book),
+          _SimilarBooksSection(book: book),
+        ],
+      ),
+    );
   }
 }
 
-class BookDetailsWidget extends StatelessWidget {
+class _SimilarBooksSection extends StatelessWidget {
   final Book book;
 
-  const BookDetailsWidget({super.key, required this.book});
+  const _SimilarBooksSection({required this.book});
 
   @override
   Widget build(BuildContext context) {
@@ -39,29 +51,22 @@ class BookDetailsWidget extends StatelessWidget {
       child: BlocBuilder<SimilarCubit, SimilarState>(
         builder: (context, state) {
           if (state is SimilarBooksLoading) {
-            return const LoadingWidget();
-          } else if (state is SimilarBooksError) {
-            return ErrorPage(
-              message: state.message,
-              onRetry: () {
-                context.read<SimilarCubit>().getBooksBycategory(
-                  book.categories?.first ?? 'fiction',
-                );
-              },
+            return const SliverToBoxAdapter(child: LoadingWidget());
+          }
+
+          if (state is SimilarBooksError) {
+            return SliverToBoxAdapter(
+              child: ErrorPage(
+                message: state.message,
+                onRetry:
+                    () => context.read<SimilarCubit>().getBooksBycategory(
+                      book.categories?.first ?? 'fiction',
+                    ),
+              ),
             );
           }
 
-          return CustomScrollView(
-            physics: const BouncingScrollPhysics(
-              parent: AlwaysScrollableScrollPhysics(),
-            ),
-            slivers: [
-              BookDetailsSection(book: book),
-              OverviewSectionWidget(overview: book.description),
-              AuthorSectionWidget(book: book),
-              SimilarBooksSection(state: state),
-            ],
-          );
+          return SimilarBooksSection(state: state);
         },
       ),
     );
