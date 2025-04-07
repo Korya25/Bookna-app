@@ -26,9 +26,9 @@ class Author {
   Author({
     required this.key,
     required this.name,
-    this.alternateNames,
-    this.birthDate,
-    this.deathDate,
+    required this.alternateNames,
+    required this.birthDate,
+    required this.deathDate,
     required this.topSubjects,
     required this.topWork,
     required this.type,

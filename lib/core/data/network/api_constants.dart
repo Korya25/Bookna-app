@@ -35,4 +35,10 @@ class ApiConstants {
   static String getBookDetailsPath(String bookId) {
     return '$baseUrl/volumes/$bookId?key=$apiKey';
   }
+
+  // Author Path
+
+  static String getAuthorWithNamePath(String name) {
+    return 'https://openlibrary.org/search/authors.json?q=$name';
+  }
 }
