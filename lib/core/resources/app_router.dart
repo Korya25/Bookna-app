@@ -1,6 +1,7 @@
 import 'package:bookna_app/core/presentation/views/main_view.dart';
 import 'package:bookna_app/core/resources/app_routes.dart';
 import 'package:bookna_app/features/books/domain/entities/book.dart';
+import 'package:bookna_app/features/books/presentation/views/author_info_view.dart';
 import 'package:bookna_app/features/books/presentation/views/book_details_view.dart';
 import 'package:bookna_app/features/books/presentation/views/books_main_view.dart';
 import 'package:bookna_app/features/books/presentation/views/books_view.dart';
@@ -14,6 +15,7 @@ const String booksPath = '/books';
 const String booksDetailsPath = 'details/:bookId';
 const String popularBooksPath = 'popular';
 const String topRatedBooksPath = 'top-rated';
+const String authorInfoPath = 'author-info';
 const String novelsPath = '/novels';
 const String popularNovelsPath = '/popularNovels';
 const String topRatedNovelsPath = '/top-ratedNovels';
@@ -60,10 +62,21 @@ class AppRouter {
                         (context, state) =>
                             const NoTransitionPage(child: TopRatedBooksView()),
                   ),
+                  GoRoute(
+                    path: authorInfoPath,
+                    name: AppRoutes.authorInfoRoute,
+                    pageBuilder: (context, state) {
+                      final author = state.extra as String;
+                      return CupertinoPage(
+                        child: AuthorInfoView(authorName: author),
+                      );
+                    },
+                  ),
                 ],
               ),
             ],
           ),
+
           GoRoute(
             path: favoritePath,
             name: AppRoutes.favoriteRoute,
