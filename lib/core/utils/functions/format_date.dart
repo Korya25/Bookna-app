@@ -10,7 +10,12 @@ String formatDate(
   String outputFormat = 'MMM d, yyyy',
   String fallback = '',
 }) {
-  if (inputDate == null || inputDate.isEmpty || inputDate.trim().isEmpty) {
+  // First check for common non-date values
+  if (inputDate == null ||
+      inputDate.isEmpty ||
+      inputDate.trim().isEmpty ||
+      inputDate.toLowerCase() == 'no date' ||
+      inputDate.toLowerCase() == 'unknown') {
     return fallback;
   }
 
@@ -40,6 +45,7 @@ String formatDate(
   parsedDate ??= _tryParseLoose(inputDate);
 
   if (parsedDate == null) {
+    // For debugging purposes only - remove in production if not needed
     debugPrint('Failed to parse date: "$inputDate"');
     return fallback;
   }
@@ -48,6 +54,7 @@ String formatDate(
   return DateFormat(outputFormat).format(parsedDate);
 }
 
+////////////////////////////////////////////////////////////////
 /// Checks if a parsed date falls within a reasonable range.
 bool _isDateReasonable(DateTime date) {
   final now = DateTime.now();

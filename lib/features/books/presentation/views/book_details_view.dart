@@ -27,8 +27,9 @@ class BookDetailsView extends StatelessWidget {
         ),
         slivers: [
           BookDetailsSection(book: book),
-          OverviewSectionWidget(overview: book.description),
-          AuthorSectionWidget(book: book),
+          if (book.description != null)
+            OverviewSectionWidget(overview: book.description),
+          if (book.authors != null) AuthorSectionWidget(book: book),
           _SimilarBooksSection(book: book),
         ],
       ),

@@ -24,7 +24,7 @@ class SectionListViewCard extends StatelessWidget {
         children: [
           InkWell(
             onTap: () {
-              navigateToDetailsView(context, isBook, book);
+              navigateToDetailsView(context, book);
             },
             child: ClipRRect(
               borderRadius: BorderRadius.circular(AppSize.s8),
@@ -38,12 +38,13 @@ class SectionListViewCard extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                book.title,
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-                style: textTheme.bodyMedium,
-              ),
+              if (book.title != null)
+                Text(
+                  book.title as String,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: textTheme.bodyMedium,
+                ),
               Row(
                 children: [
                   const Icon(

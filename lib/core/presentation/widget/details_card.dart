@@ -48,12 +48,13 @@ class DetailsCard extends StatelessWidget {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(
-                                  book.title,
-                                  maxLines: 2,
-                                  overflow: TextOverflow.ellipsis,
-                                  style: textTheme.titleMedium,
-                                ),
+                                if (book.title != null)
+                                  Text(
+                                    book.title as String,
+                                    maxLines: 2,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: textTheme.titleMedium,
+                                  ),
                                 Padding(
                                   padding: const EdgeInsets.only(
                                     top: AppPadding.p4,

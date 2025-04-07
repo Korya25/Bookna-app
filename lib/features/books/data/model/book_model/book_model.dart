@@ -1,3 +1,4 @@
+import 'package:bookna_app/core/data/network/api_constants.dart';
 import 'package:bookna_app/features/books/domain/entities/book.dart';
 import 'access_info.dart';
 import 'sale_info.dart';
@@ -24,19 +25,18 @@ class BookModel extends Book {
     this.accessInfo,
     this.searchInfo,
   }) : super(
-         bookId: id ?? 'No ID',
-         title: volumeInfo?.title ?? 'No Title',
-         authors: volumeInfo?.authors ?? ['Unknown Author'],
-         publishedDate: volumeInfo?.publishedDate ?? 'No Date',
-         description: volumeInfo?.description ?? 'No Description',
-         pageCount: volumeInfo?.pageCount ?? 0,
+         bookId: id,
+         title: volumeInfo?.title,
+         authors: volumeInfo?.authors,
+         publishedDate: volumeInfo?.publishedDate,
+         description: volumeInfo?.description,
+         pageCount: volumeInfo?.pageCount,
          price: saleInfo?.retailPrice?.amount ?? 0,
          averageRating: volumeInfo?.averageRating ?? 0,
          ratingsCount: volumeInfo?.ratingsCount ?? 0,
          thumbnail:
-             volumeInfo?.imageLinks?.thumbnail ??
-             'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQ1bPYruAQo94dq6zxMcfN2q3maqaQYT0qMoE9Umc_k5AFT1VnY2h26OAP6WB5AXphc2dJ-OSFR4C9LcetqWSEGEw',
-         categories: volumeInfo?.categories ?? ['Uncategorized'],
+             volumeInfo?.imageLinks?.thumbnail ?? ApiConstants.placeholder,
+         categories: volumeInfo?.categories,
          previewLink: volumeInfo?.previewLink,
        );
 

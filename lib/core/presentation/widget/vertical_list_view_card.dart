@@ -20,7 +20,7 @@ class VerticalListViewCard extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
     return GestureDetector(
       onTap: () {
-        navigateToDetailsView(context, isBook, book);
+        navigateToDetailsView(context, book);
       },
       child: Container(
         height: AppSize.s175,
@@ -48,15 +48,16 @@ class VerticalListViewCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: AppPadding.p6),
-                    child: Text(
-                      book.title, // Use book data
-                      maxLines: 3,
-                      overflow: TextOverflow.ellipsis,
-                      style: textTheme.titleSmall,
+                  if (book.title != null)
+                    Padding(
+                      padding: const EdgeInsets.only(top: AppPadding.p6),
+                      child: Text(
+                        book.title as String, // Use book data
+                        maxLines: 3,
+                        overflow: TextOverflow.ellipsis,
+                        style: textTheme.titleSmall,
+                      ),
                     ),
-                  ),
                   Row(
                     children: [
                       Padding(
@@ -80,11 +81,11 @@ class VerticalListViewCard extends StatelessWidget {
                       ),
                     ],
                   ),
-                  if (book.description.isNotEmpty)
+                  if (book.description != null)
                     Padding(
                       padding: const EdgeInsets.only(top: AppPadding.p14),
                       child: Text(
-                        book.description,
+                        book.description as String,
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         style: textTheme.bodyLarge,

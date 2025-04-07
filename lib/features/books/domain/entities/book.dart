@@ -4,15 +4,15 @@ part 'book.g.dart';
 @HiveType(typeId: 0)
 class Book {
   @HiveField(0)
-  final String bookId;
+  final String? bookId;
   @HiveField(1)
-  final String title;
+  final String? title;
   @HiveField(2)
-  final List<String> authors;
+  final List<String>? authors;
   @HiveField(3)
   final String? publishedDate;
   @HiveField(4)
-  final String description;
+  final String? description;
   @HiveField(5)
   final num? pageCount;
   @HiveField(6)

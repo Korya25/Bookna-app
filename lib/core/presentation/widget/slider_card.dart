@@ -25,7 +25,7 @@ class SliderCard extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     return GestureDetector(
       onTap: () {
-        navigateToDetailsView(context, isBook, book);
+        navigateToDetailsView(context, book);
       },
       child: SafeArea(
         child: Stack(
@@ -43,7 +43,12 @@ class SliderCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.end,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(book.title, maxLines: 2, style: textTheme.titleMedium),
+                    if (book.title != null)
+                      Text(
+                        book.title as String,
+                        maxLines: 2,
+                        style: textTheme.titleMedium,
+                      ),
 
                     Text(
                       formatDate(book.publishedDate),

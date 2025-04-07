@@ -1,3 +1,4 @@
+import 'package:bookna_app/core/data/network/api_constants.dart';
 import 'package:bookna_app/core/presentation/widget/author_card.dart';
 import 'package:bookna_app/core/presentation/widget/section_list_view.dart';
 import 'package:bookna_app/core/presentation/widget/section_title.dart';
@@ -11,21 +12,22 @@ class AuthorSection extends StatelessWidget {
   final Book book;
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        SectionTitle(title: AppStrings.author),
-        SectionListView(
-          height: AppSize.s175,
-          itemCount: book.authors.length,
-          itemBuilder:
-              (context, index) => AuthorCard(
-                imageUrl:
-                    'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQ1bPYruAQo94dq6zxMcfN2q3maqaQYT0qMoE9Umc_k5AFT1VnY2h26OAP6WB5AXphc2dJ-OSFR4C9LcetqWSEGEw',
-                name: book.authors[index],
-              ),
-        ),
-      ],
-    );
+    return book.authors != null
+        ? Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SectionTitle(title: AppStrings.author),
+            SectionListView(
+              height: AppSize.s175,
+              itemCount: book.authors!.length,
+              itemBuilder:
+                  (context, index) => AuthorCard(
+                    imageUrl: ApiConstants.authorPlaceholder,
+                    name: book.authors![index],
+                  ),
+            ),
+          ],
+        )
+        : const SizedBox.shrink();
   }
 }
