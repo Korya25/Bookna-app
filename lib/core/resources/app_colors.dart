@@ -16,3 +16,20 @@ class AppColors {
   static const circleDotColor = Color(0x33ffffff);
   static const iconContainerColor = Color(0xB2272830);
 }
+
+Color getRatingColor(int stars) {
+  switch (stars) {
+    case 1:
+      return Colors.red;
+    case 2:
+      return Colors.orange;
+    case 3:
+      return Colors.yellow[700]!;
+    case 4:
+      return Colors.lightGreen;
+    case 5:
+      return Colors.green;
+    default:
+      return Colors.grey;
+  }
+}
