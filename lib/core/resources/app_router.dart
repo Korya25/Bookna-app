@@ -28,7 +28,7 @@ class AppRouter {
           // Books section with nested navigation
           ShellRoute(
             navigatorKey: _booksNavigatorKey,
-            builder: (context, state, child) => BooksMainView(child: child),
+            builder: (context, state, child) => BooksScope(child: child),
             routes: [
               GoRoute(
                 path: AppPaths.books,
