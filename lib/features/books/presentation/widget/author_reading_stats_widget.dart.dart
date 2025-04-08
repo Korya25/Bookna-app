@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:bookna_app/core/resources/app_colors.dart';
 import 'package:bookna_app/core/resources/app_strings.dart';
 import 'package:bookna_app/features/books/domain/entities/author.dart';

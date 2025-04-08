@@ -1,4 +1,4 @@
-// ignore_for_file: deprecated_member_use
+// ignore_for_file: deprecated_member_use, library_private_types_in_public_api
 
 import 'package:bookna_app/core/resources/app_strings.dart';
 import 'package:bookna_app/features/books/domain/entities/author.dart';

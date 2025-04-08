@@ -39,6 +39,6 @@ class ApiConstants {
   // Author Path
 
   static String getAuthorWithNamePath(String name) {
-    return 'https://openlibrary.org/search/authors.json?q=james clear';
+    return 'https://openlibrary.org/search/authors.json?q=$name';
   }
 }

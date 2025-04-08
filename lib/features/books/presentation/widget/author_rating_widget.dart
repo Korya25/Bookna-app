@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:bookna_app/core/resources/app_strings.dart';
 import 'package:bookna_app/features/books/domain/entities/author.dart';
