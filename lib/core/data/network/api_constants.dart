@@ -1,5 +1,5 @@
 class ApiConstants {
-  static const apiKey = 'AIzaSyBNeCmWquR4bXfsI7CDIjn7STzThj8N9EE';
+  static const apiKey = 'AIzaSyAfIzk39Fr568ZYm_B4fR0TjLAhlxI4L8c';
   static const baseUrl = 'https://www.googleapis.com/books/v1';
   static const itemsPerPage = 10;
 
