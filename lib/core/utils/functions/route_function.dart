@@ -8,7 +8,7 @@ import 'package:go_router/go_router.dart';
 Future<Object?> navigateToDetailsView(BuildContext context, Book book) {
   return book.bookId != null
       ? context.pushNamed(
-        AppRoutes.bookDetailsRoute,
+        AppRoutes.bookDetails,
         pathParameters: {'bookId': book.bookId as String},
         extra: book,
       )

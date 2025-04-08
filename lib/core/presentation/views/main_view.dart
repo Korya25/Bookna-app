@@ -1,4 +1,3 @@
-import 'package:bookna_app/core/resources/app_router.dart';
 import 'package:bookna_app/core/resources/app_routes.dart';
 import 'package:bookna_app/core/resources/app_strings.dart';
 import 'package:flutter/material.dart';
@@ -16,16 +15,16 @@ class _MainViewState extends State<MainView> {
   // index of the selected item
   int _getSelectedIndex(BuildContext context) {
     final String location = GoRouterState.of(context).uri.toString();
-    if (location.startsWith(booksPath)) {
+    if (location.startsWith(AppPaths.books)) {
       return 0;
     }
-    if (location.startsWith(novelsPath)) {
+    if (location.startsWith(AppPaths.novels)) {
       return 1;
     }
-    if (location.startsWith(searchPath)) {
+    if (location.startsWith(AppPaths.search)) {
       return 2;
     }
-    if (location.startsWith(favoritePath)) {
+    if (location.startsWith(AppPaths.favorite)) {
       return 3;
     }
     return 0;
@@ -35,16 +34,16 @@ class _MainViewState extends State<MainView> {
   void _onItemTapped(int index, BuildContext context) {
     switch (index) {
       case 0:
-        context.goNamed(AppRoutes.booksRoute);
+        context.goNamed(AppRoutes.books);
         break;
       case 1:
-        context.goNamed(AppRoutes.novelsRoute);
+        context.goNamed(AppRoutes.novels);
         break;
       case 2:
-        context.goNamed(AppRoutes.searchRoute);
+        context.goNamed(AppRoutes.search);
         break;
       case 3:
-        context.goNamed(AppRoutes.favoriteRoute);
+        context.goNamed(AppRoutes.favorite);
         break;
     }
   }

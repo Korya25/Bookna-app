@@ -7,68 +7,69 @@ import 'package:bookna_app/features/books/presentation/views/books_main_view.dar
 import 'package:bookna_app/features/books/presentation/views/books_view.dart';
 import 'package:bookna_app/features/books/presentation/views/popular_books_view.dart';
 import 'package:bookna_app/features/books/presentation/views/top_rated_books_view.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-const String booksPath = '/books';
-const String booksDetailsPath = 'details/:bookId';
-const String popularBooksPath = 'popular';
-const String topRatedBooksPath = 'top-rated';
-const String authorInfoPath = 'author-info';
-const String novelsPath = '/novels';
-const String popularNovelsPath = '/popularNovels';
-const String topRatedNovelsPath = '/top-ratedNovels';
-const String novelsDetailsPath = 'details/:novelId';
-const String favoritePath = '/favorite';
-const String searchPath = '/search';
-
 class AppRouter {
+  static final _rootNavigatorKey = GlobalKey<NavigatorState>();
+  static final _shellNavigatorKey = GlobalKey<NavigatorState>();
+  static final _booksNavigatorKey = GlobalKey<NavigatorState>();
+
   static final GoRouter router = GoRouter(
-    initialLocation: booksPath,
+    navigatorKey: _rootNavigatorKey,
+    initialLocation: AppPaths.books,
+    debugLogDiagnostics: true,
     routes: [
+      // Main shell route with bottom navigation
       ShellRoute(
+        navigatorKey: _shellNavigatorKey,
         builder: (context, state, child) => MainView(child: child),
         routes: [
+          // Books section with nested navigation
           ShellRoute(
+            navigatorKey: _booksNavigatorKey,
             builder: (context, state, child) => BooksMainView(child: child),
             routes: [
               GoRoute(
-                path: booksPath,
-                name: AppRoutes.booksRoute,
+                path: AppPaths.books,
+                name: AppRoutes.books,
                 pageBuilder:
                     (context, state) =>
                         const NoTransitionPage(child: BooksView()),
                 routes: [
                   GoRoute(
-                    path: booksDetailsPath,
-                    name: AppRoutes.bookDetailsRoute,
+                    path: AppPaths.bookDetails,
+                    name: AppRoutes.bookDetails,
                     pageBuilder: (context, state) {
                       final book = state.extra as Book;
-                      return CupertinoPage(child: BookDetailsView(book: book));
+                      return _buildPageWithFadeTransition(
+                        child: BookDetailsView(book: book),
+                        key: ValueKey('book-${book.bookId}'),
+                      );
                     },
                   ),
                   GoRoute(
-                    path: popularBooksPath,
-                    name: AppRoutes.popularBooksRoute,
+                    path: AppPaths.popularBooks,
+                    name: AppRoutes.popularBooks,
                     pageBuilder:
                         (context, state) =>
                             const NoTransitionPage(child: PopularBooksView()),
                   ),
                   GoRoute(
-                    path: topRatedBooksPath,
-                    name: AppRoutes.topRatedBooksRoute,
+                    path: AppPaths.topRatedBooks,
+                    name: AppRoutes.topRatedBooks,
                     pageBuilder:
                         (context, state) =>
                             const NoTransitionPage(child: TopRatedBooksView()),
                   ),
                   GoRoute(
-                    path: authorInfoPath,
-                    name: AppRoutes.authorInfoRoute,
+                    path: AppPaths.authorInfo,
+                    name: AppRoutes.authorInfo,
                     pageBuilder: (context, state) {
                       final author = state.extra as String;
-                      return CupertinoPage(
+                      return _buildPageWithFadeTransition(
                         child: AuthorInfoView(authorName: author),
+                        key: ValueKey('author-$author'),
                       );
                     },
                   ),
@@ -77,17 +78,20 @@ class AppRouter {
             ],
           ),
 
+          // Favorite section
           GoRoute(
-            path: favoritePath,
-            name: AppRoutes.favoriteRoute,
+            path: AppPaths.favorite,
+            name: AppRoutes.favorite,
             pageBuilder:
                 (context, state) => const NoTransitionPage(
                   child: Scaffold(body: Center(child: Text('Favorite'))),
                 ),
           ),
+
+          // Search section
           GoRoute(
-            path: searchPath,
-            name: AppRoutes.searchRoute,
+            path: AppPaths.search,
+            name: AppRoutes.search,
             pageBuilder:
                 (context, state) => const NoTransitionPage(
                   child: Scaffold(body: Center(child: Text('Search'))),
@@ -101,4 +105,17 @@ class AppRouter {
           child: Scaffold(body: Center(child: Text('Page not found'))),
         ),
   );
+
+  static Page _buildPageWithFadeTransition({
+    required Widget child,
+    required ValueKey key,
+  }) {
+    return CustomTransitionPage(
+      key: key,
+      child: child,
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        return FadeTransition(opacity: animation, child: child);
+      },
+    );
+  }
 }

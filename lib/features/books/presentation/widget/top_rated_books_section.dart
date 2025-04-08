@@ -22,7 +22,7 @@ class TopRatedBooksSection extends StatelessWidget {
             SectionHeader(
               title: AppStrings.topRatedBooks,
               onSeeAllTap: () {
-                context.goNamed(AppRoutes.topRatedBooksRoute);
+                context.goNamed(AppRoutes.topRatedBooks);
               },
             ),
             if (state is TopRatedBooksLoaded)
