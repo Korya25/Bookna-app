@@ -1,6 +1,7 @@
 import 'package:bookna_app/features/books/domain/entities/author.dart';
 
 class AuthorModel extends Author {
+  // ignore: use_super_parameters
   AuthorModel({
     List<String>? alternateNames,
     String? birthDate,

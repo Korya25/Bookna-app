@@ -1,7 +1,7 @@
 import 'package:bookna_app/core/data/error/exceptions.dart';
 import 'package:bookna_app/core/data/network/api_constants.dart';
 import 'package:bookna_app/core/data/network/error_message_model.dart';
-import 'package:bookna_app/features/books/data/model/book_model/aauthor_model.dart';
+import 'package:bookna_app/features/books/data/model/author_model/author_model.dart';
 
 import 'package:bookna_app/features/books/domain/entities/author.dart';
 import 'package:dio/dio.dart';
@@ -25,6 +25,7 @@ class AuthorRemoteDataSourceImpl implements AuthorRemoteDataSource {
           final docs = jsonData['docs'];
           if (docs is List<dynamic>) {
             return docs
+                // ignore: prefer_iterable_wheretype
                 .where((doc) => doc is Map<String, dynamic>)
                 .map((doc) => AuthorModel.fromJson(doc as Map<String, dynamic>))
                 .toList();

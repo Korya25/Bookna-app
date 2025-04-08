@@ -5,11 +5,22 @@ class AppStrings {
   static const String topRatedBooks = 'Top rated books';
   static const String description = 'Description';
   static const String author = 'Author';
+  static const String unknownAuthor = 'Unknown Author';
   static const String reviews = 'Reviews';
   static const String similar = 'Similar';
   static const String showLess = 'Show less';
+  static const String authorType = 'Author Type';
   static const String showMore = 'Show more';
+  static const String unknown = 'Unknown';
+  static const String noSubjectsAvailable = 'No subjects available';
+  static const String noReadingStatsAvailable = 'No reading stats available';
+  static const String noRatingsAvailable = 'No Ratings Available';
   static const String works = 'Works';
+  static const String birthDate = 'Birth Date';
+  static const String deathDate = 'Death Date';
+  static const String notAvailable = 'Not Available';
+  static const String noAdditionalInfoAvailable =
+      'No additional info available';
   static const String topWork = 'Top Work';
   static const String alsoKnownAs = 'Also known as';
   static const String ratings = 'Ratings';

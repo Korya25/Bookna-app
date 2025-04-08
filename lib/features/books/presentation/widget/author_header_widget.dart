@@ -6,16 +6,17 @@ import 'package:flutter/material.dart';
 
 class AuthorHeaderWidget extends StatelessWidget {
   final Author author;
-  final String authorName;
 
-  const AuthorHeaderWidget({
-    super.key,
-    required this.author,
-    required this.authorName,
-  });
+  const AuthorHeaderWidget({super.key, required this.author});
 
   @override
   Widget build(BuildContext context) {
+    final displayName =
+        author.name ??
+        (author.alternateNames?.isNotEmpty ?? false
+            ? author.alternateNames!.first
+            : AppStrings.unknownAuthor);
+
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -30,42 +31,39 @@ class AuthorHeaderWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                author.name ?? authorName, // Fallback to passed name
+                displayName,
                 style: const TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               const SizedBox(height: 8),
-              if (author.topWork != null)
+              if (author.topWork != null) ...[
                 Text(
                   "${AppStrings.topWork}: ${author.topWork}",
                   style: TextStyle(fontSize: 16, color: Colors.grey[700]),
                 ),
-              const SizedBox(height: 8),
-              if (author.workCount != null)
+                const SizedBox(height: 8),
+              ],
+              if (author.workCount != null) ...[
                 Text(
                   '${AppStrings.works}: ${author.workCount}',
                   style: TextStyle(fontSize: 16, color: Colors.grey[700]),
                 ),
-              const SizedBox(height: 8),
-              if (author.alternateNames != null &&
-                  author.alternateNames!.isNotEmpty)
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text(
-                      '${AppStrings.alsoKnownAs}:',
-                      style: TextStyle(fontWeight: FontWeight.w500),
-                    ),
-                    ...author.alternateNames!.map<Widget>(
-                      (name) => Text(
-                        '• $name',
-                        style: TextStyle(color: Colors.grey[600]),
-                      ),
-                    ),
-                  ],
+                const SizedBox(height: 8),
+              ],
+              if (author.alternateNames?.isNotEmpty ?? false) ...[
+                const Text(
+                  '${AppStrings.alsoKnownAs}:',
+                  style: TextStyle(fontWeight: FontWeight.w500),
                 ),
+                ...author.alternateNames!.map(
+                  (name) => Text(
+                    '• $name',
+                    style: TextStyle(color: Colors.grey[600]),
+                  ),
+                ),
+              ],
             ],
           ),
         ),

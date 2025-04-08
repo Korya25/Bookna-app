@@ -43,10 +43,7 @@ class AuthorInfoView extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      AuthorHeaderWidget(
-                        author: author,
-                        authorName: authorName, // Add this back
-                      ),
+                      AuthorHeaderWidget(author: author),
                       const SizedBox(height: 24),
                       AuthorRatingWidget(author: author),
                       const SizedBox(height: 24),
@@ -59,7 +56,7 @@ class AuthorInfoView extends StatelessWidget {
                   ),
                 );
               } else {
-                return const SizedBox.shrink(); // Error handled in listener
+                return const SizedBox.shrink();
               }
             },
           ),
