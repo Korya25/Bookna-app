@@ -17,18 +17,20 @@ class AuthorRepositoryImpl implements AuthorRepo {
       final result = await authorRemoteDataSource.getAuthorWithName(name);
       return Right(result);
     } on ServerException catch (e) {
-      // Map ServerException to ServerFailure with detailed message
       return Left(ServerFailure(e.errorMessageModel.message));
     } on DioException catch (e) {
-      // Handle Dio-specific errors with more detail
       final message =
           e.response?.data != null
               ? 'API Error: ${e.response?.statusCode} - ${e.response?.data}'
               : e.message ?? 'Unknown network error';
       return Left(ServerFailure(message));
     } catch (e) {
-      // Catch any other unexpected errors
-      return Left(ServerFailure('Unexpected error: ${e.toString()}'));
+      String errorMessage =
+          'Unexpected error: ${e.runtimeType} - ${e.toString()}';
+      if (e is TypeError) {
+        errorMessage += ' (Possible type mismatch in data parsing)';
+      }
+      return Left(ServerFailure(errorMessage));
     }
   }
 }

@@ -1,9 +1,10 @@
 import 'package:bookna_app/core/resources/app_colors.dart';
 import 'package:bookna_app/core/resources/app_strings.dart';
+import 'package:bookna_app/features/books/domain/entities/author.dart';
 import 'package:flutter/material.dart';
 
 class AuthorAdditionalInfoWidget extends StatelessWidget {
-  final Map<String, dynamic> author;
+  final Author author;
 
   const AuthorAdditionalInfoWidget({super.key, required this.author});
 
@@ -12,7 +13,6 @@ class AuthorAdditionalInfoWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // العنوان
         Text(
           AppStrings.additionalInformation,
           style: const TextStyle(
@@ -22,8 +22,6 @@ class AuthorAdditionalInfoWidget extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 12),
-
-        // حاوية البطاقات
         Container(
           padding: const EdgeInsets.all(8.0),
           decoration: BoxDecoration(
@@ -35,23 +33,22 @@ class AuthorAdditionalInfoWidget extends StatelessWidget {
               _buildInfoCard(
                 icon: Icons.person,
                 title: 'Type',
-                value: author['type'],
+                value: author.type ?? 'Unknown',
               ),
-
-              if (author['birth_date'] != null) ...[
+              if (author.birthDate != null) ...[
                 _buildDivider(),
                 _buildInfoCard(
                   icon: Icons.cake,
                   title: 'Birth Date',
-                  value: author['birth_date'],
+                  value: author.birthDate!,
                 ),
               ],
-              if (author['death_date'] != null) ...[
+              if (author.deathDate != null) ...[
                 _buildDivider(),
                 _buildInfoCard(
                   icon: Icons.event,
                   title: 'Death Date',
-                  value: author['death_date'],
+                  value: author.deathDate!,
                 ),
               ],
             ],
@@ -61,7 +58,6 @@ class AuthorAdditionalInfoWidget extends StatelessWidget {
     );
   }
 
-  // Widget لبناء بطاقة معلومات واحدة
   Widget _buildInfoCard({
     required IconData icon,
     required String title,
@@ -72,7 +68,6 @@ class AuthorAdditionalInfoWidget extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          // الأيقونة
           Container(
             padding: const EdgeInsets.all(8.0),
             decoration: BoxDecoration(
@@ -82,7 +77,6 @@ class AuthorAdditionalInfoWidget extends StatelessWidget {
             child: Icon(icon, color: Colors.blue[700], size: 24),
           ),
           const SizedBox(width: 12),
-          // النص
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

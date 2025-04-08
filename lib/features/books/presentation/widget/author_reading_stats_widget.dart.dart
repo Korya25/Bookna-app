@@ -1,9 +1,10 @@
 import 'package:bookna_app/core/resources/app_colors.dart';
 import 'package:bookna_app/core/resources/app_strings.dart';
+import 'package:bookna_app/features/books/domain/entities/author.dart';
 import 'package:flutter/material.dart';
 
 class AuthorReadingStatsWidget extends StatelessWidget {
-  final Map<String, dynamic> author;
+  final Author author;
 
   const AuthorReadingStatsWidget({super.key, required this.author});
 
@@ -23,22 +24,22 @@ class AuthorReadingStatsWidget extends StatelessWidget {
           children: [
             _buildStatCard(
               AppStrings.wantToRead,
-              author['want_to_read_count'].toString(),
+              author.wantToReadCount.toString(),
               Icons.bookmark,
             ),
             _buildStatCard(
               AppStrings.currentlyReading,
-              author['currently_reading_count'].toString(),
+              author.currentlyReadingCount.toString(),
               Icons.menu_book,
             ),
             _buildStatCard(
               AppStrings.alreadyRead,
-              author['already_read_count'].toString(),
+              author.alreadyReadCount.toString(),
               Icons.check_circle,
             ),
             _buildStatCard(
               AppStrings.totalLogs,
-              author['readinglog_count'].toString(),
+              author.readingLogCount.toString(),
               Icons.library_books,
             ),
           ],

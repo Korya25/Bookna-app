@@ -1,23 +1,23 @@
 import 'package:bookna_app/core/resources/app_colors.dart';
 import 'package:bookna_app/core/resources/app_strings.dart';
+import 'package:bookna_app/features/books/domain/entities/author.dart';
 import 'package:bookna_app/features/books/presentation/widget/star_rating_widget.dart';
 import 'package:flutter/material.dart';
 
 class AuthorRatingWidget extends StatelessWidget {
-  final Map<String, dynamic> author;
+  final Author author;
 
   const AuthorRatingWidget({super.key, required this.author});
 
   @override
   Widget build(BuildContext context) {
-    final rating = author['ratings_average'] as num;
-    final ratingCount = author['ratings_count'];
+    final ratingCount = author.ratingsCount ?? 0;
     final ratingDistribution = [
-      author['ratings_count_1'],
-      author['ratings_count_2'],
-      author['ratings_count_3'],
-      author['ratings_count_4'],
-      author['ratings_count_5'],
+      author.ratingsCount1 ?? 0,
+      author.ratingsCount2 ?? 0,
+      author.ratingsCount3 ?? 0,
+      author.ratingsCount4 ?? 0,
+      author.ratingsCount5 ?? 0,
     ];
 
     return Column(
@@ -30,23 +30,26 @@ class AuthorRatingWidget extends StatelessWidget {
         const SizedBox(height: 8),
         Row(
           children: [
-            Text(
-              rating.toStringAsFixed(1),
-              style: const TextStyle(
-                fontSize: 36,
-                fontWeight: FontWeight.bold,
-                color: Colors.amber,
+            if (author.ratingsAverage != null)
+              Text(
+                author.ratingsAverage.toString(),
+                style: const TextStyle(
+                  fontSize: 36,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.amber,
+                ),
               ),
-            ),
             const SizedBox(width: 16),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                StarRatingWidget(rating: rating.toDouble()),
-                Text(
-                  '${AppStrings.basedOn} $ratingCount ${AppStrings.ratings.toLowerCase()}',
-                  style: TextStyle(color: Colors.grey[600]),
-                ),
+                if (author.ratingsAverage != null)
+                  StarRatingWidget(rating: author.ratingsAverage!.toDouble()),
+                if (ratingCount > 0)
+                  Text(
+                    '${AppStrings.basedOn} $ratingCount ${AppStrings.ratings.toLowerCase()}',
+                    style: TextStyle(color: Colors.grey[600]),
+                  ),
               ],
             ),
           ],
