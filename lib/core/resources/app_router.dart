@@ -77,6 +77,14 @@ class AppRouter {
               ),
             ],
           ),
+          GoRoute(
+            path: AppPaths.novels,
+            name: AppRoutes.novels,
+            pageBuilder:
+                (context, state) => const NoTransitionPage(
+                  child: Scaffold(body: Center(child: Text('Novels'))),
+                ),
+          ),
 
           // Favorite section
           GoRoute(
