@@ -19,14 +19,12 @@ class _MainViewState extends State<MainView> {
     if (location.startsWith(booksPath)) {
       return 0;
     }
-    if (location.startsWith(novelsPath)) {
+    
+    if (location.startsWith(searchPath)) {
       return 1;
     }
-    if (location.startsWith(searchPath)) {
-      return 2;
-    }
     if (location.startsWith(favoritePath)) {
-      return 3;
+      return 2;
     }
     return 0;
   }
@@ -36,14 +34,12 @@ class _MainViewState extends State<MainView> {
     switch (index) {
       case 0:
         context.goNamed(AppRoutes.booksRoute);
+      
         break;
       case 1:
-        context.goNamed(AppRoutes.novelsRoute);
-        break;
-      case 2:
         context.goNamed(AppRoutes.searchRoute);
         break;
-      case 3:
+      case 2:
         context.goNamed(AppRoutes.favoriteRoute);
         break;
     }
@@ -52,7 +48,7 @@ class _MainViewState extends State<MainView> {
   // list of items in the bottom navigation bar
   final List<NavItemModel> navItemList = [
     NavItemModel(label: AppStrings.books, icon: Icons.book),
-    NavItemModel(label: AppStrings.novels, icon: Icons.book_sharp),
+  
     NavItemModel(label: AppStrings.search, icon: Icons.search_rounded),
     NavItemModel(label: AppStrings.favorite, icon: Icons.favorite_rounded),
   ];
