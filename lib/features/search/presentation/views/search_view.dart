@@ -1,6 +1,7 @@
 import 'package:bookna_app/core/presentation/widget/loading_widget.dart';
 import 'package:bookna_app/core/resources/app_values.dart';
 import 'package:bookna_app/features/search/presentation/widget/search_field.dart';
+import 'package:bookna_app/features/search/presentation/widget/search_grid_view.dart';
 import 'package:bookna_app/features/search/presentation/widget/search_text.dart';
 import 'package:flutter/material.dart';
 
@@ -31,7 +32,7 @@ class SearchWidget extends StatelessWidget {
               SearchField(),
               SearchText(),
               //Expanded(child: LoadingWidget()),
-              //  SearchGridView(results: state.searchResults),
+              //SearchGridView(),
               //    Expanded(child: ErrorText())
               //  NoResults()
             ],
