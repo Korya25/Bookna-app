@@ -1,4 +1,3 @@
-/// Represents an author entity with relevant details.
 class Author {
   final String? key;
   final String? name;
@@ -8,43 +7,43 @@ class Author {
   final List<String>? topSubjects;
   final String? topWork;
   final String? type;
-  final int? workCount;
-  final double? ratingsAverage;
-  final double? ratingsSortable;
-  final int? ratingsCount;
-  final int? ratingsCount1;
-  final int? ratingsCount2;
-  final int? ratingsCount3;
-  final int? ratingsCount4;
-  final int? ratingsCount5;
-  final int? wantToReadCount;
-  final int? alreadyReadCount;
-  final int? currentlyReadingCount;
-  final int? readingLogCount;
+  final num? workCount;
+  final num? ratingsAverage;
+  final num? ratingsSortable;
+  final num? ratingsCount;
+  final num? ratingsCount1;
+  final num? ratingsCount2;
+  final num? ratingsCount3;
+  final num? ratingsCount4;
+  final num? ratingsCount5;
+  final num? wantToReadCount;
+  final num? alreadyReadCount;
+  final num? currentlyReadingCount;
+  final num? readingLogCount;
   final String? version;
 
   Author({
-    required this.key,
-    required this.name,
+    this.key,
+    this.name,
     this.alternateNames,
     this.birthDate,
     this.deathDate,
-    required this.topSubjects,
-    required this.topWork,
-    required this.type,
-    required this.workCount,
-    required this.ratingsAverage,
-    required this.ratingsSortable,
-    required this.ratingsCount,
-    required this.ratingsCount1,
-    required this.ratingsCount2,
-    required this.ratingsCount3,
-    required this.ratingsCount4,
-    required this.ratingsCount5,
-    required this.wantToReadCount,
-    required this.alreadyReadCount,
-    required this.currentlyReadingCount,
-    required this.readingLogCount,
-    required this.version,
+    this.topSubjects,
+    this.topWork,
+    this.type,
+    this.workCount,
+    this.ratingsAverage,
+    this.ratingsSortable,
+    this.ratingsCount,
+    this.ratingsCount1,
+    this.ratingsCount2,
+    this.ratingsCount3,
+    this.ratingsCount4,
+    this.ratingsCount5,
+    this.wantToReadCount,
+    this.alreadyReadCount,
+    this.currentlyReadingCount,
+    this.readingLogCount,
+    this.version,
   });
 }

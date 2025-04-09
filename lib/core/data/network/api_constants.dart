@@ -1,5 +1,5 @@
 class ApiConstants {
-  static const apiKey = 'AIzaSyCPTXVvcxDWR4et-IQ1lOwe-HMKMyARJiw';
+  static const apiKey = 'AIzaSyAfIzk39Fr568ZYm_B4fR0TjLAhlxI4L8c';
   static const baseUrl = 'https://www.googleapis.com/books/v1';
   static const itemsPerPage = 10;
 
@@ -34,5 +34,11 @@ class ApiConstants {
 
   static String getBookDetailsPath(String bookId) {
     return '$baseUrl/volumes/$bookId?key=$apiKey';
+  }
+
+  // Author Path
+
+  static String getAuthorWithNamePath(String name) {
+    return 'https://openlibrary.org/search/authors.json?q=$name';
   }
 }

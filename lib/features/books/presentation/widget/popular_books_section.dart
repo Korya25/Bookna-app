@@ -22,7 +22,7 @@ class PopularBooksSection extends StatelessWidget {
             SectionHeader(
               title: AppStrings.popularBooks,
               onSeeAllTap: () {
-                context.goNamed(AppRoutes.popularBooksRoute);
+                context.goNamed(AppRoutes.popularBooks);
               },
             ),
             if (state is PopularBooksLoaded)

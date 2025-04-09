@@ -28,7 +28,7 @@ class AuthorSection extends StatelessWidget {
                     name: book.authors![index],
                     onTap:
                         () => context.goNamed(
-                          AppRoutes.authorInfoRoute,
+                          AppRoutes.authorInfo,
                           extra: book.authors![index],
                         ),
                   ),
