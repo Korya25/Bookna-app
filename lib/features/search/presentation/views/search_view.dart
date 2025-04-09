@@ -1,5 +1,7 @@
+import 'package:bookna_app/core/presentation/widget/error_text.dart';
 import 'package:bookna_app/core/presentation/widget/loading_widget.dart';
 import 'package:bookna_app/core/resources/app_values.dart';
+import 'package:bookna_app/features/search/presentation/widget/no_result.dart';
 import 'package:bookna_app/features/search/presentation/widget/search_field.dart';
 import 'package:bookna_app/features/search/presentation/widget/search_grid_view.dart';
 import 'package:bookna_app/features/search/presentation/widget/search_text.dart';
@@ -30,11 +32,11 @@ class SearchWidget extends StatelessWidget {
           child: Column(
             children: [
               SearchField(),
-              SearchText(),
+              //    SearchText(),
               //Expanded(child: LoadingWidget()),
               //SearchGridView(),
-              //    Expanded(child: ErrorText())
-              //  NoResults()
+              // Expanded(child: ErrorText()),
+              //NoResults(),
             ],
           ),
         ),
