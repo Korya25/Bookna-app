@@ -1,9 +1,13 @@
+// ignore_for_file: unused_import, duplicate_ignore
+
 import 'package:bookna_app/core/presentation/widget/error_text.dart';
 import 'package:bookna_app/core/presentation/widget/loading_widget.dart';
 import 'package:bookna_app/core/resources/app_values.dart';
 import 'package:bookna_app/features/search/presentation/widget/no_result.dart';
 import 'package:bookna_app/features/search/presentation/widget/search_field.dart';
+// ignore: unused_import
 import 'package:bookna_app/features/search/presentation/widget/search_grid_view.dart';
+// ignore: unused_import
 import 'package:bookna_app/features/search/presentation/widget/search_text.dart';
 import 'package:flutter/material.dart';
 

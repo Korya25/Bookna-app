@@ -40,7 +40,7 @@ class _BodyFavoriteViewState extends State<BodyFavoriteView> {
                 isBook: true,
                 book: favoriteBooks[index],
               ),
-          addEvent: _fetchMoreBooks,
+          onScrollEnd: () => _fetchMoreBooks(),
         );
       },
     );
