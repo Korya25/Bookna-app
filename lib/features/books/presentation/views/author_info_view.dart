@@ -1,5 +1,6 @@
 import 'package:another_flushbar/flushbar.dart';
 import 'package:bookna_app/core/resources/app_colors.dart';
+import 'package:bookna_app/core/resources/app_strings.dart';
 import 'package:bookna_app/features/books/presentation/widget/author_additional_info_widget.dart';
 import 'package:bookna_app/features/books/presentation/widget/author_header_widget.dart';
 import 'package:bookna_app/features/books/presentation/widget/author_rating_widget.dart';
@@ -83,7 +84,7 @@ class _AuthorInfoViewState extends State<AuthorInfoView> {
       showTopFlushbar(
         // ignore: use_build_context_synchronously
         context,
-        "This information may not be accurate enough and confusion between individuals may occur.",
+       AppStrings.messageshowTopFlushbar,
       );
     }
   }

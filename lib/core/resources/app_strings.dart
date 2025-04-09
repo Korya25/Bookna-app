@@ -39,4 +39,9 @@ class AppStrings {
   static const String errorMessage = 'Something went wrong';
   static const String tryAgain = 'try again';
   static const String noResults = 'No results';
+  static const String birthDate = 'Birth Date';
+  static const String type = 'Type';
+  static const String  deathDate= 'Death Date';
+  static const String messageshowTopFlushbar =
+      "This information may not be accurate enough and confusion between individuals may occur.";
 }

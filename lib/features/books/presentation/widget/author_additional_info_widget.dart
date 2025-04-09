@@ -34,7 +34,7 @@ class AuthorAdditionalInfoWidget extends StatelessWidget {
             children: [
               _buildInfoCard(
                 icon: Icons.person,
-                title: 'Type',
+                title: AppStrings.type,
                 value: author['type'],
               ),
 
@@ -42,7 +42,7 @@ class AuthorAdditionalInfoWidget extends StatelessWidget {
                 _buildDivider(),
                 _buildInfoCard(
                   icon: Icons.cake,
-                  title: 'Birth Date',
+                  title: AppStrings.birthDate,
                   value: author['birth_date'],
                 ),
               ],
@@ -50,7 +50,7 @@ class AuthorAdditionalInfoWidget extends StatelessWidget {
                 _buildDivider(),
                 _buildInfoCard(
                   icon: Icons.event,
-                  title: 'Death Date',
+                  title:AppStrings.deathDate,
                   value: author['death_date'],
                 ),
               ],
