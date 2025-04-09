@@ -44,4 +44,5 @@ class AppStrings {
   static const String  deathDate= 'Death Date';
   static const String messageshowTopFlushbar =
       "This information may not be accurate enough and confusion between individuals may occur.";
+      static const kfavoritesBox = 'favorites_box';
 }

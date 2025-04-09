@@ -7,6 +7,7 @@ import 'package:bookna_app/features/books/presentation/views/books_main_view.dar
 import 'package:bookna_app/features/books/presentation/views/books_view.dart';
 import 'package:bookna_app/features/books/presentation/views/popular_books_view.dart';
 import 'package:bookna_app/features/books/presentation/views/top_rated_books_view.dart';
+import 'package:bookna_app/features/favorite/presentation/views/favorite_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -82,7 +83,7 @@ class AppRouter {
             name: AppRoutes.favoriteRoute,
             pageBuilder:
                 (context, state) => const NoTransitionPage(
-                  child: Scaffold(body: Center(child: Text('Favorite'))),
+                  child: FavoriteView(),
                 ),
           ),
           GoRoute(
