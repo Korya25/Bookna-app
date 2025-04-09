@@ -64,15 +64,14 @@ class _MainViewState extends State<MainView> {
 
   BottomNavigationBar _buildBottomNavBar(BuildContext context) {
     return BottomNavigationBar(
-      items:
-          _navItems
-              .map(
-                (item) => BottomNavigationBarItem(
-                  label: item.label,
-                  icon: Icon(item.icon),
-                ),
-              )
-              .toList(),
+      items: _navItems
+          .map(
+            (item) => BottomNavigationBarItem(
+              label: item.label,
+              icon: Icon(item.icon),
+            ),
+          )
+          .toList(),
       currentIndex: _getSelectedIndex(context),
       onTap: (index) => _onItemTapped(index, context),
       type: BottomNavigationBarType.fixed,

@@ -61,6 +61,7 @@ class AuthorAdditionalInfoWidget extends StatelessWidget {
   List<Widget> _buildInfoItems(BuildContext context) {
     final items = <Widget>[];
 
+    // Add author type
     items.add(
       _buildInfoCard(
         context: context,
@@ -70,6 +71,7 @@ class AuthorAdditionalInfoWidget extends StatelessWidget {
       ),
     );
 
+    // Add birth date if available or if showAllInfo is true
     if (author.birthDate != null || showAllInfo) {
       items.add(
         _buildInfoCard(
@@ -81,6 +83,7 @@ class AuthorAdditionalInfoWidget extends StatelessWidget {
       );
     }
 
+    // Add death date if available or if showAllInfo is true
     if (author.deathDate != null || showAllInfo) {
       items.add(
         _buildInfoCard(

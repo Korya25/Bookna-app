@@ -67,4 +67,9 @@ class AppStrings {
 
   // Empty States
   static const String noResults = 'No results found';
+
+  // Additional Messages
+  static const String messageshowTopFlushbar =
+      "This information may not be accurate enough and confusion between individuals may occur.";
+  static const String kfavoritesBox = 'favorites_box';
 }

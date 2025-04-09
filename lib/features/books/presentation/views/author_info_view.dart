@@ -3,7 +3,9 @@ import 'package:bookna_app/features/books/presentation/controller/author_cubit/a
 import 'package:bookna_app/features/books/presentation/widget/author_additional_info_widget.dart';
 import 'package:bookna_app/features/books/presentation/widget/author_header_widget.dart';
 import 'package:bookna_app/features/books/presentation/widget/author_rating_widget.dart';
+
 import 'package:bookna_app/features/books/presentation/widget/author_reading_stats_widget.dart.dart';
+
 import 'package:bookna_app/features/books/presentation/widget/author_subjects_widget.dart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -32,9 +34,9 @@ class _AuthorInfoContent extends StatelessWidget {
         body: BlocConsumer<AuthorCubit, AuthorState>(
           listener: (context, state) {
             if (state is AuthorError) {
-              ScaffoldMessenger.of(
-                context,
-              ).showSnackBar(SnackBar(content: Text(state.message)));
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(content: Text(state.message)),
+              );
             }
           },
           builder: (context, state) {

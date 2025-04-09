@@ -4,7 +4,9 @@ import 'package:bookna_app/core/presentation/widget/slider_card_image.dart';
 import 'package:bookna_app/core/resources/app_colors.dart';
 import 'package:bookna_app/core/resources/app_values.dart';
 import 'package:bookna_app/features/books/domain/entities/book.dart';
+import 'package:bookna_app/features/favorite/presentation/manager/favorite_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class DetailsCard extends StatelessWidget {
@@ -166,8 +168,16 @@ class DetailsCard extends StatelessWidget {
                     ),
                   ),
                 ),
-                InkWell(
-                  onTap: () {},
+             BlocBuilder<FavoriteCubit, List<Book>>(
+      builder: (context, favoriteBooks) {
+        final isFavorite = context.read<FavoriteCubit>().isFavorite(book);
+
+        return  InkWell(
+                  onTap: () { if (isFavorite) {
+              context.read<FavoriteCubit>().removeFromFavorites(book);
+            } else {
+              context.read<FavoriteCubit>().addToFavorites(book);
+            }},
                   child: Container(
                     padding: const EdgeInsets.all(AppPadding.p8),
                     decoration: const BoxDecoration(
@@ -176,11 +186,13 @@ class DetailsCard extends StatelessWidget {
                     ),
                     child: Icon(
                       Icons.bookmark_rounded,
-                      color: AppColors.secondaryText,
+                      color: isFavorite ? Colors.red : null,
                       size: AppSize.s20,
                     ),
                   ),
-                ),
+                );
+      },
+    ),
               ],
             ),
           ),
