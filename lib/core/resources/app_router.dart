@@ -9,6 +9,8 @@ import 'package:bookna_app/features/books/presentation/views/popular_books_view.
 import 'package:bookna_app/features/books/presentation/views/top_rated_books_view.dart';
 
 import 'package:bookna_app/features/favorite/presentation/views/favorite_view.dart';
+import 'package:bookna_app/features/search/presentation/views/search_view.dart';
+
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -104,9 +106,7 @@ class AppRouter {
             path: AppPaths.search,
             name: AppRoutes.search,
             pageBuilder:
-                (context, state) => const NoTransitionPage(
-                  child: Scaffold(body: Center(child: Text('Search'))),
-                ),
+                (context, state) => const NoTransitionPage(child: SearchView()),
           ),
         ],
       ),
