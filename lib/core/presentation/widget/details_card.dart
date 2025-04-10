@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously, deprecated_member_use
+
 import 'package:bookna_app/core/presentation/widget/favorite_icon_bloc_builder.dart';
 import 'package:bookna_app/core/presentation/widget/slider_card_image.dart';
 import 'package:bookna_app/core/resources/app_colors.dart';

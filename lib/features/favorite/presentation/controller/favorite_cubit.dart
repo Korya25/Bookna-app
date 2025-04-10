@@ -10,6 +10,7 @@ class FavoriteCubit extends Cubit<List<Book>> {
     : _favoritesBox = Hive.box<Book>(AppStrings.favoritesBox),
       super([]) {
     _loadFavorites();
+    _setupListener();
   }
 
   void _loadFavorites() {
@@ -17,34 +18,37 @@ class FavoriteCubit extends Cubit<List<Book>> {
     emit(favorites);
   }
 
-  void addToFavorites(Book book) {
-    if (!state.contains(book)) {
-      _favoritesBox.add(book);
-      emit([...state, book]);
+  void _setupListener() {
+    _favoritesBox.watch().listen((event) {
+      _loadFavorites();
+    });
+  }
+
+  Future<void> addToFavorites(Book book) async {
+    if (!isFavorite(book)) {
+      await _favoritesBox.add(book);
     }
   }
 
-  void removeFromFavorites(Book book) {
+  Future<void> removeFromFavorites(Book book) async {
     final key = _getKeyForBook(book);
     if (key != null) {
-      _favoritesBox.delete(key);
-      emit(state.where((b) => b != book).toList());
+      await _favoritesBox.delete(key);
     }
   }
 
-  void clearAllFavorites() {
-    _favoritesBox.clear();
-    emit([]);
+  Future<void> clearAllFavorites() async {
+    await _favoritesBox.clear();
   }
 
   bool isFavorite(Book book) {
-    return state.contains(book);
+    return state.any((b) => b.bookId == book.bookId);
   }
 
   int? _getKeyForBook(Book book) {
     final bookMap = _favoritesBox.toMap();
     for (final entry in bookMap.entries) {
-      if (entry.value == book) {
+      if (entry.value.bookId == book.bookId) {
         return entry.key as int;
       }
     }

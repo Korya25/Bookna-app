@@ -23,7 +23,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                 icon: const Icon(
                   Icons.arrow_back_ios_new_rounded,
                   size: AppSize.s20,
-                  color: Colors.white,
+                  color: Colors.white70,
                 ),
               )
               : null,

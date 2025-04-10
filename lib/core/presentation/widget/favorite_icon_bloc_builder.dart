@@ -11,25 +11,26 @@ class FavoriteIconBlocBuilder extends StatelessWidget {
     required this.book,
     this.iconSize = AppSize.s24,
     this.iconContainerColor = AppColors.iconContainerColor,
+    this.favoriteColor = Colors.red,
+    this.notFavoriteColor = Colors.white70,
   });
 
   final Book book;
   final double iconSize;
   final Color iconContainerColor;
+  final Color favoriteColor;
+  final Color notFavoriteColor;
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<FavoriteCubit, List<Book>>(
       builder: (context, favoriteBooks) {
-        final isFavorite = context.read<FavoriteCubit>().isFavorite(book);
+        final favoriteCubit = context.read<FavoriteCubit>();
+        final isFavorite = favoriteCubit.isFavorite(book);
 
         return InkWell(
-          onTap: () {
-            if (isFavorite) {
-              context.read<FavoriteCubit>().removeFromFavorites(book);
-            } else {
-              context.read<FavoriteCubit>().addToFavorites(book);
-            }
-          },
+          borderRadius: BorderRadius.circular(AppSize.s24),
+          onTap: () => _toggleFavorite(context, isFavorite),
           child: Container(
             padding: const EdgeInsets.all(AppPadding.p8),
             decoration: BoxDecoration(
@@ -37,13 +38,24 @@ class FavoriteIconBlocBuilder extends StatelessWidget {
               color: iconContainerColor,
             ),
             child: Icon(
-              Icons.bookmark_rounded,
-              color: isFavorite ? Colors.red : Colors.white70,
+              isFavorite
+                  ? Icons.bookmark_added_rounded
+                  : Icons.bookmark_add_rounded,
+              color: isFavorite ? favoriteColor : notFavoriteColor,
               size: iconSize,
             ),
           ),
         );
       },
     );
+  }
+
+  void _toggleFavorite(BuildContext context, bool isFavorite) {
+    final favoriteCubit = context.read<FavoriteCubit>();
+    if (isFavorite) {
+      favoriteCubit.removeFromFavorites(book);
+    } else {
+      favoriteCubit.addToFavorites(book);
+    }
   }
 }
