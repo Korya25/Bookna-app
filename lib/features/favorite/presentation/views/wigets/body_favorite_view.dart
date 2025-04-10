@@ -39,8 +39,8 @@ class _BodyFavoriteViewState extends State<BodyFavoriteView> {
               (context, index) => VerticalListViewCard(
                 isBook: true,
                 book: favoriteBooks[index],
-              ),
-          addEvent: _fetchMoreBooks,
+              ), onScrollEnd: () { _fetchMoreBooks(); },
+          
         );
       },
     );
