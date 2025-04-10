@@ -20,7 +20,7 @@ class BodyFavoriteView extends StatelessWidget {
     return BlocBuilder<FavoriteCubit, List<Book>>(
       builder: (context, favoriteBooks) {
         if (favoriteBooks.isEmpty) {
-          return const EmptyFavoriteText();
+          return Center(child: const EmptyFavoriteText());
         }
 
         return VerticalListView(

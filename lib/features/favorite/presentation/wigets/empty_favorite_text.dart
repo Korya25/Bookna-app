@@ -10,6 +10,7 @@ class EmptyFavoriteText extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Text(AppStrings.favoriteEmpty, style: textTheme.titleMedium),
         Padding(
