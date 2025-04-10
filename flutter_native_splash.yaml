@@ -1,0 +1,10 @@
+flutter_native_splash:
+  background_image: "assets/splash/Frame 1 (1).png"
+  
+  # (اختياري) للوضع المظلم
+  # background_image_dark: "assets/splash/splash_dark.png"
+
+  android_12:
+    image: assets/splash/Frame 1 (1).png
+    color: "#1a1d1f"  # ⬅️ تأكد من وجود #
+    # icon_background_color: "transparent"
