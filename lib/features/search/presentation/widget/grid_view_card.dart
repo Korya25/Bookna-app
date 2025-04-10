@@ -26,14 +26,15 @@ class GridViewCard extends StatelessWidget {
             ),
           ),
         ),
-        Expanded(
-          child: Text(
-            book.title ?? 'Korya',
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-            style: textTheme.bodyMedium,
+        if (book.authors != null)
+          Expanded(
+            child: Text(
+              book.title!,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: textTheme.bodyMedium,
+            ),
           ),
-        ),
       ],
     );
   }

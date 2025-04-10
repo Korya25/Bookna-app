@@ -32,9 +32,9 @@ class _SearchViewContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Padding(
+    return Scaffold(
+      body: SafeArea(
+        child: Padding(
           padding: const EdgeInsets.only(
             top: AppPadding.p12,
             left: AppPadding.p16,
@@ -44,20 +44,20 @@ class _SearchViewContent extends StatelessWidget {
             children: [
               const SearchField(),
               const SizedBox(height: AppPadding.p16),
-              Expanded(
+              Flexible(
                 child: BlocBuilder<SearchCubit, SearchState>(
                   builder: (context, state) {
                     if (state is SearchBooksInitial) {
-                      return const SearchText();
+                      return const Center(child: SearchText());
                     } else if (state is SearchBooksLoading) {
-                      return const LoadingWidget();
+                      return const Center(child: LoadingWidget());
                     } else if (state is SearchBooksLoaded) {
                       if (state.books.isEmpty) {
-                        return const NoResults();
+                        return const Center(child: NoResults());
                       }
                       return SearchGridView(books: state.books);
                     } else if (state is SearchBooksError) {
-                      return ErrorText();
+                      return Center(child: ErrorText());
                     }
                     return const SizedBox();
                   },
