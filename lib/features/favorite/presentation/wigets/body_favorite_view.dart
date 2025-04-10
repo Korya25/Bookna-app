@@ -26,13 +26,9 @@ class BodyFavoriteView extends StatelessWidget {
         return VerticalListView(
           itemCount: favoriteBooks.length,
           itemBuilder:
-
-          
-
               (context, index) =>
                   VerticalListViewCard(book: favoriteBooks[index]),
           onScrollEnd: () => _fetchMoreBooks(context),
-
         );
       },
     );

@@ -91,7 +91,11 @@ class VerticalListViewCard extends StatelessWidget {
                 ],
               ),
             ),
-            FavoriteIconBlocBuilder(book: book, iconSize: AppSize.s24),
+            FavoriteIconBlocBuilder(
+              book: book,
+              iconSize: AppSize.s24,
+              iconContainerColor: Colors.transparent,
+            ),
           ],
         ),
       ),

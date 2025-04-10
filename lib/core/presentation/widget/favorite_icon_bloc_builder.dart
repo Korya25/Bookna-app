@@ -10,11 +10,12 @@ class FavoriteIconBlocBuilder extends StatelessWidget {
     super.key,
     required this.book,
     this.iconSize = AppSize.s24,
+    this.iconContainerColor = AppColors.iconContainerColor,
   });
 
   final Book book;
   final double iconSize;
-
+  final Color iconContainerColor;
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<FavoriteCubit, List<Book>>(
@@ -31,13 +32,13 @@ class FavoriteIconBlocBuilder extends StatelessWidget {
           },
           child: Container(
             padding: const EdgeInsets.all(AppPadding.p8),
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: AppColors.iconContainerColor,
+              color: iconContainerColor,
             ),
             child: Icon(
               Icons.bookmark_rounded,
-              color: isFavorite ? Colors.red : null,
+              color: isFavorite ? Colors.red : Colors.white70,
               size: iconSize,
             ),
           ),
