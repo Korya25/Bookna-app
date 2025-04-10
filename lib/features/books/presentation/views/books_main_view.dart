@@ -1,3 +1,4 @@
+import 'package:bookna_app/core/resources/app_strings.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -27,7 +28,7 @@ class _BooksScopeState extends State<BooksScope>
   void initState() {
     super.initState();
     if (kDebugMode) {
-      debugPrint('BooksFeatureScope initialized');
+      debugPrint('${AppStrings.booksFeatureScopeinitialized} ');
     }
   }
 
@@ -43,7 +44,7 @@ class _BooksScopeState extends State<BooksScope>
             );
             WidgetsBinding.instance.addPostFrameCallback((_) {
               cubit.getSliderBooks().catchError((e) {
-                debugPrint('SliderBooks Error: $e');
+                debugPrint('${AppStrings.sliderBooksError}  $e');
               });
             });
             return cubit;
@@ -56,7 +57,7 @@ class _BooksScopeState extends State<BooksScope>
             );
             WidgetsBinding.instance.addPostFrameCallback((_) {
               cubit.getPopularBooksLimited().catchError((e) {
-                debugPrint('PopularBooks Error: $e');
+                debugPrint('${AppStrings.popularBooksError}  $e');
               });
             });
             return cubit;
@@ -69,7 +70,7 @@ class _BooksScopeState extends State<BooksScope>
             );
             WidgetsBinding.instance.addPostFrameCallback((_) {
               cubit.getTopRatedBooksLimited().catchError((e) {
-                debugPrint('TopRatedBooks Error: $e');
+                debugPrint('${AppStrings.topRatedBooksError} $e');
               });
             });
             return cubit;

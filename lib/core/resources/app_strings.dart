@@ -26,7 +26,6 @@ class AppStrings {
   // Book Sections
   static const String popularBooks = 'Popular Books';
   static const String topRatedBooks = 'Top Rated Books';
- 
 
   // Author Information
   static const String author = 'Author';
@@ -86,4 +85,10 @@ class AppStrings {
   static const String undo = 'Undo';
   static const String allDeleted = 'All favorites have been removed';
   static const String removedFromFavorites = 'has been removed from favorites';
+  static const String topRatedBooksError = 'TopRatedBooks Error:';
+  static const String popularBooksError = 'PopularBooks Error:';
+  static const String sliderBooksError = 'SliderBooks Error: ';
+  static const String booksFeatureScopeinitialized =
+      "BooksFeatureScope initialized";
+      static const String anunknownerroroccurred ='An unknown error occurred';
 }

@@ -1,4 +1,5 @@
 import 'package:bookna_app/core/presentation/views/error_page.dart';
+import 'package:bookna_app/core/resources/app_strings.dart';
 import 'package:bookna_app/features/books/presentation/widget/popular_books_section.dart';
 import 'package:bookna_app/features/books/presentation/widget/slider_section.dart';
 import 'package:bookna_app/features/books/presentation/widget/top_rated_books_section.dart';
@@ -76,7 +77,7 @@ class BooksView extends StatelessWidget {
     if (sliderState is SliderBooksError) return sliderState.message;
     if (popularState is PopularBooksError) return popularState.message;
     if (topRatedState is TopRatedBooksError) return topRatedState.message;
-    return 'An unknown error occurred';
+    return AppStrings.anunknownerroroccurred;
   }
 
   void _retryAll(BuildContext context) {
