@@ -10,6 +10,7 @@ abstract class BooksRemoteDataSource {
   Future<List<Book>> getAllPopularMovies(int page);
   Future<List<Book>> getAllTopRatedMovies(int page);
   Future<List<Book>> getBooksBycategory(String category);
+  Future<List<Book>> getBooksByTitle(String title);
 }
 
 class BooksRemoteDataSourceImpl extends BooksRemoteDataSource {
@@ -57,6 +58,19 @@ class BooksRemoteDataSourceImpl extends BooksRemoteDataSource {
     final response = await Dio().get(
       ApiConstants.getBooksByCategoryPath(category),
     );
+    if (response.statusCode == 200) {
+      List<Book> books = getBooksList(response.data);
+      return books;
+    } else {
+      throw ServerException(
+        errorMessageModel: ErrorMessageModel.fromJson(response.data),
+      );
+    }
+  }
+
+  @override
+  Future<List<Book>> getBooksByTitle(String title) async {
+    final response = await Dio().get(ApiConstants.getBooksByTitlePath(title));
     if (response.statusCode == 200) {
       List<Book> books = getBooksList(response.data);
       return books;

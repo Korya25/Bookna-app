@@ -60,4 +60,16 @@ class BooksRepoImpl extends BooksRepo {
       return Left(ServerFailure(failure.message));
     }
   }
+
+  @override
+  Future<Either<Failure, List<Book>>> getBooksByTitle(String title) async {
+    try {
+      final result = await booksRemoteDataSource.getBooksByTitle(title);
+      return Right(result);
+    } on ServerException catch (failure) {
+      return Left(ServerFailure(failure.errorMessageModel.code.toString()));
+    } on DioException catch (failure) {
+      return Left(ServerFailure(failure.message));
+    }
+  }
 }
