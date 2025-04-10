@@ -20,15 +20,13 @@ class AppStrings {
   static const String search = 'Search';
   static const String searchHint = 'Search for books, authors...';
   static const String books = 'Books';
-  static const String novels = 'Novels';
   static const String works = 'Works';
   static const String basedOn = 'Based on';
 
   // Book Sections
   static const String popularBooks = 'Popular Books';
   static const String topRatedBooks = 'Top Rated Books';
-  static const String popularNovels = 'Popular Novels';
-  static const String topRatedNovels = 'Top Rated Novels';
+ 
 
   // Author Information
   static const String author = 'Author';
@@ -69,8 +67,7 @@ class AppStrings {
   static const String noResults = 'No results found';
 
   // Additional Messages
-  static const String messageshowTopFlushbar =
-      "This information may not be accurate enough and confusion between individuals may occur.";
+
   static const String kfavoritesBox = 'favorites_box';
 
   static const String favoritesBox = 'favorites_box';

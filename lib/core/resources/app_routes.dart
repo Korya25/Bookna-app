@@ -5,10 +5,6 @@ class AppRoutes {
   static const String topRatedBooks = 'topRatedBooks';
   static const String authorInfo = 'authorInfo';
 
-  static const String novels = 'novels';
-  static const String novelsDetails = 'novelsDetails';
-  static const String popularNovels = 'popularNovels';
-  static const String topRatedNovels = 'topRatedNovels';
 
   static const String search = 'search';
   static const String favorite = 'favorite';
