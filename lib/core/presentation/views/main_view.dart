@@ -19,11 +19,7 @@ class _MainViewState extends State<MainView> {
       icon: Icons.book,
       routeName: AppRoutes.books,
     ),
-    NavItemModel(
-      label: AppStrings.novels,
-      icon: Icons.book_sharp,
-      routeName: AppRoutes.novels,
-    ),
+   
     NavItemModel(
       label: AppStrings.search,
       icon: Icons.search_rounded,
