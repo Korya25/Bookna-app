@@ -9,18 +9,18 @@ class FavoriteCubit extends Cubit<List<Book>> {
   FavoriteCubit()
     : _favoritesBox = Hive.box<Book>(AppStrings.favoritesBox),
       super([]) {
-    _loadFavorites();
+    loadFavorites();
     _setupListener();
   }
 
-  void _loadFavorites() {
+  void loadFavorites() {
     final favorites = _favoritesBox.values.toList();
     emit(favorites);
   }
 
   void _setupListener() {
     _favoritesBox.watch().listen((event) {
-      _loadFavorites();
+      loadFavorites();
     });
   }
 
