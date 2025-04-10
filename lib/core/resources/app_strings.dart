@@ -90,5 +90,10 @@ class AppStrings {
   static const String sliderBooksError = 'SliderBooks Error: ';
   static const String booksFeatureScopeinitialized =
       "BooksFeatureScope initialized";
-      static const String anunknownerroroccurred ='An unknown error occurred';
+  static const String anunknownerroroccurred = 'An unknown error occurred';
+  static const String fiction = 'fiction';
+  static const String messageSnackBarLinkBook =
+      'There is no preview link for this book.';
+  static const String page = 'Page';
+  static const String yyyy = 'yyyy';
 }
