@@ -1,6 +1,6 @@
 class AppStrings {
   // App Info
-  static const String appTitle = 'Bookna';
+  static const String appTitle = 'BookFlick';
   static const String oops = 'Oops';
   static const String unknown = 'Unknown';
   static const String notAvailable = 'Not Available';
