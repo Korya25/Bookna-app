@@ -72,4 +72,21 @@ class AppStrings {
   static const String messageshowTopFlushbar =
       "This information may not be accurate enough and confusion between individuals may occur.";
   static const String kfavoritesBox = 'favorites_box';
+
+  static const String favoritesBox = 'favorites_box';
+
+  // Favorite Screen Strings
+  static const String noFavorites = 'Your favorites list is empty';
+  static const String addFavoritesHint =
+      'Tap the heart icon on any book to add it here';
+  static const String clearAll = 'Clear All';
+  static const String confirmClearAll =
+      'Are you sure you want to remove all favorites?';
+  static const String confirmDelete = 'Confirm Delete';
+  static const String confirmDeleteSingle = 'Remove this book from favorites?';
+  static const String cancel = 'Cancel';
+  static const String delete = 'Delete';
+  static const String undo = 'Undo';
+  static const String allDeleted = 'All favorites have been removed';
+  static const String removedFromFavorites = 'has been removed from favorites';
 }

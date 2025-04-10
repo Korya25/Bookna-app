@@ -83,8 +83,7 @@ class _TopRatedBooksContentState extends State<_TopRatedBooksContent> {
               controller: _scrollController,
               itemCount: books.length,
               itemBuilder:
-                  (context, index) =>
-                      VerticalListViewCard(isBook: true, book: books[index]),
+                  (context, index) => VerticalListViewCard(book: books[index]),
               onScrollEnd: _loadMoreBooks,
               loadMoreThreshold: 0.7,
             ),
