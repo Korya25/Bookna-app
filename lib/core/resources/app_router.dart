@@ -11,7 +11,6 @@ import 'package:bookna_app/features/books/presentation/views/top_rated_books_vie
 import 'package:bookna_app/features/favorite/presentation/views/favorite_view.dart';
 import 'package:bookna_app/features/search/presentation/views/search_view.dart';
 
-
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -96,9 +95,8 @@ class AppRouter {
             path: AppPaths.favorite,
             name: AppRoutes.favorite,
             pageBuilder:
-                (context, state) => const NoTransitionPage(
-                  child: FavoriteView(),
-                ),
+                (context, state) =>
+                    const NoTransitionPage(child: FavoriteView()),
           ),
 
           // Search section

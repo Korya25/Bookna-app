@@ -83,8 +83,7 @@ class _PopularBooksContentState extends State<_PopularBooksContent> {
               controller: _scrollController,
               itemCount: books.length,
               itemBuilder:
-                  (context, index) =>
-                      VerticalListViewCard(isBook: true, book: books[index]),
+                  (context, index) => VerticalListViewCard(book: books[index]),
               onScrollEnd: _loadMoreBooks,
               loadMoreThreshold: 0.7, // تحديد 70% هنا
             ),

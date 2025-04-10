@@ -48,7 +48,7 @@ class BooksCardDetails extends StatelessWidget {
       children.add(
         Text(
           book.categories!.first.length > 16
-              ? '${book.categories!.first.substring(0, 16)}...'
+              ? '${book.categories!.first.substring(0, 10)}...'
               : book.categories!.first,
           style: textTheme.bodyLarge,
         ),

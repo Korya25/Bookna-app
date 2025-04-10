@@ -1,3 +1,4 @@
+import 'package:bookna_app/core/presentation/widget/favorite_icon_bloc_builder.dart';
 import 'package:bookna_app/core/presentation/widget/image_with_shimmer.dart';
 import 'package:bookna_app/core/resources/app_colors.dart';
 import 'package:bookna_app/core/resources/app_values.dart';
@@ -7,12 +8,7 @@ import 'package:bookna_app/features/books/domain/entities/book.dart';
 import 'package:flutter/material.dart';
 
 class VerticalListViewCard extends StatelessWidget {
-  const VerticalListViewCard({
-    super.key,
-    required this.isBook,
-    required this.book,
-  });
-  final bool isBook;
+  const VerticalListViewCard({super.key, required this.book});
   final Book book;
 
   @override
@@ -30,6 +26,7 @@ class VerticalListViewCard extends StatelessWidget {
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
               padding: const EdgeInsets.all(AppPadding.p8),
@@ -94,6 +91,7 @@ class VerticalListViewCard extends StatelessWidget {
                 ],
               ),
             ),
+            FavoriteIconBlocBuilder(book: book, iconSize: AppSize.s24),
           ],
         ),
       ),

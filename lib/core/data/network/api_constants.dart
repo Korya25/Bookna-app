@@ -36,6 +36,11 @@ class ApiConstants {
     return '$baseUrl/volumes/$bookId?key=$apiKey';
   }
 
+  static String getBooksByTitlePath(String title, {int page = 1}) {
+    final startIndex = (page - 1) * itemsPerPage;
+    final encodedTitle = Uri.encodeComponent(title);
+    return '$baseUrl/volumes?q=intitle:$encodedTitle&startIndex=$startIndex&maxResults=$itemsPerPage&key=$apiKey';
+  }
   // Author Path
 
   static String getAuthorWithNamePath(String name) {

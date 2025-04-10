@@ -1,8 +1,8 @@
-
 import 'package:bookna_app/core/presentation/widget/custom_app_bar.dart';
 
 import 'package:bookna_app/core/resources/app_strings.dart';
-import 'package:bookna_app/features/favorite/presentation/views/wigets/body_favorite_view.dart';
+import 'package:bookna_app/core/resources/app_values.dart';
+import 'package:bookna_app/features/favorite/presentation/wigets/body_favorite_view.dart';
 import 'package:flutter/material.dart';
 
 class FavoriteView extends StatelessWidget {
@@ -10,10 +10,15 @@ class FavoriteView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-  //    final textTheme = Theme.of(context).textTheme;
     return Scaffold(
-      appBar:  const CustomAppBar(title: AppStrings.favorite),
-      body: BodyFavoriteView(),
+      appBar: const CustomAppBar(title: AppStrings.favorite),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: AppPadding.p12,
+          vertical: AppPadding.p6,
+        ),
+        child: BodyFavoriteView(),
+      ),
     );
   }
 }
