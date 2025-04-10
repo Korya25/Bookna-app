@@ -1,4 +1,5 @@
 import 'package:bookna_app/core/presentation/widget/circle_dot.dart';
+import 'package:bookna_app/core/resources/app_strings.dart';
 import 'package:bookna_app/core/utils/functions/format_date.dart';
 import 'package:bookna_app/features/books/domain/entities/book.dart';
 import 'package:flutter/material.dart';
@@ -33,7 +34,7 @@ class BooksCardDetails extends StatelessWidget {
     if (book.publishedDate != null) {
       children.add(
         Text(
-          formatDate(book.publishedDate!, outputFormat: 'yyyy'),
+          formatDate(book.publishedDate!, outputFormat:AppStrings.yyyy),
           style: textTheme.bodyLarge,
         ),
       );
@@ -61,7 +62,7 @@ class BooksCardDetails extends StatelessWidget {
 
     // Add page count if available
     if (book.pageCount != null) {
-      children.add(Text('${book.pageCount} Page', style: textTheme.bodyLarge));
+      children.add(Text('${book.pageCount} ${AppStrings.page}', style: textTheme.bodyLarge));
     }
 
     return children;

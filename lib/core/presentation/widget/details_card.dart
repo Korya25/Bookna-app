@@ -3,6 +3,7 @@
 import 'package:bookna_app/core/presentation/widget/favorite_icon_bloc_builder.dart';
 import 'package:bookna_app/core/presentation/widget/slider_card_image.dart';
 import 'package:bookna_app/core/resources/app_colors.dart';
+import 'package:bookna_app/core/resources/app_strings.dart';
 import 'package:bookna_app/core/resources/app_values.dart';
 import 'package:bookna_app/features/books/domain/entities/book.dart';
 import 'package:flutter/material.dart';
@@ -105,7 +106,7 @@ class DetailsCard extends StatelessWidget {
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   const SnackBar(
                                     content: Text(
-                                      'There is no preview link for this book.',
+                                      AppStrings.messageSnackBarLinkBook,
                                     ),
                                   ),
                                 );
