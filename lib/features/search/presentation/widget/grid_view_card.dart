@@ -17,7 +17,7 @@ class GridViewCard extends StatelessWidget {
           child: AspectRatio(
             aspectRatio: 2 / 3,
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(AppSize.s8),
+              borderRadius: BorderRadius.circular(AppRadius.r8),
               child: ImageWithShimmer(
                 imageUrl: book.thumbnail,
                 width: AppSize.sInfinity,

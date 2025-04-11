@@ -112,7 +112,9 @@ class _AuthorSubjectsWidgetState extends State<AuthorSubjectsWidget>
       child: Chip(
         label: Text(subject, style: const TextStyle(fontSize: 14)),
         backgroundColor: Colors.blue.withOpacity(0.1),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(AppRadius.r8),
+        ),
       ),
     );
   }

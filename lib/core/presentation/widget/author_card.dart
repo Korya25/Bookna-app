@@ -24,7 +24,7 @@ class AuthorCard extends StatelessWidget {
         child: Column(
           children: [
             ClipRRect(
-              borderRadius: BorderRadius.circular(AppSize.s8),
+              borderRadius: BorderRadius.circular(AppRadius.r8),
               child: ImageWithShimmer(
                 imageUrl: imageUrl,
                 width: AppSize.sInfinity,

@@ -22,7 +22,7 @@ class VerticalListViewCard extends StatelessWidget {
         height: AppSize.s175,
         decoration: BoxDecoration(
           color: AppColors.secondaryBackground,
-          borderRadius: BorderRadius.circular(AppSize.s8),
+          borderRadius: BorderRadius.circular(AppRadius.r8),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -31,7 +31,7 @@ class VerticalListViewCard extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(AppPadding.p8),
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(AppSize.s8),
+                borderRadius: BorderRadius.circular(AppRadius.r8),
                 child: ImageWithShimmer(
                   imageUrl: book.thumbnail,
 

@@ -41,11 +41,11 @@ class _SearchFieldState extends State<SearchField> {
       decoration: InputDecoration(
         focusedBorder: OutlineInputBorder(
           borderSide: const BorderSide(color: AppColors.primaryText),
-          borderRadius: BorderRadius.circular(AppSize.s8),
+          borderRadius: BorderRadius.circular(AppRadius.r8),
         ),
         enabledBorder: OutlineInputBorder(
           borderSide: const BorderSide(color: AppColors.primaryText),
-          borderRadius: BorderRadius.circular(AppSize.s8),
+          borderRadius: BorderRadius.circular(AppRadius.r8),
         ),
         prefixIcon: const Icon(
           Icons.search_rounded,

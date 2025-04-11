@@ -46,11 +46,11 @@ class _NiceLoadingWidgetState extends State<NiceLoadingWidget>
           ),
           decoration: BoxDecoration(
             color: Colors.blueGrey.withOpacity(0.9),
-            borderRadius: BorderRadius.circular(20.0),
+            borderRadius: BorderRadius.circular(AppRadius.r20),
             boxShadow: [
               BoxShadow(
                 color: Colors.black.withOpacity(0.1),
-                blurRadius: 8.0,
+                blurRadius: AppRadius.r8,
                 offset: const Offset(0, 2),
               ),
             ],

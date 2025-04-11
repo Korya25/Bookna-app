@@ -23,7 +23,7 @@ Future<void> showTopFlushbar(BuildContext context, String message) async {
     duration: const Duration(seconds: 1),
     backgroundColor: AppColors.secondaryBackground,
     margin: const EdgeInsets.all(AppMargin.m8),
-    borderRadius: BorderRadius.circular(10),
+    borderRadius: BorderRadius.circular(AppRadius.r10),
     icon: const Icon(Icons.info, color: Colors.white),
   ).show(context);
 }

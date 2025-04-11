@@ -29,7 +29,7 @@ class FavoriteIconBlocBuilder extends StatelessWidget {
         final isFavorite = favoriteCubit.isFavorite(book);
 
         return InkWell(
-          borderRadius: BorderRadius.circular(AppSize.s24),
+          borderRadius: BorderRadius.circular(AppRadius.r24),
           onTap: () => _toggleFavorite(context, isFavorite),
           child: Container(
             padding: const EdgeInsets.all(AppPadding.p8),

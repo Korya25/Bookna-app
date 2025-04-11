@@ -152,7 +152,7 @@ class AuthorRatingWidget extends StatelessWidget {
               height: AppSize.s8,
               decoration: BoxDecoration(
                 color: Colors.grey[200],
-                borderRadius: BorderRadius.circular(4),
+                borderRadius: BorderRadius.circular(AppRadius.r4),
               ),
               child: TweenAnimationBuilder<double>(
                 tween: Tween(begin: 0.0, end: 1.0),
@@ -165,7 +165,7 @@ class AuthorRatingWidget extends StatelessWidget {
                       child: Container(
                         decoration: BoxDecoration(
                           color: getRatingColor(stars),
-                          borderRadius: BorderRadius.circular(4),
+                          borderRadius: BorderRadius.circular(AppRadius.r4),
                         ),
                       ),
                     ),

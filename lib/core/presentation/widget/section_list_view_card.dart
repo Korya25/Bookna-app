@@ -27,7 +27,7 @@ class SectionListViewCard extends StatelessWidget {
               navigateToDetailsView(context, book);
             },
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(AppSize.s8),
+              borderRadius: BorderRadius.circular(AppRadius.r8),
               child: ImageWithShimmer(
                 imageUrl: book.thumbnail,
                 width: AppSize.sInfinity,

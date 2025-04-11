@@ -35,11 +35,11 @@ class AuthorAdditionalInfoWidget extends StatelessWidget {
           padding: const EdgeInsets.all(AppPadding.p12),
           decoration: BoxDecoration(
             color: AppColors.secondaryBackground,
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(AppRadius.r12),
             boxShadow: [
               BoxShadow(
                 color: Colors.black.withOpacity(0.1),
-                blurRadius: 4,
+                blurRadius: AppRadius.r4,
                 offset: const Offset(0, 2),
               ),
             ],
@@ -114,9 +114,9 @@ class AuthorAdditionalInfoWidget extends StatelessWidget {
             padding: const EdgeInsets.all(AppPadding.p8),
             decoration: BoxDecoration(
               color: AppColors.secondaryBackground,
-              borderRadius: BorderRadius.circular(8),
+              borderRadius: BorderRadius.circular(AppRadius.r8),
             ),
-            child: Icon(icon, color: Colors.white, size: AppIconSize.s25),
+            child: Icon(icon, color: Colors.white, size: AppIconSize.s24),
           ),
           const SizedBox(width: AppSize.s12),
           Expanded(

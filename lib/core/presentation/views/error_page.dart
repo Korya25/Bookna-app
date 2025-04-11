@@ -34,7 +34,7 @@ class ErrorPage extends StatelessWidget {
                   vertical: AppPadding.p10,
                 ),
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(100),
+                  borderRadius: BorderRadius.circular(AppRadius.r100),
 
                   color: AppColors.error,
                 ),

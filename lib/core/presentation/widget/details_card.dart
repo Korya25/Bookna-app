@@ -111,7 +111,7 @@ class DetailsCard extends StatelessWidget {
                                 );
                               }
                             },
-                            borderRadius: BorderRadius.circular(25),
+                            borderRadius: BorderRadius.circular(AppRadius.r25),
                             child: AnimatedContainer(
                               duration: const Duration(milliseconds: 200),
                               height: AppSize.s45,
@@ -122,7 +122,7 @@ class DetailsCard extends StatelessWidget {
                                 boxShadow: [
                                   BoxShadow(
                                     color: Colors.black.withOpacity(0.2),
-                                    blurRadius: 6,
+                                    blurRadius: AppRadius.r6,
                                     offset: const Offset(0, 3),
                                   ),
                                 ],

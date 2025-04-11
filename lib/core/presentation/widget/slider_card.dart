@@ -70,7 +70,9 @@ class SliderCard extends StatelessWidget {
                                       : AppSize.s6,
                               height: AppSize.s6,
                               decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(AppSize.s6),
+                                borderRadius: BorderRadius.circular(
+                                  AppRadius.r6,
+                                ),
                                 color:
                                     indexDot == itemIndex
                                         ? AppColors.primary
