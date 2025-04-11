@@ -1,6 +1,7 @@
 // ignore_for_file: deprecated_member_use, library_private_types_in_public_api
 
 import 'package:bookna_app/core/resources/app_strings.dart';
+import 'package:bookna_app/core/resources/app_values.dart';
 import 'package:bookna_app/features/books/domain/entities/author.dart';
 import 'package:flutter/material.dart';
 
@@ -92,7 +93,7 @@ class _AuthorSubjectsWidgetState extends State<AuthorSubjectsWidget>
               delay: 300 + (displayedSubjects.length * 100),
               duration: widget.animationDuration,
               child: Padding(
-                padding: const EdgeInsets.only(top: 8.0),
+                padding: const EdgeInsets.only(top: AppPadding.p8),
                 child: Text(
                   '+ ${subjects.length - widget.maxSubjectsToShow!} more',
                   style: TextStyle(color: Colors.grey[600], fontSize: 12),

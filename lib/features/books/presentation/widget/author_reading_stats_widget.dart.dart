@@ -2,6 +2,7 @@
 
 import 'package:bookna_app/core/resources/app_colors.dart';
 import 'package:bookna_app/core/resources/app_strings.dart';
+import 'package:bookna_app/core/resources/app_values.dart';
 import 'package:bookna_app/features/books/domain/entities/author.dart';
 import 'package:flutter/material.dart';
 
@@ -109,7 +110,7 @@ class _AuthorReadingStatsWidgetState extends State<AuthorReadingStatsWidget>
       child: Card(
         color: AppColors.secondaryBackground,
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(AppPadding.p16),
           child: Column(
             children: [
               ScaleAnimation(

@@ -2,6 +2,7 @@
 
 import 'package:bookna_app/core/resources/app_colors.dart';
 import 'package:bookna_app/core/resources/app_strings.dart';
+import 'package:bookna_app/core/resources/app_values.dart';
 import 'package:bookna_app/features/books/domain/entities/author.dart';
 import 'package:flutter/material.dart';
 
@@ -31,7 +32,7 @@ class AuthorAdditionalInfoWidget extends StatelessWidget {
         ),
         const SizedBox(height: 12),
         Container(
-          padding: const EdgeInsets.all(12.0),
+          padding: const EdgeInsets.all(AppPadding.p12),
           decoration: BoxDecoration(
             color: AppColors.secondaryBackground,
             borderRadius: BorderRadius.circular(12),
@@ -105,12 +106,12 @@ class AuthorAdditionalInfoWidget extends StatelessWidget {
     required String value,
   }) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      padding: const EdgeInsets.symmetric(vertical: AppPadding.p8),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(AppPadding.p8),
             decoration: BoxDecoration(
               color: AppColors.secondaryBackground,
               borderRadius: BorderRadius.circular(8),
@@ -150,7 +151,7 @@ class AuthorAdditionalInfoWidget extends StatelessWidget {
 
   Widget _buildEmptyState() {
     return Padding(
-      padding: const EdgeInsets.all(12.0),
+      padding: const EdgeInsets.all(AppPadding.p12),
       child: Center(
         child: Text(
           AppStrings.noAdditionalInfoAvailable,

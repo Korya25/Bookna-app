@@ -10,10 +10,14 @@ class AppColors {
   static const primaryBtnText = Colors.white;
   static const error = Colors.red;
   static const black = Colors.black;
-  static const inactiveColor = Color(0x26ffffff);
   static const transparent = Colors.transparent;
-  static const ratingIconColor = Color(0xffffbe21);
+
+  // Dot Indicator
   static const circleDotColor = Color(0x33ffffff);
+  static const inactiveColor = Color(0x26ffffff);
+
+  // Icon
+  static const ratingIconColor = Color(0xffffbe21);
   static const iconContainerColor = Color(0xB2272830);
 }
 

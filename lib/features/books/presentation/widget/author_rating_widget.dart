@@ -1,5 +1,6 @@
 // ignore_for_file: deprecated_member_use
 
+import 'package:bookna_app/core/resources/app_values.dart';
 import 'package:flutter/material.dart';
 import 'package:bookna_app/core/resources/app_strings.dart';
 import 'package:bookna_app/features/books/domain/entities/author.dart';
@@ -137,7 +138,7 @@ class AuthorRatingWidget extends StatelessWidget {
 
   Widget _buildRatingBar(int stars, double percentage, int index) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 4.0),
+      padding: const EdgeInsets.symmetric(vertical: AppPadding.p4),
       child: Row(
         children: [
           ScaleAnimation(

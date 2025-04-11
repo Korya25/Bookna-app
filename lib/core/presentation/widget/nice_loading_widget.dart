@@ -1,5 +1,6 @@
 // ignore_for_file: deprecated_member_use
 
+import 'package:bookna_app/core/resources/app_values.dart';
 import 'package:flutter/material.dart';
 
 class NiceLoadingWidget extends StatefulWidget {
@@ -39,7 +40,10 @@ class _NiceLoadingWidgetState extends State<NiceLoadingWidget>
       child: FadeTransition(
         opacity: _opacity,
         child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+          padding: const EdgeInsets.symmetric(
+            horizontal: AppPadding.p16,
+            vertical: AppPadding.p8,
+          ),
           decoration: BoxDecoration(
             color: Colors.blueGrey.withOpacity(0.9),
             borderRadius: BorderRadius.circular(20.0),
