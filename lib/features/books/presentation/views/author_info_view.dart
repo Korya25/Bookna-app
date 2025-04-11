@@ -1,3 +1,4 @@
+import 'package:bookna_app/core/resources/app_values.dart';
 import 'package:bookna_app/core/utils/setup_services_locator.dart';
 import 'package:bookna_app/features/books/presentation/controller/author_cubit/author_cubit.dart';
 import 'package:bookna_app/features/books/presentation/widget/author_additional_info_widget.dart';
@@ -34,9 +35,9 @@ class _AuthorInfoContent extends StatelessWidget {
         body: BlocConsumer<AuthorCubit, AuthorState>(
           listener: (context, state) {
             if (state is AuthorError) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text(state.message)),
-              );
+              ScaffoldMessenger.of(
+                context,
+              ).showSnackBar(SnackBar(content: Text(state.message)));
             }
           },
           builder: (context, state) {
@@ -48,7 +49,7 @@ class _AuthorInfoContent extends StatelessWidget {
               final author = state.author;
               return SingleChildScrollView(
                 physics: const BouncingScrollPhysics(),
-                padding: const EdgeInsets.all(16.0),
+                padding: const EdgeInsets.all(AppPadding.p16),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

@@ -1,6 +1,7 @@
 import 'package:another_flushbar/flushbar.dart';
 import 'package:bookna_app/core/resources/app_colors.dart';
 import 'package:bookna_app/core/resources/app_routes.dart';
+import 'package:bookna_app/core/resources/app_values.dart';
 import 'package:bookna_app/features/books/domain/entities/book.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -21,7 +22,7 @@ Future<void> showTopFlushbar(BuildContext context, String message) async {
     flushbarPosition: FlushbarPosition.TOP,
     duration: const Duration(seconds: 1),
     backgroundColor: AppColors.secondaryBackground,
-    margin: const EdgeInsets.all(8),
+    margin: const EdgeInsets.all(AppMargin.m8),
     borderRadius: BorderRadius.circular(10),
     icon: const Icon(Icons.info, color: Colors.white),
   ).show(context);

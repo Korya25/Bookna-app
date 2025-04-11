@@ -1,4 +1,6 @@
 import 'package:bookna_app/core/resources/app_colors.dart';
+import 'package:bookna_app/core/resources/app_strings.dart';
+import 'package:bookna_app/core/resources/app_values.dart';
 import 'package:flutter/material.dart';
 
 class ErrorPage extends StatelessWidget {
@@ -12,20 +14,20 @@ class ErrorPage extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: Padding(
-          padding: const EdgeInsets.all(24.0),
+          padding: EdgeInsets.all(AppPadding.p24),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Icon(Icons.error_outline, color: Colors.red, size: 80),
               const SizedBox(height: 20),
-              Text('Ooopps!'),
+              Text('${AppStrings.oops}!'),
               const SizedBox(height: 10),
               Text(message, textAlign: TextAlign.center),
               const SizedBox(height: 30),
               Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 20,
-                  vertical: 10,
+                padding: EdgeInsets.symmetric(
+                  horizontal: AppPadding.p20,
+                  vertical: AppPadding.p10,
                 ),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(100),
@@ -34,8 +36,7 @@ class ErrorPage extends StatelessWidget {
                 ),
                 child: GestureDetector(
                   onTap: onRetry,
-
-                  child: const Text("try Again"),
+                  child: Text(AppStrings.tryAgain),
                 ),
               ),
             ],
