@@ -1,5 +1,6 @@
 import 'package:bookna_app/core/presentation/widget/image_with_shimmer.dart';
 import 'package:bookna_app/core/resources/app_colors.dart';
+import 'package:bookna_app/core/resources/app_values.dart';
 import 'package:flutter/material.dart';
 
 class SliderCardImage extends StatelessWidget {
@@ -9,7 +10,6 @@ class SliderCardImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
     return ShaderMask(
       blendMode: BlendMode.dstIn,
       shaderCallback: (rect) {
@@ -21,8 +21,8 @@ class SliderCardImage extends StatelessWidget {
         ).createShader(Rect.fromLTRB(0, 0, rect.width, rect.height));
       },
       child: ImageWithShimmer(
-        height: size.height * 0.6,
-        width: double.infinity,
+        height: AppSize.getScreenHeight(context) * 0.6,
+        width: AppSize.sInfinity,
         imageUrl: imageUrl,
       ),
     );

@@ -20,7 +20,7 @@ class GridViewCard extends StatelessWidget {
               borderRadius: BorderRadius.circular(AppSize.s8),
               child: ImageWithShimmer(
                 imageUrl: book.thumbnail,
-                width: double.infinity,
+                width: AppSize.sInfinity,
                 height: AppSize.s150,
               ),
             ),

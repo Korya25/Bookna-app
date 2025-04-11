@@ -58,8 +58,12 @@ class _NiceLoadingWidgetState extends State<NiceLoadingWidget>
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              const Icon(Icons.book_rounded, color: Colors.white, size: 20.0),
-              const SizedBox(width: 8.0),
+              const Icon(
+                Icons.book_rounded,
+                color: Colors.white,
+                size: AppIconSize.s20,
+              ),
+              const SizedBox(width: AppSize.s8),
               Text(
                 'Unpacking new stories...',
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(

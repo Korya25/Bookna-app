@@ -1,3 +1,4 @@
+import 'package:bookna_app/core/resources/app_values.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
@@ -9,13 +10,12 @@ class CustomSlider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
     return CarouselSlider.builder(
       itemCount: AppConstants.carouselSliderItemsCount,
       options: CarouselOptions(
         scrollPhysics: const BouncingScrollPhysics(),
         viewportFraction: 1,
-        height: size.height * 0.5,
+        height: AppSize.getScreenHeight(context) * 0.5,
         autoPlay: true,
       ),
       itemBuilder: itemBuilder,

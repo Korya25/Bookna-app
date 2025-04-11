@@ -51,16 +51,13 @@ class _AuthorInfoContent extends StatelessWidget {
                 physics: const BouncingScrollPhysics(),
                 padding: const EdgeInsets.all(AppPadding.p16),
                 child: Column(
+                  spacing: AppSize.s24,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     AuthorHeaderWidget(author: author),
-                    const SizedBox(height: 24),
                     AuthorRatingWidget(author: author),
-                    const SizedBox(height: 24),
                     AuthorReadingStatsWidget(author: author),
-                    const SizedBox(height: 24),
                     AuthorSubjectsWidget(author: author),
-                    const SizedBox(height: 24),
                     AuthorAdditionalInfoWidget(author: author),
                   ],
                 ),

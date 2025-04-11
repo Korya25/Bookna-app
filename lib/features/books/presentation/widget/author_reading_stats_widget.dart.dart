@@ -78,7 +78,7 @@ class _AuthorReadingStatsWidgetState extends State<AuthorReadingStatsWidget>
             AppStrings.readingStats,
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
-          const SizedBox(height: 16),
+          const SizedBox(height: AppSize.s16),
           if (stats.any((stat) => stat.value > 0)) ...[
             Wrap(
               spacing: 16,
@@ -118,11 +118,11 @@ class _AuthorReadingStatsWidgetState extends State<AuthorReadingStatsWidget>
                 duration: widget.animationDuration,
                 child: Icon(
                   stat.icon,
-                  size: 30,
+                  size: AppIconSize.s30,
                   color: _getIconColor(stat.title),
                 ),
               ),
-              const SizedBox(height: 8),
+              const SizedBox(height: AppSize.s8),
               FadeInAnimation(
                 delay: 500 + (index * 150),
                 duration: widget.animationDuration,
@@ -134,7 +134,7 @@ class _AuthorReadingStatsWidgetState extends State<AuthorReadingStatsWidget>
                   ),
                 ),
               ),
-              const SizedBox(height: 4),
+              const SizedBox(height: AppSize.s4),
               TweenAnimationBuilder<int>(
                 tween: IntTween(begin: 0, end: stat.value),
                 duration: widget.animationDuration,

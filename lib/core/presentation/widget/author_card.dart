@@ -27,7 +27,7 @@ class AuthorCard extends StatelessWidget {
               borderRadius: BorderRadius.circular(AppSize.s8),
               child: ImageWithShimmer(
                 imageUrl: imageUrl,
-                width: double.infinity,
+                width: AppSize.sInfinity,
                 height: AppSize.s130,
               ),
             ),

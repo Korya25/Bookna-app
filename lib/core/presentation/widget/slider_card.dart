@@ -22,7 +22,6 @@ class SliderCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
-    final size = MediaQuery.of(context).size;
     return GestureDetector(
       onTap: () {
         navigateToDetailsView(context, book);
@@ -38,7 +37,7 @@ class SliderCard extends StatelessWidget {
                 bottom: AppPadding.p10,
               ),
               child: SizedBox(
-                height: size.height * 0.55,
+                height: AppSize.getScreenHeight(context) * 0.55,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   crossAxisAlignment: CrossAxisAlignment.start,

@@ -18,12 +18,16 @@ class ErrorPage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Icon(Icons.error_outline, color: Colors.red, size: 80),
-              const SizedBox(height: 20),
+              const Icon(
+                Icons.error_outline,
+                color: Colors.red,
+                size: AppIconSize.s80,
+              ),
+              const SizedBox(height: AppSize.s20),
               Text('${AppStrings.oops}!'),
-              const SizedBox(height: 10),
+              const SizedBox(height: AppSize.s10),
               Text(message, textAlign: TextAlign.center),
-              const SizedBox(height: 30),
+              const SizedBox(height: AppSize.s30),
               Container(
                 padding: EdgeInsets.symmetric(
                   horizontal: AppPadding.p20,

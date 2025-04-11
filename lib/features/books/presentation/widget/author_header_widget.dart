@@ -1,6 +1,7 @@
 import 'package:bookna_app/core/data/network/api_constants.dart';
 import 'package:bookna_app/core/presentation/widget/image_with_shimmer.dart';
 import 'package:bookna_app/core/resources/app_strings.dart';
+import 'package:bookna_app/core/resources/app_values.dart';
 import 'package:bookna_app/features/books/domain/entities/author.dart';
 import 'package:flutter/material.dart';
 
@@ -22,10 +23,10 @@ class AuthorHeaderWidget extends StatelessWidget {
       children: [
         ImageWithShimmer(
           imageUrl: ApiConstants.authorPlaceholder,
-          width: 100,
-          height: 150,
+          width: AppSize.s100,
+          height: AppSize.s150,
         ),
-        const SizedBox(width: 20),
+        const SizedBox(width: AppSize.s20),
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -37,20 +38,20 @@ class AuthorHeaderWidget extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              const SizedBox(height: 8),
+              const SizedBox(height: AppSize.s8),
               if (author.topWork != null) ...[
                 Text(
                   "${AppStrings.topWork}: ${author.topWork}",
                   style: TextStyle(fontSize: 16, color: Colors.grey[700]),
                 ),
-                const SizedBox(height: 8),
+                const SizedBox(height: AppSize.s8),
               ],
               if (author.workCount != null) ...[
                 Text(
                   '${AppStrings.works}: ${author.workCount}',
                   style: TextStyle(fontSize: 16, color: Colors.grey[700]),
                 ),
-                const SizedBox(height: 8),
+                const SizedBox(height: AppSize.s8),
               ],
               if (author.alternateNames?.isNotEmpty ?? false) ...[
                 const Text(

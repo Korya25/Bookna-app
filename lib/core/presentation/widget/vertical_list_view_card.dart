@@ -36,7 +36,7 @@ class VerticalListViewCard extends StatelessWidget {
                   imageUrl: book.thumbnail,
 
                   width: AppSize.s110,
-                  height: double.infinity,
+                  height: AppSize.sInfinity,
                 ),
               ),
             ),
@@ -69,7 +69,7 @@ class VerticalListViewCard extends StatelessWidget {
                       const Icon(
                         Icons.star_rate_rounded,
                         color: AppColors.ratingIconColor,
-                        size: AppSize.s18,
+                        size: AppIconSize.s18,
                       ),
                       Text(
                         book.averageRating?.toString() ??
@@ -93,7 +93,7 @@ class VerticalListViewCard extends StatelessWidget {
             ),
             FavoriteIconBlocBuilder(
               book: book,
-              iconSize: AppSize.s24,
+              iconSize: AppIconSize.s24,
               iconContainerColor: Colors.transparent,
             ),
           ],

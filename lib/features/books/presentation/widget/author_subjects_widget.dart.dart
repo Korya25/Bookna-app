@@ -62,7 +62,7 @@ class _AuthorSubjectsWidgetState extends State<AuthorSubjectsWidget>
             AppStrings.topSubjects,
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
-          const SizedBox(height: 12),
+          const SizedBox(height: AppSize.s12),
           if (hasSubjects)
             Wrap(
               spacing: 8,

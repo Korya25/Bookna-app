@@ -43,7 +43,7 @@ class _SearchViewContent extends StatelessWidget {
           child: Column(
             children: [
               const SearchField(),
-              const SizedBox(height: AppPadding.p16),
+              const SizedBox(height: AppSize.s16),
               Flexible(
                 child: BlocBuilder<SearchCubit, SearchState>(
                   builder: (context, state) {

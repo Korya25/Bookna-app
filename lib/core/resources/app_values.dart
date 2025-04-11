@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class AppPadding {
   static const double p4 = 4.0;
   static const double p6 = 6.0;
@@ -16,27 +18,23 @@ class AppMargin {
   static const double m10 = 10.0;
 }
 
+// App Size for Height and Width
 class AppSize {
-  static const double s0 = 0.0;
+  static const double sInfinity = double.infinity;
   static const double s1 = 1.0;
   static const double s4 = 4.0;
   static const double s6 = 6.0;
   static const double s8 = 8.0;
   static const double s10 = 10.0;
   static const double s12 = 12.0;
-  static const double s14 = 14.0;
   static const double s15 = 15.0;
   static const double s16 = 16.0;
   static const double s18 = 18.0;
   static const double s20 = 20.0;
-  static const double s22 = 22.0;
   static const double s24 = 24.0;
   static const double s30 = 30.0;
-  static const double s36 = 36.0;
-  static const double s40 = 40.0;
   static const double s45 = 45.0;
   static const double s60 = 60.0;
-  static const double s84 = 91.0;
   static const double s100 = 100.0;
   static const double s110 = 110.0;
   static const double s120 = 120.0;
@@ -49,6 +47,25 @@ class AppSize {
   static const double s200 = 200.0;
   static const double s220 = 220.0;
   static const double s240 = 240.0;
-  static const double s400 = 400.0;
-  static const double s800 = 800.0;
+
+  static double getScreenWidth(BuildContext context) =>
+      MediaQuery.of(context).size.width;
+
+  static double getScreenHeight(BuildContext context) =>
+      MediaQuery.of(context).size.height;
+}
+
+// Icon Size
+class AppIconSize {
+  static const double s10 = 10.0;
+  static const double s12 = 12.0;
+  static const double s14 = 14.0;
+  static const double s16 = 16.0;
+  static const double s18 = 18.0;
+  static const double s20 = 20.0;
+  static const double s24 = 24.0;
+  static const double s25 = 25.0;
+  static const double s28 = 28.0;
+  static const double s30 = 30.0;
+  static const double s80 = 80.0;
 }

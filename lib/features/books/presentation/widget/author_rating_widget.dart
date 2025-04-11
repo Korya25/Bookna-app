@@ -40,10 +40,10 @@ class AuthorRatingWidget extends StatelessWidget {
             AppStrings.ratings,
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
-          const SizedBox(height: 8),
+          const SizedBox(height: AppSize.s8),
           if (ratingAverage != null || ratingCount > 0) ...[
             _buildRatingHeader(ratingAverage, ratingCount, context),
-            const SizedBox(height: 16),
+            const SizedBox(height: AppSize.s8),
           ] else
             _buildNoRatings(),
           _buildRatingBars(ratingCount, ratingDistribution, context),
@@ -78,7 +78,7 @@ class AuthorRatingWidget extends StatelessWidget {
                   ),
             ),
           ),
-        const SizedBox(width: 16),
+        const SizedBox(width: AppSize.s16),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -146,10 +146,10 @@ class AuthorRatingWidget extends StatelessWidget {
             duration: animationDuration,
             child: Text('$stars ${AppStrings.stars}'),
           ),
-          const SizedBox(width: 8),
+          const SizedBox(width: AppSize.s8),
           Expanded(
             child: Container(
-              height: 8,
+              height: AppSize.s8,
               decoration: BoxDecoration(
                 color: Colors.grey[200],
                 borderRadius: BorderRadius.circular(4),
@@ -172,7 +172,7 @@ class AuthorRatingWidget extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(width: 8),
+          const SizedBox(width: AppSize.s8),
           BounceInAnimation(
             delay: 600 + (index * 100),
             duration: animationDuration,
@@ -239,11 +239,19 @@ class StarRatingWidget extends StatelessWidget {
 
   Widget _buildStar(int index) {
     if (index < rating.floor()) {
-      return const Icon(Icons.star, color: Colors.amber, size: 20);
+      return const Icon(Icons.star, color: Colors.amber, size: AppIconSize.s20);
     } else if (index < rating.ceil()) {
-      return const Icon(Icons.star_half, color: Colors.amber, size: 20);
+      return const Icon(
+        Icons.star_half,
+        color: Colors.amber,
+        size: AppIconSize.s20,
+      );
     } else {
-      return const Icon(Icons.star_border, color: Colors.amber, size: 20);
+      return const Icon(
+        Icons.star_border,
+        color: Colors.amber,
+        size: AppIconSize.s20,
+      );
     }
   }
 }

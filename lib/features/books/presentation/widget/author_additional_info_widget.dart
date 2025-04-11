@@ -30,7 +30,7 @@ class AuthorAdditionalInfoWidget extends StatelessWidget {
             color: Colors.white,
           ),
         ),
-        const SizedBox(height: 12),
+        const SizedBox(height: AppSize.s12),
         Container(
           padding: const EdgeInsets.all(AppPadding.p12),
           decoration: BoxDecoration(
@@ -116,9 +116,9 @@ class AuthorAdditionalInfoWidget extends StatelessWidget {
               color: AppColors.secondaryBackground,
               borderRadius: BorderRadius.circular(8),
             ),
-            child: Icon(icon, color: Colors.white, size: 25),
+            child: Icon(icon, color: Colors.white, size: AppIconSize.s25),
           ),
-          const SizedBox(width: 12),
+          const SizedBox(width: AppSize.s12),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -130,7 +130,7 @@ class AuthorAdditionalInfoWidget extends StatelessWidget {
                     color: AppColors.secondaryText,
                   ),
                 ),
-                const SizedBox(height: 4),
+                SizedBox(height: AppSize.s4),
                 Text(
                   value,
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
@@ -146,7 +146,11 @@ class AuthorAdditionalInfoWidget extends StatelessWidget {
   }
 
   Widget _buildDivider() {
-    return Divider(height: 1, color: Colors.grey.withOpacity(0.2), indent: 48);
+    return Divider(
+      height: AppSize.s1,
+      color: Colors.grey.withOpacity(0.2),
+      indent: 48,
+    );
   }
 
   Widget _buildEmptyState() {

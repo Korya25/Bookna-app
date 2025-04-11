@@ -30,7 +30,7 @@ class SectionListViewCard extends StatelessWidget {
               borderRadius: BorderRadius.circular(AppSize.s8),
               child: ImageWithShimmer(
                 imageUrl: book.thumbnail,
-                width: double.infinity,
+                width: AppSize.sInfinity,
                 height: AppSize.s175,
               ),
             ),
@@ -50,7 +50,7 @@ class SectionListViewCard extends StatelessWidget {
                   const Icon(
                     Icons.star_rate_rounded,
                     color: AppColors.ratingIconColor,
-                    size: AppSize.s18,
+                    size: AppIconSize.s18,
                   ),
                   Text('${book.averageRating}/10', style: textTheme.bodySmall),
                 ],

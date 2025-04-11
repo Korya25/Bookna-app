@@ -22,7 +22,6 @@ class DetailsCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
-    final size = MediaQuery.of(context).size;
 
     return SafeArea(
       child: Stack(
@@ -31,7 +30,7 @@ class DetailsCard extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: AppPadding.p16),
             child: SizedBox(
-              height: size.height * 0.6,
+              height: AppSize.getScreenHeight(context) * 0.6,
               child: Padding(
                 padding: const EdgeInsets.only(bottom: AppPadding.p8),
                 child: Row(
@@ -45,7 +44,7 @@ class DetailsCard extends StatelessWidget {
                         children: [
                           ConstrainedBox(
                             constraints: BoxConstraints(
-                              maxWidth: size.width * 0.7,
+                              maxWidth: AppSize.getScreenWidth(context) * 0.7,
                             ),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -73,7 +72,7 @@ class DetailsCard extends StatelessWidget {
                               const Icon(
                                 Icons.star_rate_rounded,
                                 color: AppColors.ratingIconColor,
-                                size: AppSize.s18,
+                                size: AppIconSize.s18,
                               ),
                               Text(
                                 book.averageRating.toString(),
@@ -131,7 +130,7 @@ class DetailsCard extends StatelessWidget {
                               child: const Icon(
                                 Icons.chrome_reader_mode,
                                 color: AppColors.secondaryText,
-                                size: AppSize.s30,
+                                size: AppIconSize.s30,
                               ),
                             ),
                           ),
@@ -164,7 +163,7 @@ class DetailsCard extends StatelessWidget {
                     child: const Icon(
                       Icons.arrow_back_ios_new_rounded,
                       color: Colors.white70,
-                      size: AppSize.s20,
+                      size: AppIconSize.s20,
                     ),
                   ),
                 ),

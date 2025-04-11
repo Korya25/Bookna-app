@@ -9,7 +9,7 @@ class FavoriteIconBlocBuilder extends StatelessWidget {
   const FavoriteIconBlocBuilder({
     super.key,
     required this.book,
-    this.iconSize = AppSize.s24,
+    this.iconSize = AppIconSize.s24,
     this.iconContainerColor = AppColors.iconContainerColor,
     this.favoriteColor = Colors.red,
     this.notFavoriteColor = Colors.white70,
