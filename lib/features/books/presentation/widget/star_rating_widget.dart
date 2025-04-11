@@ -1,3 +1,4 @@
+import 'package:bookna_app/core/resources/app_colors.dart';
 import 'package:bookna_app/core/resources/app_values.dart';
 import 'package:flutter/material.dart';
 
@@ -13,19 +14,19 @@ class StarRatingWidget extends StatelessWidget {
         if (index < rating.floor()) {
           return const Icon(
             Icons.star,
-            color: Colors.amber,
+            color: AppColors.ratingIcon,
             size: AppIconSize.s20,
           );
         } else if (index < rating.ceil()) {
           return const Icon(
             Icons.star_half,
-            color: Colors.amber,
+            color: AppColors.ratingIcon,
             size: AppIconSize.s20,
           );
         } else {
           return const Icon(
             Icons.star_border,
-            color: Colors.amber,
+            color: AppColors.ratingIcon,
             size: AppIconSize.s20,
           );
         }

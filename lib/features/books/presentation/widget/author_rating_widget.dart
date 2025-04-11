@@ -1,5 +1,6 @@
 // ignore_for_file: deprecated_member_use
 
+import 'package:bookna_app/core/resources/app_colors.dart';
 import 'package:bookna_app/core/resources/app_values.dart';
 import 'package:flutter/material.dart';
 import 'package:bookna_app/core/resources/app_strings.dart';
@@ -73,7 +74,7 @@ class AuthorRatingWidget extends StatelessWidget {
                     style: const TextStyle(
                       fontSize: 36,
                       fontWeight: FontWeight.bold,
-                      color: Colors.amber,
+                      color: AppColors.ratingIcon,
                     ),
                   ),
             ),
@@ -164,7 +165,7 @@ class AuthorRatingWidget extends StatelessWidget {
                       alignment: Alignment.centerLeft,
                       child: Container(
                         decoration: BoxDecoration(
-                          color: getRatingColor(stars),
+                          color: AppColors.getRatingColor(stars),
                           borderRadius: BorderRadius.circular(AppRadius.r4),
                         ),
                       ),
@@ -183,7 +184,7 @@ class AuthorRatingWidget extends StatelessWidget {
                   (_, value, __) => Text(
                     '${value.toStringAsFixed(1)}%',
                     style: TextStyle(
-                      color: getRatingColor(stars).withOpacity(0.8),
+                      color: AppColors.getRatingColor(stars).withOpacity(0.8),
                       fontWeight: FontWeight.w600,
                     ),
                   ),
@@ -192,17 +193,6 @@ class AuthorRatingWidget extends StatelessWidget {
         ],
       ),
     );
-  }
-
-  Color getRatingColor(int stars) {
-    const colors = [
-      Colors.red,
-      Colors.orange,
-      Colors.yellow,
-      Colors.lightGreen,
-      Colors.green,
-    ];
-    return colors[stars - 1];
   }
 }
 
@@ -239,17 +229,21 @@ class StarRatingWidget extends StatelessWidget {
 
   Widget _buildStar(int index) {
     if (index < rating.floor()) {
-      return const Icon(Icons.star, color: Colors.amber, size: AppIconSize.s20);
+      return const Icon(
+        Icons.star,
+        color: AppColors.ratingIcon,
+        size: AppIconSize.s20,
+      );
     } else if (index < rating.ceil()) {
       return const Icon(
         Icons.star_half,
-        color: Colors.amber,
+        color: AppColors.ratingIcon,
         size: AppIconSize.s20,
       );
     } else {
       return const Icon(
         Icons.star_border,
-        color: Colors.amber,
+        color: AppColors.ratingIcon,
         size: AppIconSize.s20,
       );
     }

@@ -49,7 +49,7 @@ class SectionListViewCard extends StatelessWidget {
                 children: [
                   const Icon(
                     Icons.star_rate_rounded,
-                    color: AppColors.ratingIconColor,
+                    color: AppColors.ratingIcon,
                     size: AppIconSize.s18,
                   ),
                   Text('${book.averageRating}/10', style: textTheme.bodySmall),

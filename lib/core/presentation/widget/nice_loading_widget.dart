@@ -1,7 +1,7 @@
-// ignore_for_file: deprecated_member_use
-
-import 'package:bookna_app/core/resources/app_values.dart';
+import 'package:bookna_app/core/resources/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:bookna_app/core/resources/app_strings.dart';
+import 'package:bookna_app/core/resources/app_values.dart';
 
 class NiceLoadingWidget extends StatefulWidget {
   const NiceLoadingWidget({super.key});
@@ -13,18 +13,19 @@ class NiceLoadingWidget extends StatefulWidget {
 class _NiceLoadingWidgetState extends State<NiceLoadingWidget>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
-  late Animation<double> _opacity;
+  late Animation<double> _animation;
 
   @override
   void initState() {
     super.initState();
     _controller = AnimationController(
-      duration: const Duration(milliseconds: 1200),
+      duration: const Duration(milliseconds: 1000),
       vsync: this,
     )..repeat(reverse: true);
-    _opacity = Tween<double>(
-      begin: 0.4,
-      end: 1.0,
+
+    _animation = Tween<double>(
+      begin: 0.9,
+      end: 1.1,
     ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
   }
 
@@ -37,39 +38,32 @@ class _NiceLoadingWidgetState extends State<NiceLoadingWidget>
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: FadeTransition(
-        opacity: _opacity,
+      child: ScaleTransition(
+        scale: _animation,
         child: Container(
           padding: const EdgeInsets.symmetric(
             horizontal: AppPadding.p16,
             vertical: AppPadding.p8,
           ),
           decoration: BoxDecoration(
-            color: Colors.blueGrey.withOpacity(0.9),
+            color: AppColors.secondary,
             borderRadius: BorderRadius.circular(AppRadius.r20),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withOpacity(0.1),
-                blurRadius: AppRadius.r8,
-                offset: const Offset(0, 2),
-              ),
-            ],
           ),
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              const Icon(
-                Icons.book_rounded,
-                color: Colors.white,
-                size: AppIconSize.s20,
+              RotationTransition(
+                turns: Tween(begin: 0.0, end: 1.0).animate(_controller),
+                child: const Icon(
+                  Icons.book_rounded,
+                  color: AppColors.activeIcon,
+                  size: AppIconSize.s20,
+                ),
               ),
               const SizedBox(width: AppSize.s8),
               Text(
-                'Unpacking new stories...',
-                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w500,
-                ),
+                AppStrings.loadMoreBooks,
+                style: Theme.of(context).textTheme.bodyMedium,
               ),
             ],
           ),

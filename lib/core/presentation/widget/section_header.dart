@@ -29,11 +29,11 @@ class SectionHeader extends StatelessWidget {
             onTap: onSeeAllTap,
             child: Row(
               children: [
-                Text(AppStrings.seeAll, style: textTheme.bodyLarge),
+                Text(AppStrings.seeAll, style: textTheme.bodySmall),
                 const Icon(
                   Icons.arrow_forward_ios_rounded,
                   size: AppIconSize.s12,
-                  color: AppColors.primaryText,
+                  color: AppColors.disabledIcon,
                 ),
               ],
             ),

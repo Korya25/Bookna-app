@@ -1,3 +1,4 @@
+import 'package:bookna_app/core/resources/app_colors.dart';
 import 'package:bookna_app/core/resources/app_values.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -23,7 +24,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                 icon: const Icon(
                   Icons.arrow_back_ios_new_rounded,
                   size: AppIconSize.s20,
-                  color: Colors.white70,
+                  color: AppColors.disabledIcon,
                 ),
               )
               : null,

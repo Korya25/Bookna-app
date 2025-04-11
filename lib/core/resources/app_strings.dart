@@ -70,6 +70,7 @@ class AppStrings {
   static const String kfavoritesBox = 'favorites_box';
 
   static const String favoritesBox = 'favorites_box';
+  static const String loadMoreBooks = 'Load More Books';
 
   // Favorite Screen Strings
   static const String noFavorites = 'Your favorites list is empty';

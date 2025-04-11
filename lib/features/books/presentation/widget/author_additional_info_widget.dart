@@ -38,7 +38,7 @@ class AuthorAdditionalInfoWidget extends StatelessWidget {
             borderRadius: BorderRadius.circular(AppRadius.r12),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.1),
+                color: AppColors.black.withOpacity(0.1),
                 blurRadius: AppRadius.r4,
                 offset: const Offset(0, 2),
               ),
@@ -116,7 +116,11 @@ class AuthorAdditionalInfoWidget extends StatelessWidget {
               color: AppColors.secondaryBackground,
               borderRadius: BorderRadius.circular(AppRadius.r8),
             ),
-            child: Icon(icon, color: Colors.white, size: AppIconSize.s24),
+            child: Icon(
+              icon,
+              color: AppColors.defaultIcon,
+              size: AppIconSize.s24,
+            ),
           ),
           const SizedBox(width: AppSize.s12),
           Expanded(
@@ -146,11 +150,7 @@ class AuthorAdditionalInfoWidget extends StatelessWidget {
   }
 
   Widget _buildDivider() {
-    return Divider(
-      height: AppSize.s1,
-      color: Colors.grey.withOpacity(0.2),
-      indent: 48,
-    );
+    return Divider(height: AppSize.s1, color: AppColors.divider, indent: 48);
   }
 
   Widget _buildEmptyState() {

@@ -11,8 +11,8 @@ ThemeData getApplicationTheme() {
     // Bottom nav bar theme
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
       backgroundColor: AppColors.secondaryBackground,
-      selectedItemColor: AppColors.primary,
-      unselectedItemColor: AppColors.primaryText,
+      selectedItemColor: AppColors.selectedItemColor,
+      unselectedItemColor: AppColors.unselectedItemColor,
       type: BottomNavigationBarType.fixed,
     ),
 
@@ -40,7 +40,7 @@ ThemeData getApplicationTheme() {
       bodyMedium: _getTextStyle(fontSize: 14, color: AppColors.secondaryText),
       bodySmall: _getTextStyle(
         fontSize: 12,
-        fontWeight: FontWeight.w400,
+        fontWeight: FontWeight.w500,
         color: AppColors.primaryText,
       ),
     ),

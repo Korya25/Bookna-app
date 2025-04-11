@@ -10,16 +10,10 @@ class FavoriteIconBlocBuilder extends StatelessWidget {
     super.key,
     required this.book,
     this.iconSize = AppIconSize.s24,
-    this.iconContainerColor = AppColors.iconContainerColor,
-    this.favoriteColor = Colors.red,
-    this.notFavoriteColor = Colors.white70,
   });
 
   final Book book;
   final double iconSize;
-  final Color iconContainerColor;
-  final Color favoriteColor;
-  final Color notFavoriteColor;
 
   @override
   Widget build(BuildContext context) {
@@ -35,13 +29,13 @@ class FavoriteIconBlocBuilder extends StatelessWidget {
             padding: const EdgeInsets.all(AppPadding.p8),
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: iconContainerColor,
+              color: AppColors.primaryIconContainer,
             ),
             child: Icon(
               isFavorite
                   ? Icons.bookmark_added_rounded
                   : Icons.bookmark_add_rounded,
-              color: isFavorite ? favoriteColor : notFavoriteColor,
+              color: isFavorite ? AppColors.activeIcon : AppColors.disabledIcon,
               size: iconSize,
             ),
           ),

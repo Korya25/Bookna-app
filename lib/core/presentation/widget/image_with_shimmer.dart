@@ -24,9 +24,9 @@ class ImageWithShimmer extends StatelessWidget {
       fit: BoxFit.cover,
       placeholder:
           (_, __) => Shimmer.fromColors(
-            baseColor: Colors.grey[850]!,
-            highlightColor: Colors.grey[800]!,
-            child: Container(height: height, color: AppColors.secondaryText),
+            baseColor: AppColors.shimmerBase,
+            highlightColor: AppColors.shimmerHighlight,
+            child: Container(height: height, color: AppColors.defaultIcon),
           ),
       errorWidget:
           (_, __, ___) => const Icon(Icons.error, color: AppColors.error),

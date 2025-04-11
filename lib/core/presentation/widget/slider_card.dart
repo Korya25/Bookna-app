@@ -75,8 +75,8 @@ class SliderCard extends StatelessWidget {
                                 ),
                                 color:
                                     indexDot == itemIndex
-                                        ? AppColors.primary
-                                        : AppColors.inactiveColor,
+                                        ? AppColors.activeDot
+                                        : AppColors.inactiveDot,
                               ),
                             );
                           },

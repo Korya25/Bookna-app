@@ -1,5 +1,6 @@
 // ignore_for_file: deprecated_member_use, library_private_types_in_public_api
 
+import 'package:bookna_app/core/resources/app_colors.dart';
 import 'package:bookna_app/core/resources/app_strings.dart';
 import 'package:bookna_app/core/resources/app_values.dart';
 import 'package:bookna_app/features/books/domain/entities/author.dart';
@@ -111,7 +112,7 @@ class _AuthorSubjectsWidgetState extends State<AuthorSubjectsWidget>
       duration: widget.animationDuration,
       child: Chip(
         label: Text(subject, style: const TextStyle(fontSize: 14)),
-        backgroundColor: Colors.blue.withOpacity(0.1),
+        backgroundColor: AppColors.authorSubjectCardBackground,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(AppRadius.r8),
         ),

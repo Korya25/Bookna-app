@@ -1,3 +1,4 @@
+import 'package:bookna_app/core/resources/app_colors.dart';
 import 'package:bookna_app/core/resources/app_values.dart';
 import 'package:flutter/material.dart';
 
@@ -9,7 +10,7 @@ class LoadingWidget extends StatelessWidget {
     return Center(
       child: const CircularProgressIndicator(
         strokeWidth: AppSize.s4,
-        valueColor: AlwaysStoppedAnimation<Color>(Colors.red),
+        valueColor: AlwaysStoppedAnimation<Color>(AppColors.activeIcon),
       ),
     );
   }

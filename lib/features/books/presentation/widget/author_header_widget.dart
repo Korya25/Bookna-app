@@ -1,4 +1,5 @@
 import 'package:bookna_app/core/data/network/api_constants.dart';
+import 'package:bookna_app/core/presentation/widget/arrow_back_ios_buttom.dart';
 import 'package:bookna_app/core/presentation/widget/image_with_shimmer.dart';
 import 'package:bookna_app/core/resources/app_strings.dart';
 import 'package:bookna_app/core/resources/app_values.dart';
@@ -21,11 +22,17 @@ class AuthorHeaderWidget extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        ImageWithShimmer(
-          imageUrl: ApiConstants.authorPlaceholder,
-          width: AppSize.s100,
-          height: AppSize.s150,
+        Stack(
+          children: [
+            ImageWithShimmer(
+              imageUrl: ApiConstants.authorPlaceholder,
+              width: AppSize.s100,
+              height: AppSize.s150,
+            ),
+            ArrowBackIosButtom(),
+          ],
         ),
+
         const SizedBox(width: AppSize.s20),
         Expanded(
           child: Column(

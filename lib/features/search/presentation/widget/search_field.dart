@@ -30,7 +30,7 @@ class _SearchFieldState extends State<SearchField> {
     final textTheme = Theme.of(context).textTheme;
     return TextFormField(
       controller: _textController,
-      cursorColor: AppColors.primaryText,
+      cursorColor: AppColors.textFieldCursor,
       cursorWidth: AppSize.s1,
       style: textTheme.bodyLarge,
       onChanged: (title) {
@@ -40,19 +40,19 @@ class _SearchFieldState extends State<SearchField> {
       },
       decoration: InputDecoration(
         focusedBorder: OutlineInputBorder(
-          borderSide: const BorderSide(color: AppColors.primaryText),
+          borderSide: const BorderSide(color: AppColors.textFieldBorder),
           borderRadius: BorderRadius.circular(AppRadius.r8),
         ),
         enabledBorder: OutlineInputBorder(
-          borderSide: const BorderSide(color: AppColors.primaryText),
+          borderSide: const BorderSide(color: AppColors.textFieldBorder),
           borderRadius: BorderRadius.circular(AppRadius.r8),
         ),
         prefixIcon: const Icon(
           Icons.search_rounded,
-          color: AppColors.primaryText,
+          color: AppColors.disabledIcon,
         ),
         suffixIcon: IconButton(
-          icon: const Icon(Icons.clear_rounded, color: AppColors.primaryText),
+          icon: const Icon(Icons.clear_rounded, color: AppColors.disabledIcon),
           onPressed: () {
             _textController.clear();
             context.read<SearchCubit>().getBooksByTitle('');

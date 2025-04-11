@@ -108,7 +108,7 @@ class _AuthorReadingStatsWidgetState extends State<AuthorReadingStatsWidget>
       delay: 300 + (index * 150), // Adjusted delay for smoother sequence
       duration: widget.animationDuration,
       child: Card(
-        color: AppColors.secondaryBackground,
+        color: AppColors.primaryBackground,
         child: Padding(
           padding: const EdgeInsets.all(AppPadding.p16),
           child: Column(
@@ -119,7 +119,7 @@ class _AuthorReadingStatsWidgetState extends State<AuthorReadingStatsWidget>
                 child: Icon(
                   stat.icon,
                   size: AppIconSize.s30,
-                  color: _getIconColor(stat.title),
+                  color: AppColors.getIconColor(stat.title),
                 ),
               ),
               const SizedBox(height: AppSize.s8),
@@ -154,21 +154,6 @@ class _AuthorReadingStatsWidgetState extends State<AuthorReadingStatsWidget>
         ),
       ),
     );
-  }
-
-  Color _getIconColor(String title) {
-    switch (title) {
-      case AppStrings.wantToRead:
-        return Colors.blue;
-      case AppStrings.currentlyReading:
-        return Colors.orange;
-      case AppStrings.alreadyRead:
-        return Colors.green;
-      case AppStrings.totalLogs:
-        return Colors.purple;
-      default:
-        return Colors.blue;
-    }
   }
 }
 

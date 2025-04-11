@@ -1,5 +1,6 @@
 // ignore_for_file: use_build_context_synchronously, deprecated_member_use
 
+import 'package:bookna_app/core/presentation/widget/arrow_back_ios_buttom.dart';
 import 'package:bookna_app/core/presentation/widget/favorite_icon_bloc_builder.dart';
 import 'package:bookna_app/core/presentation/widget/slider_card_image.dart';
 import 'package:bookna_app/core/resources/app_colors.dart';
@@ -71,7 +72,7 @@ class DetailsCard extends StatelessWidget {
                             children: [
                               const Icon(
                                 Icons.star_rate_rounded,
-                                color: AppColors.ratingIconColor,
+                                color: AppColors.ratingIcon,
                                 size: AppIconSize.s18,
                               ),
                               Text(
@@ -114,23 +115,16 @@ class DetailsCard extends StatelessWidget {
                             borderRadius: BorderRadius.circular(AppRadius.r25),
                             child: AnimatedContainer(
                               duration: const Duration(milliseconds: 200),
-                              height: AppSize.s45,
-                              width: AppSize.s45,
+                              height: AppSize.s40,
+                              width: AppSize.s35,
                               decoration: BoxDecoration(
-                                color: AppColors.primary,
+                                color: AppColors.secondaryIconContainer,
                                 shape: BoxShape.circle,
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.black.withOpacity(0.2),
-                                    blurRadius: AppRadius.r6,
-                                    offset: const Offset(0, 3),
-                                  ),
-                                ],
                               ),
                               child: const Icon(
                                 Icons.chrome_reader_mode,
-                                color: AppColors.secondaryText,
-                                size: AppIconSize.s30,
+                                color: AppColors.defaultIcon,
+                                size: AppIconSize.s24,
                               ),
                             ),
                           ),
@@ -150,23 +144,7 @@ class DetailsCard extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                InkWell(
-                  onTap: () {
-                    Navigator.of(context).pop();
-                  },
-                  child: Container(
-                    padding: const EdgeInsets.all(AppPadding.p8),
-                    decoration: const BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: AppColors.iconContainerColor,
-                    ),
-                    child: const Icon(
-                      Icons.arrow_back_ios_new_rounded,
-                      color: Colors.white70,
-                      size: AppIconSize.s20,
-                    ),
-                  ),
-                ),
+                ArrowBackIosButtom(),
                 FavoriteIconBlocBuilder(book: book),
               ],
             ),

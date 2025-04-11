@@ -26,7 +26,12 @@ class ErrorPage extends StatelessWidget {
               const SizedBox(height: AppSize.s20),
               Text('${AppStrings.oops}!'),
               const SizedBox(height: AppSize.s10),
-              Text(message, textAlign: TextAlign.center),
+              Text(
+                message,
+                overflow: TextOverflow.ellipsis,
+                maxLines: 7,
+                textAlign: TextAlign.center,
+              ),
               const SizedBox(height: AppSize.s30),
               Container(
                 padding: EdgeInsets.symmetric(

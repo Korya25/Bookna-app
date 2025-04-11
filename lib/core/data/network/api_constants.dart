@@ -1,5 +1,4 @@
 class ApiConstants {
-  static const apiKey = 'AIzaSyA7l-6CU0iPRgxgSgHOAJu1hTHAi7o7xUM';
   static const baseUrl = 'https://www.googleapis.com/books/v1';
   static const itemsPerPage = 10;
 
@@ -15,31 +14,31 @@ class ApiConstants {
 
   // Books Path
   static const String getNewestBooksPath =
-      '$baseUrl/volumes?q=subject:fiction&orderBy=newest&startIndex=0&maxResults=$itemsPerPage&key=$apiKey';
+      '$baseUrl/volumes?q=subject:fiction&orderBy=newest&startIndex=0&maxResults=$itemsPerPage';
 
   static String getPopularBooksPath([int page = 1]) {
     final startIndex = (page - 1) * itemsPerPage;
-    return '$baseUrl/volumes?q=subject:fiction+intitle:bestseller&orderBy=relevance&startIndex=$startIndex&maxResults=$itemsPerPage&key=$apiKey';
+    return '$baseUrl/volumes?q=subject:fiction+intitle:bestseller&orderBy=relevance&startIndex=$startIndex&maxResults=$itemsPerPage';
   }
 
   static String getTopRatedBooksPath([int page = 1]) {
     final startIndex = (page - 1) * itemsPerPage;
-    return '$baseUrl/volumes?q=subject:fiction+intitle:award&orderBy=relevance&startIndex=$startIndex&maxResults=$itemsPerPage&key=$apiKey';
+    return '$baseUrl/volumes?q=subject:fiction+intitle:award&orderBy=relevance&startIndex=$startIndex&maxResults=$itemsPerPage';
   }
 
   static String getBooksByCategoryPath(String category, {int page = 1}) {
     final startIndex = (page - 1) * itemsPerPage;
-    return '$baseUrl/volumes?q=subject:$category&startIndex=$startIndex&maxResults=$itemsPerPage&key=$apiKey';
+    return '$baseUrl/volumes?q=subject:$category&startIndex=$startIndex&maxResults=$itemsPerPage';
   }
 
   static String getBookDetailsPath(String bookId) {
-    return '$baseUrl/volumes/$bookId?key=$apiKey';
+    return '$baseUrl/volumes/$bookId';
   }
 
   static String getBooksByTitlePath(String title, {int page = 1}) {
     final startIndex = (page - 1) * itemsPerPage;
     final encodedTitle = Uri.encodeComponent(title);
-    return '$baseUrl/volumes?q=intitle:$encodedTitle&startIndex=$startIndex&maxResults=$itemsPerPage&key=$apiKey';
+    return '$baseUrl/volumes?q=intitle:$encodedTitle&startIndex=$startIndex&maxResults=$itemsPerPage';
   }
   // Author Path
 
