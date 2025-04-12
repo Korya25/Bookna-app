@@ -13,8 +13,8 @@ class BooknaApp extends StatelessWidget {
     return BlocProvider(
       create: (context) => FavoriteCubit(),
       child: MaterialApp.router(
-        title: AppStrings.appTitle,
         debugShowCheckedModeBanner: false,
+        title: AppStrings.appTitle,
         theme: getApplicationTheme(),
         routerConfig: AppRouter.router,
       ),

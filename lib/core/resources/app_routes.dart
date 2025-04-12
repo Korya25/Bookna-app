@@ -1,16 +1,18 @@
 class AppRoutes {
+  static const String splash = 'splash';
+
   static const String books = 'books';
   static const String bookDetails = 'bookDetails';
   static const String popularBooks = 'popularBooks';
   static const String topRatedBooks = 'topRatedBooks';
   static const String authorInfo = 'authorInfo';
 
-
   static const String search = 'search';
   static const String favorite = 'favorite';
 }
 
 class AppPaths {
+  static const String splash = '/splash';
   static const String books = '/books';
   static const String bookDetails = 'details/:bookId';
   static const String popularBooks = 'popular';

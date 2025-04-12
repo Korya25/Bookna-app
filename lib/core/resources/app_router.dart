@@ -7,10 +7,9 @@ import 'package:bookna_app/features/books/presentation/views/books_main_view.dar
 import 'package:bookna_app/features/books/presentation/views/books_view.dart';
 import 'package:bookna_app/features/books/presentation/views/popular_books_view.dart';
 import 'package:bookna_app/features/books/presentation/views/top_rated_books_view.dart';
-
 import 'package:bookna_app/features/favorite/presentation/views/favorite_view.dart';
 import 'package:bookna_app/features/search/presentation/views/search_view.dart';
-
+import 'package:bookna_app/features/splash/presentation/views/splash_view.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -21,9 +20,17 @@ class AppRouter {
 
   static final GoRouter router = GoRouter(
     navigatorKey: _rootNavigatorKey,
-    initialLocation: AppPaths.books,
+    initialLocation: AppPaths.splash,
     debugLogDiagnostics: true,
     routes: [
+      // Splash screen route
+      GoRoute(
+        path: AppPaths.splash,
+        name: AppRoutes.splash,
+        pageBuilder:
+            (context, state) => const MaterialPage(child: SplashScreen()),
+      ),
+
       // Main shell route with bottom navigation
       ShellRoute(
         navigatorKey: _shellNavigatorKey,
@@ -81,7 +88,6 @@ class AppRouter {
               ),
             ],
           ),
-        
 
           // Favorite section
           GoRoute(

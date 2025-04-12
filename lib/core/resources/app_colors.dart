@@ -5,9 +5,7 @@ import 'package:flutter/material.dart';
 class AppColors {
   // ========== Core Colors ==========
   static const Color primary = Color(0xffef233c);
-  static const Color secondary = Color(
-    0xff272b30,
-  ); // Fixed spelling: seconary → secondary
+  static const Color secondary = Color(0xff272b30);
   static const Color error = Colors.red;
   static const Color authorSubjectCardBackground = Color.fromARGB(
     255,

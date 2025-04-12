@@ -3,6 +3,7 @@ class AppStrings {
   // App Info & Error Messages
   // =====================
   static const String appTitle = 'BookFlick';
+  static const String appSubtitle = 'Discover Your Next Favorite Read';
   static const String anunknownerroroccurred = 'An unknown error occurred';
   static const String booksFeatureScopeinitialized =
       "BooksFeatureScope initialized";
