@@ -22,7 +22,7 @@ class BookDetailsView extends StatelessWidget {
           if (book.description != null)
             OverviewSectionWidget(overview: book.description),
           if (book.authors != null) AuthorSectionWidget(book: book),
-          SimilarBlocConsumerAndProvder(book: book,),
+          SimilarBlocConsumerAndProvider(book: book),
         ],
       ),
     );

@@ -12,7 +12,7 @@ class CircleDot extends StatelessWidget {
       child: Container(
         width: AppSize.s6,
         height: AppSize.s6,
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           shape: BoxShape.circle,
           color: AppColors.dotBackground,
         ),

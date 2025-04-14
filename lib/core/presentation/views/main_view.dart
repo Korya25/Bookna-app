@@ -19,7 +19,11 @@ class _MainViewState extends State<MainView> {
       icon: Icons.book,
       routeName: AppRoutes.books,
     ),
-   
+    NavItemModel(
+      label: AppStrings.category,
+      icon: Icons.category_rounded,
+      routeName: AppRoutes.category,
+    ),
     NavItemModel(
       label: AppStrings.search,
       icon: Icons.search_rounded,
@@ -60,14 +64,15 @@ class _MainViewState extends State<MainView> {
 
   BottomNavigationBar _buildBottomNavBar(BuildContext context) {
     return BottomNavigationBar(
-      items: _navItems
-          .map(
-            (item) => BottomNavigationBarItem(
-              label: item.label,
-              icon: Icon(item.icon),
-            ),
-          )
-          .toList(),
+      items:
+          _navItems
+              .map(
+                (item) => BottomNavigationBarItem(
+                  label: item.label,
+                  icon: Icon(item.icon),
+                ),
+              )
+              .toList(),
       currentIndex: _getSelectedIndex(context),
       onTap: (index) => _onItemTapped(index, context),
       type: BottomNavigationBarType.fixed,

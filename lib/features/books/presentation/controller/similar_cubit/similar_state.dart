@@ -15,3 +15,8 @@ class SimilarBooksError extends SimilarState {
   final String message;
   SimilarBooksError(this.message);
 }
+
+class SimilarBooksLoadingMore extends SimilarState {
+  final List<Book> books;
+  SimilarBooksLoadingMore(this.books);
+}

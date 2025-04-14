@@ -9,6 +9,7 @@ class AppRoutes {
 
   static const String search = 'search';
   static const String favorite = 'favorite';
+  static const String category = 'category';
 }
 
 class AppPaths {
@@ -24,4 +25,5 @@ class AppPaths {
   static const String novelsDetails = 'details/:novelId';
   static const String favorite = '/favorite';
   static const String search = '/search';
+  static const String category = '/category';
 }

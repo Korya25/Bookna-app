@@ -1,12 +1,10 @@
 class AppStrings {
-  // =====================
-  // App Info & Error Messages
-  // =====================
+  // App Info
   static const String appTitle = 'BookFlick';
   static const String appSubtitle = 'Discover Your Next Favorite Read';
+
+  // Error Messages
   static const String anunknownerroroccurred = 'An unknown error occurred';
-  static const String booksFeatureScopeinitialized =
-      "BooksFeatureScope initialized";
   static const String errorMessage = 'Something went wrong';
   static const String notAvailable = 'Not Available';
   static const String oops = 'Oops';
@@ -14,9 +12,7 @@ class AppStrings {
   static const String tryAgainLater = 'Please try again later';
   static const String unknown = 'Unknown';
 
-  // =====================
   // Book Related
-  // =====================
   static const String books = 'Books';
   static const String fiction = 'fiction';
   static const String loadMoreBooks = 'Load More Books';
@@ -26,10 +22,10 @@ class AppStrings {
   static const String topRatedBooks = 'Top Rated Books';
   static const String topRatedBooksError = 'TopRatedBooks Error:';
   static const String works = 'Works';
+  static const String category = 'Category';
+  static const String categories = 'Categories';
 
-  // =====================
-  // Book Status & Statistics
-  // =====================
+  // Book Status
   static const String alreadyRead = 'Already read';
   static const String currentlyReading = 'Currently reading';
   static const String noRatingsAvailable = 'No ratings available';
@@ -38,9 +34,7 @@ class AppStrings {
   static const String totalLogs = 'Total Logs';
   static const String wantToRead = 'Want to read';
 
-  // =====================
   // Author Information
-  // =====================
   static const String alsoKnownAs = 'Also known as';
   static const String author = 'Author';
   static const String authorType = 'Author Type';
@@ -49,9 +43,7 @@ class AppStrings {
   static const String topWork = 'Top Work';
   static const String unknownAuthor = 'Unknown Author';
 
-  // =====================
-  // UI Elements & Actions
-  // =====================
+  // UI Elements
   static const String additionalInformation = 'Additional Information';
   static const String basedOn = 'Based on';
   static const String description = 'Description';
@@ -72,9 +64,7 @@ class AppStrings {
   static const String stars = 'Stars';
   static const String topSubjects = 'Top Subjects';
 
-  // =====================
   // Search & Favorites
-  // =====================
   static const String favoriteEmpty = 'Favorites are empty';
   static const String favoriteText =
       'After adding books to favorites, they will appear here.';
@@ -84,8 +74,28 @@ class AppStrings {
   static const String searchText =
       'Search for books and authors. We will show you the best results.';
 
-  // =====================
   // Date Format
-  // =====================
   static const String yyyy = 'yyyy';
+
+  static const List<String> categoriesList = [
+    'Fiction',
+    'Fantasy',
+    'Science Fiction',
+    'Mystery',
+    'Romance',
+    'Thriller',
+    'Biography',
+    'History',
+    'Science',
+    'Technology',
+    'Business',
+    'Self-Help',
+    'Children',
+    'Cookbooks',
+    'Poetry',
+    'Art',
+    'Travel',
+  ];
+
+  static const String defaultCategory = 'Fiction';
 }

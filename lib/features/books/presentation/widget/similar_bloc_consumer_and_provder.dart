@@ -11,14 +11,10 @@ import 'package:bookna_app/features/books/domain/usecase/get_books_by_category_p
 import 'package:bookna_app/features/books/presentation/controller/similar_cubit/similar_cubit.dart';
 import 'package:bookna_app/features/books/presentation/controller/similar_cubit/similar_state.dart';
 
-class SimilarBlocConsumerAndProvder extends StatelessWidget {
+class SimilarBlocConsumerAndProvider extends StatelessWidget {
   final Book book;
 
-  const SimilarBlocConsumerAndProvder({
-    super.key,
-    required this.book,
-    SimilarState? state,
-  });
+  const SimilarBlocConsumerAndProvider({super.key, required this.book});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +22,10 @@ class SimilarBlocConsumerAndProvder extends StatelessWidget {
       create:
           (context) => SimilarCubit(
             GetBooksByCategoryPathUseCase(getIt.get<BooksRepoImpl>()),
-          )..getBooksBycategory(book.categories?.first ?? AppStrings.fiction),
+          )..fetchBooksByCategory(
+            book.categories?.first ?? AppStrings.fiction,
+            isInitial: true,
+          ),
       child: BlocConsumer<SimilarCubit, SimilarState>(
         listener: (context, state) {
           if (state is SimilarBooksError) {
@@ -45,8 +44,9 @@ class SimilarBlocConsumerAndProvder extends StatelessWidget {
               child: ErrorPage(
                 message: state.message,
                 onRetry:
-                    () => context.read<SimilarCubit>().getBooksBycategory(
+                    () => context.read<SimilarCubit>().fetchBooksByCategory(
                       book.categories?.first ?? AppStrings.fiction,
+                      isInitial: true,
                     ),
               ),
             );

@@ -9,7 +9,7 @@ ThemeData getApplicationTheme() {
     scaffoldBackgroundColor: AppColors.primaryBackground,
 
     // Bottom nav bar theme
-    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
       backgroundColor: AppColors.secondaryBackground,
       selectedItemColor: AppColors.selectedItemColor,
       unselectedItemColor: AppColors.unselectedItemColor,

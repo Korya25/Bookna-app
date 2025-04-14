@@ -6,6 +6,7 @@ import 'package:bookna_app/features/books/presentation/views/book_details_view.d
 import 'package:bookna_app/features/books/presentation/views/books_view.dart';
 import 'package:bookna_app/features/books/presentation/views/popular_books_view.dart';
 import 'package:bookna_app/features/books/presentation/views/top_rated_books_view.dart';
+import 'package:bookna_app/features/category/presentation/views/category_view.dart';
 import 'package:bookna_app/features/favorite/presentation/views/favorite_view.dart';
 import 'package:bookna_app/features/search/presentation/views/search_view.dart';
 import 'package:bookna_app/features/splash/presentation/views/splash_view.dart';
@@ -86,6 +87,15 @@ class AppRouter {
                 ],
               ),
             ],
+          ),
+
+          //  Category section
+          GoRoute(
+            path: AppPaths.category,
+            name: AppRoutes.category,
+            pageBuilder:
+                (context, state) =>
+                    const NoTransitionPage(child: CategoryView()),
           ),
 
           // Favorite section
