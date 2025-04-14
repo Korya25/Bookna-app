@@ -3,7 +3,6 @@ import 'package:bookna_app/core/resources/app_routes.dart';
 import 'package:bookna_app/features/books/domain/entities/book.dart';
 import 'package:bookna_app/features/books/presentation/views/author_info_view.dart';
 import 'package:bookna_app/features/books/presentation/views/book_details_view.dart';
-import 'package:bookna_app/features/books/presentation/views/books_main_view.dart';
 import 'package:bookna_app/features/books/presentation/views/books_view.dart';
 import 'package:bookna_app/features/books/presentation/views/popular_books_view.dart';
 import 'package:bookna_app/features/books/presentation/views/top_rated_books_view.dart';
@@ -39,7 +38,7 @@ class AppRouter {
           // Books section with nested navigation
           ShellRoute(
             navigatorKey: _booksNavigatorKey,
-            builder: (context, state, child) => BooksScope(child: child),
+            builder: (context, state, child) => child,
             routes: [
               GoRoute(
                 path: AppPaths.books,
