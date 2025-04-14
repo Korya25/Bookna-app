@@ -6,6 +6,7 @@ class AppColors {
   // ========== Core Colors ==========
   static const Color primary = Color(0xffef233c);
   static const Color secondary = Color(0xff272b30);
+  static const Color green = Color(0xff00ff00);
   static const Color error = Colors.red;
   static const Color authorSubjectCardBackground = Color.fromARGB(
     255,
