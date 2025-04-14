@@ -15,5 +15,5 @@ void main() async {
   await initHive();
   setupServicesLocator();
 
-  runApp(const BooknaApp());
+  runApp(const BookFlick());
 }

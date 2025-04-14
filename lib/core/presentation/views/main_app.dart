@@ -15,8 +15,8 @@ import 'package:bookna_app/features/favorite/presentation/controller/favorite_cu
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class BooknaApp extends StatelessWidget {
-  const BooknaApp({super.key});
+class BookFlick extends StatelessWidget {
+  const BookFlick({super.key});
 
   @override
   Widget build(BuildContext context) {
