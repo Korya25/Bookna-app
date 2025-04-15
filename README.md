@@ -45,7 +45,14 @@ A Flutter app for book lovers to explore, search, and save favorite books using 
 ---
 
 ## 🎥 Demo  
-[![YouTube Demo](https://img.shields.io/badge/YouTube-Watch%20Demo-red?logo=youtube)](https://youtube.com/@K_or_y)  
+<div align="center">
+  <a href="https://youtube.com/shorts/2SgHiY1CKmE">
+    <img src="https://img.shields.io/badge/YouTube-Watch%20Demo-red?logo=youtube&logoColor=white" alt="YouTube Demo"/>
+  </a>
+  <a href="https://drive.google.com/file/d/15L0R8HlNDeImQ3dvZmsI2rlcV0cr9BNb/view?usp=sharing">
+    <img src="https://img.shields.io/badge/Google%20Drive-Download%20App-blue?logo=google-drive&logoColor=white" alt="Download App"/>
+  </a>
+</div>
 
 ---
 
