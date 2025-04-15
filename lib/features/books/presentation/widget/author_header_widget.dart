@@ -60,18 +60,6 @@ class AuthorHeaderWidget extends StatelessWidget {
                 ),
                 const SizedBox(height: AppSize.s8),
               ],
-              if (author.alternateNames?.isNotEmpty ?? false) ...[
-                const Text(
-                  '${AppStrings.alsoKnownAs}:',
-                  style: TextStyle(fontWeight: FontWeight.w500),
-                ),
-                ...author.alternateNames!.map(
-                  (name) => Text(
-                    '• $name',
-                    style: TextStyle(color: Colors.grey[600]),
-                  ),
-                ),
-              ],
             ],
           ),
         ),
