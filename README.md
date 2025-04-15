@@ -1,177 +1,115 @@
-BookFlick 📚
-Welcome to BookFlick, a Flutter-based mobile application crafted for book enthusiasts to discover, explore, and manage their favorite books using the Google Books API. Built with Clean Architecture, Cubit for state management, and GetIt for dependency injection, BookFlick delivers a polished user experience with fluid animations, a responsive UI, and offline capabilities.
+# BookFlick 📚  
 
-✨ Features
+A Flutter app for book lovers to explore, search, and save favorite books using the **Google Books API**. Built with Clean Architecture, Cubit, and GetIt.  
 
-Books Section:
-Animated Slider Card: A visually appealing carousel with auto-scroll and swipe gestures for featured books.
-Popular Books: Curated list of trending books with smooth reveal animations.
-Top Rated Books: High-rated books displayed with dynamic loading indicators.
+<p align="center">
+  <img src="https://img.icons8.com/color/96/flutter.png" alt="Flutter" width="60"/>
+  <img src="https://img.icons8.com/color/96/dart.png" alt="Dart" width="60"/>
+  <img src="https://img.icons8.com/color/96/google-books.png" alt="Google Books API" width="60"/>
+</p>
 
+---
 
-Book Detail View: In-depth book info (synopsis, ratings, reviews) with fade-in transitions and collapsible sections.
-Author View: Dedicated author profiles with animated book galleries.
-Similar Books: Personalized recommendations with a horizontal sliding card effect.
-Categories Section: Explore books by genre in an interactive grid with scale-on-tap animations.
-Search Section: Real-time search with debounced input and circular progress spinners.
-Favorites Section: Save books offline with an animated heart toggle and persistent storage via Hive.
-Offline Support: View favorite books without an internet connection.
-Dark Mode: Toggle between light and dark themes with seamless transitions.
+## ✨ Features  
+- **Books Section**: Slider carousel, Popular & Top Rated books with animations.  
+- **Book Details**: Synopsis, ratings, and fade-in effects.  
+- **Offline Favorites**: Save books locally (Hive) with ❤️ animations.  
+- **Search**: Real-time results.  
+- **Dark Mode**: Toggleable theme.  
 
+---
 
-🛠 Technologies Used
+## 🛠 Tech Stack  
+| Layer               | Tech/Tools      |
+|---------------------|-----------------|
+| **Framework**       | Flutter         |
+| **State Management**| Cubit (Bloc)    |
+| **DI**              | GetIt           |
+| **API**             | Google Books    |
+| **Local Storage**   | Hive            |
+| **Animations**      | Hero, Rive      |
 
-Frontend:
-Flutter & Dart: Cross-platform UI with a focus on performance.
-Animations: Custom Hero, fade, slide, and scale animations using Flutter’s animation framework.
+---
 
+## 📸 Screenshots  
+<div align="center">
+  <img src="https://raw.githubusercontent.com/Korya25/Bookna-app/main/assets/demo/books_and_book_detail_view.png" width="200" alt="Books & Book Detail"/>
+  <img src="https://raw.githubusercontent.com/Korya25/Bookna-app/main/assets/demo/toprated_and_popular_view.png" width="200" alt="Popular & TopRated"/>
+  <img src="https://raw.githubusercontent.com/Korya25/Bookna-app/main/assets/demo/author_and_favorite_view.png" width="200" alt="Author & Favorite"/>
+  <img src="https://raw.githubusercontent.com/Korya25/Bookna-app/main/assets/demo/book_detail_view.png" width="200" alt="Book Detail"/>
+  <img src="https://raw.githubusercontent.com/Korya25/Bookna-app/main/assets/demo/error_view.png" width="200" alt="Error"/>
+  <img src="https://raw.githubusercontent.com/Korya25/Bookna-app/main/assets/demo/splash_and_category_view.png" width="200" alt="Splash & Category"/>
+  <img src="https://raw.githubusercontent.com/Korya25/Bookna-app/main/assets/demo/search_view.png" width="200" alt="Search"/>
+</div>
 
-Architecture & State Management:
-Clean Architecture: Modular, testable, and scalable codebase.
-Cubit (Bloc): Lightweight and efficient state management.
-GetIt: Dependency injection for loose coupling.
+---
 
+## 🎥 Demo  
+[![YouTube Demo](https://img.shields.io/badge/YouTube-Watch%20Demo-red?logo=youtube)](https://youtube.com/@K_or_y)  
 
-Backend & Storage:
-Google Books API: Robust book data retrieval.
-Hive: Fast, lightweight local storage for favorites.
+---
 
+## 🚀 Getting Started
 
-Tools:
-Flutter Lints: Enforced code quality and best practices.
-VS Code & Android Studio: Development and debugging.
+### Prerequisites
+- Flutter SDK (latest version)
+- Dart SDK (latest version)
+- Android Studio / VS Code
+- Google Books API Key
 
+### Installation
+1. Clone the repository:
+```bash
+git clone https://github.com/Korya25/Bookna-app.git
+```
 
+2. Navigate to the project directory:
+```bash
+cd Bookna-app
+```
 
-
-📸 Screenshots
-
-
-
-Home Screen
-Book Details
-Search
-Favorites
-
-
-
-
-
-
-
-
-
-(Place screenshots in the screenshots/ folder. Use tools like Canva or Figma to add device frames for a professional look.)
-
-🎥 Demo
-See BookFlick in action, showcasing smooth animations like the Slider Card, heart toggle, and page transitions:
-(Record a 5-10 second GIF using LiceCap or ScreenToGif. Optimize with EZGIF to keep file size under 5MB.)
-
-🚀 Getting Started
-Run BookFlick locally with these steps:
-Prerequisites
-
-Flutter SDK: v3.0.0 or later
-Dart: v2.17.0 or later
-Google Books API Key: Obtain from Google Cloud Console
-A compatible IDE (VS Code, Android Studio)
-
-Installation
-
-Clone the repository:
-git clone https://github.com/yourusername/BookFlick.git
-
-
-Navigate to the project:
-cd BookFlick
-
-
-Install dependencies:
+3. Install dependencies:
+```bash
 flutter pub get
+```
 
-
-Set up the API key:
-
-Create a .env file in the root directory.
-
-Add:
-GOOGLE_BOOKS_API_KEY=your_api_key_here
-
-
-
-
-Run the app:
+4. Run the app:
+```bash
 flutter run
+```
 
+---
 
+## 🤝 Contributing
+Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
 
-Troubleshooting
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-API errors: Ensure your Google Books API key is valid and quotas are not exceeded.
-Build issues: Run flutter clean and flutter pub get to refresh the project.
-Emulator setup: Use a recent Android/iOS emulator for optimal performance.
+---
 
+## 👥 Authors  
 
-🛠 Project Structure
-BookFlick adheres to Clean Architecture for maintainability:
-lib/
-├── core/                # Utilities, constants, themes, and error handling
-├── data/                # API services, Hive storage, and data models
-├── domain/              # Entities, use cases, and repositories
-├── presentation/        # Screens, widgets, Cubits, and animations
-└── main.dart            # App entry point with dependency injection
+### Mahmoud Mohamed  
+[![Gmail](https://img.shields.io/badge/Gmail-D14836?logo=gmail&logoColor=white)](https://mail.google.com/mail/?view=cm&fs=1&to=mahmoudmohamed01559@gmail.com)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/mahmoud-mohamed-5938ab28a)
+[![YouTube](https://img.shields.io/badge/YouTube-FF0000?logo=youtube&logoColor=white)](https://www.youtube.com/@K_or_y)
+[![GitHub](https://img.shields.io/badge/GitHub-181717?logo=github&logoColor=white)](https://github.com/Korya25)
+[![Facebook](https://img.shields.io/badge/Facebook-1877F2?logo=facebook&logoColor=white)](https://www.facebook.com/share/12Gi3pNFB7n/)
 
+### Yousef Hamada  
+[![Gmail](https://img.shields.io/badge/Gmail-D14836?logo=gmail&logoColor=white)](https://mail.google.com/mail/?view=cm&fs=1&to=yosefhagag84171@gmail.com)
+[![GitHub](https://img.shields.io/badge/GitHub-181717?logo=github&logoColor=white)](https://github.com/YoussefHamada-cs)
+[![Facebook](https://img.shields.io/badge/Facebook-1877F2?logo=facebook&logoColor=white)](https://www.facebook.com/share/165z5EhaWA/)
 
-🎨 Animations
-BookFlick elevates the user experience with carefully crafted animations:
+---
 
-Hero Animations: Seamless image transitions from book cards to detail views.
-Fade Transitions: Elegant fades for loading states and content reveals.
-Slide Animations: Smooth card slides in the carousel and similar books.
-Heart Toggle: Playful scale-and-bounce effect for favoriting books.
-Scale Animations: Interactive category grid with tap feedback.
-Loading Indicators: Custom spinners with gradient effects for API calls.
+## 🌟 Show Support  
+Like the project? Give it a ⭐️ on [GitHub](https://github.com/Korya25/Bookna-app)!  
 
-(Highlight your favorite animation in the demo GIF, like the Slider Card auto-scroll or heart toggle.)
-
-🌟 Why BookFlick?
-
-User-Centric Design: Intuitive navigation and responsive layouts.
-Performance Optimized: Efficient API calls and local caching with Hive.
-Scalable Codebase: Clean Architecture ensures easy feature additions.
-Engaging Animations: Subtle yet delightful transitions for a premium feel.
-
-
-🤝 Contributing
-Contributions are welcome! To contribute:
-
-Fork the repository.
-
-Create a feature branch:
-git checkout -b feature/your-feature
-
-
-Commit changes:
-git commit -m "Add your feature"
-
-
-Push to the branch:
-git push origin feature/your-feature
-
-
-Open a Pull Request with a clear description.
-
-
-Please follow the Code of Conduct and use Flutter Lints for consistency.
-
-📜 License
-Licensed under the MIT License. Feel free to use, modify, and distribute.
-
-📬 Contact
-Built with ❤️ by [Your Name]. Reach out to me:
-
-LinkedIn: linkedin.com/in/yourusername
-GitHub: github.com/yourusername
-Email: your.email@example.com
-
-Explore, read, and enjoy with BookFlick! 📖
+<p align="center">
+  <img src="https://img.icons8.com/fluency/48/star.png" alt="Star"/>
+</p>
