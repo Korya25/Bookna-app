@@ -32,15 +32,19 @@ A Flutter app for book lovers to explore, search, and save favorite books using 
 ---
 
 ## 📸 Screenshots  
-<div align="center">
-  <img src="https://raw.githubusercontent.com/Korya25/Bookna-app/main/assets/demo/books_and_book_detail_view.png" width="200" alt="Books & Book Detail"/>
-  <img src="https://raw.githubusercontent.com/Korya25/Bookna-app/main/assets/demo/toprated_and_popular_view.png" width="200" alt="Popular & TopRated"/>
-  <img src="https://raw.githubusercontent.com/Korya25/Bookna-app/main/assets/demo/author_and_favorite_view.png" width="200" alt="Author & Favorite"/>
-  <img src="https://raw.githubusercontent.com/Korya25/Bookna-app/main/assets/demo/book_detail_view.png" width="200" alt="Book Detail"/>
-  <img src="https://raw.githubusercontent.com/Korya25/Bookna-app/main/assets/demo/error_view.png" width="200" alt="Error"/>
-  <img src="https://raw.githubusercontent.com/Korya25/Bookna-app/main/assets/demo/splash_and_category_view.png" width="200" alt="Splash & Category"/>
-  <img src="https://raw.githubusercontent.com/Korya25/Bookna-app/main/assets/demo/search_view.png" width="200" alt="Search"/>
-</div>
+
+**Core Experience**  
+| Splash & Categories | Books & Details | Top Rated & Popular |
+|---------------------|-----------------|---------------------|
+| <img src="splash.png" width="200"> | <img src="books.png" width="200"> | <img src="toprated.png" width="200"> |
+
+**Key Features**  
+| Search | Book Details | Favorites |
+|--------|--------------|-----------|
+| <img src="search.png" width="200"> | <img src="details.png" width="200"> | <img src="favorites.png" width="200"> |
+
+**Additional States**  
+<img src="error.png" width="400">
 
 ---
 
